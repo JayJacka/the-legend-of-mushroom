@@ -91,4 +91,30 @@ public class Animations {
 		return x;
 	}
 	
+	public static ArrayList<Image> getPineappleIdle(){
+		ArrayList x = new ArrayList<Image>();
+		x.add(RenderableHolder.PineappleIdle0);
+		x.add(RenderableHolder.PineappleIdle1);
+		x.add(RenderableHolder.PineappleIdle2);
+		return x;
+	}
+	
+	public static ArrayList<Image> getPineappleAttack(){
+		ArrayList x = new ArrayList<Image>();
+		x.add(RenderableHolder.PineappleAttack0);
+		x.add(RenderableHolder.PineappleAttack1);
+		x.add(RenderableHolder.PineappleAttack2);
+		x.add(RenderableHolder.PineappleAttack3);
+		return x;
+	}
+	
+	public static ArrayList<Image> getPineappleHit(){
+		ArrayList x = new ArrayList<Image>();
+		x.add(RenderableHolder.PineappleHit0);
+		x.add(RenderableHolder.PineappleHit1);
+		x.add(RenderableHolder.PineappleHit2);
+		x.add(RenderableHolder.PineappleHit3);
+		return x;
+	}
 }
+
