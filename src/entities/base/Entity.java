@@ -27,4 +27,8 @@ public abstract class Entity {
 		hitbox.setX((int) x);
 		hitbox.setY((int) y);
 	}
+	
+	public Rectangle getHitbox() {
+		return this.hitbox;
+	}
 }

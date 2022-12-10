@@ -25,7 +25,7 @@ public class Constants {
 		public static final int DOWN = 3;
 	}
 	
-	public static class EnemyConstants{
+	public static class EnemyConstant{
 		public static final int TOMATO = 0;
 		
 		public static final int IDLE = 0;

@@ -31,7 +31,7 @@ public class Player extends Entity{
 	
 	private double airSpeed = 0;
 	private double gravity = 0.3;
-	private double jumpSpeed = -15;
+	private double jumpSpeed = -10;
 	private double fallSpeedAfterCollision = 1;
 	private boolean inAir = false;
 	
