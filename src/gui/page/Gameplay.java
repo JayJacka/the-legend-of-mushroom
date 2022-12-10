@@ -41,6 +41,7 @@ public class Gameplay extends Pane{
 		setStage();
 		levelManager = new LevelManager(this);
 		player = new Player(x,y,scene);
+		player.loadLevelData(levelManager.getLevelData());
 		gameLoop();
 		primaryStage.show();
 	}
@@ -69,6 +70,5 @@ public class Gameplay extends Pane{
 	
 	protected void clearScreen() {
 		gc.clearRect(0.0, 0.0, 1280, 720);
-		
 	}
 }

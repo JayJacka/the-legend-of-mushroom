@@ -1,6 +1,7 @@
 package entities;
 
 import static utils.Constants.PlayerConstants.*;
+import static utils.HelperMethods.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.Delayed;
@@ -12,18 +13,30 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import utils.Animations;
+import utils.HelperMethods;
 
 public class Player extends Entity{
-	private int x = 300,y = 300;
+	private int x = 64,y = 488;
 	private ArrayList<ArrayList<Image>> animations;
-	private int aniTick, aniIndex = 0, aniSpeed = 20;
+	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE;
-	private boolean isMoving = false, attacking = false;
-	private boolean left, up, right, down;
 	private float playerSpeed = 2;
+	private int playerDirection = -1;
+	private int[][] levelData;
+	private boolean isMoving = false, attacking = false;
+	private boolean left, up, right, down, jump;
+	private int xDrawOffset = 16;
+	private int yDrawOffset = 10;
+	
+	private double airSpeed = 0;
+	private double gravity = 0.5;
+	private double jumpSpeed = -15;
+	private double fallSpeedAfterCollision = 1;
+	private boolean inAir = false;
 	
 	public Player(float x, float y, Scene scene) {
 		super(x, y);
+		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
 		addKeyListener(scene);
 		loadAnimations();
 	}
@@ -33,13 +46,17 @@ public class Player extends Entity{
 		render(gc);
 	}
 	public void update() {
+		System.out.println(this.x + " " + this.y);
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
+		updatePos();
+		super.updateHitbox(this.x + xDrawOffset, this.y + yDrawOffset);
 	}
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(animations.get(playerAction).get(aniIndex), x, y);
+		drawHitbox(gc);
 	}
 	private void loadAnimations() {
 		animations = new ArrayList<ArrayList<Image>>();
@@ -49,24 +66,89 @@ public class Player extends Entity{
 		animations.add(Animations.getMushroomWalk());
 	}
 	
+	public void loadLevelData(int[][] levelData) {
+		this.levelData = levelData;
+	}
+	
 	private void updatePos() {
 		isMoving = false;
-		if(left && !right) {
-			x -= playerSpeed;
-			isMoving = true;
+		if (jump) {
+			jump();
 		}
-		else if(right && !left) {
-			x += playerSpeed;
-			isMoving = true;
+		if (!left && !right && !inAir)
+			return;
+		
+		float xSpeed = 0;
+		
+		if(left) {
+			xSpeed -= playerSpeed;
 		}
 		
-		if (up && !down) {
-			y -= playerSpeed;
-			isMoving = true;
+		if(right) {
+			xSpeed += playerSpeed;
 		}
-		else if (down && !up) {
-			y += playerSpeed;
-			isMoving = true;
+		
+		if(!inAir) {
+			if (!isEntityOnFloor(hitbox, levelData)) {
+				inAir = true;
+			}
+		}
+		
+		if (inAir) {
+			if (CanMoveHere((int) hitbox.getX(),(int) (hitbox.getY() + airSpeed), 32, 44, levelData)) {
+				hitbox.setY((int) (hitbox.getY() + airSpeed));
+				this.y += (int) (airSpeed);
+				airSpeed += gravity;
+				updateXPos(xSpeed);
+			} else {
+				hitbox.setY((int) (GetEntityPosRoofFloor(hitbox, (int) airSpeed)));
+//				this.y += (int) GetEntityPosRoofFloor(hitbox, airSpeed);
+				if (airSpeed > 0) {
+					resetInAir();
+				} else {
+					airSpeed = fallSpeedAfterCollision;
+				}
+				updateXPos(xSpeed);
+			}
+		} else {
+			updateXPos(xSpeed);
+		}
+		isMoving = true;
+		
+		
+//		if (CanMoveHere((int) hitbox.getX()+xSpeed, (int) hitbox.getY()+ySpeed, 32, 44, levelData)) {
+//			hitbox.setX(hitbox.getX()+xSpeed);
+//			hitbox.setY(hitbox.getY()+ySpeed);
+//			this.x += xSpeed;
+//			this.y += ySpeed;
+//			isMoving = true;
+//		}
+	}
+
+	private void jump() {
+		// TODO Auto-generated method stub
+		if (inAir) {
+			return;
+		} else {
+			inAir = true;
+			airSpeed = jumpSpeed;
+		}
+	}
+
+	private void resetInAir() {
+		// TODO Auto-generated method stub
+		inAir = false;
+		airSpeed = 0;
+	}
+
+	private void updateXPos(float xSpeed) {
+		// TODO Auto-generated method stub
+		if (CanMoveHere((int) hitbox.getX()+xSpeed, (int) hitbox.getY(), 32, 44, levelData)) {
+			hitbox.setX((int) (hitbox.getX()+xSpeed));
+			this.x += xSpeed;
+		} else {
+			hitbox.setX((int) GetEntityXPosNextToWall(hitbox, xSpeed));
+//			this.x += GetEntityXPosNextToWall(hitbox, xSpeed);
 		}
 	}
 
@@ -80,6 +162,10 @@ public class Player extends Entity{
 		
 		if(attacking) {
 			playerAction = ATTACK;
+		}
+		
+		if(jump) {
+			playerAction = JUMP;
 		}
 	}
 
@@ -104,7 +190,7 @@ public class Player extends Entity{
 				setRight(true);
 			}
 			else if (e.getCode() == KeyCode.UP) {
-				setUp(true);
+				setJump(true);
 			}
 			else if (e.getCode() == KeyCode.DOWN) {
 				setDown(true);
@@ -122,7 +208,7 @@ public class Player extends Entity{
 				setRight(false);
 			}
 			else if (e.getCode() == KeyCode.UP) {
-				setUp(false);
+				setJump(false);
 			}
 			else if (e.getCode() == KeyCode.DOWN) {
 				setDown(false);
@@ -131,6 +217,11 @@ public class Player extends Entity{
 				setAttack(false);
 			}
 		});
+	}
+
+	private void setJump(boolean b) {
+		// TODO Auto-generated method stub
+		this.jump = b;
 	}
 
 	public void setAttack(boolean attacking) {

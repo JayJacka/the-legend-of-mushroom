@@ -99,8 +99,8 @@ public class RenderableHolder {
 		//mushRoomAttack8 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
 		//mushRoomAttack9 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
 		//Jump
-		mushRoomJump0 = new Image(ClassLoader.getSystemResource(img + "MushroomJump0.png").toString());
-		mushRoomJump1 = new Image(ClassLoader.getSystemResource(img + "MushroomJump1.png").toString());
+		mushRoomJump0 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
+		mushRoomJump1 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
 		mushRoomJump2 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
 		mushRoomJump3 = new Image(ClassLoader.getSystemResource(img + "MushroomJump3.png").toString());
 		mushRoomJump4 = new Image(ClassLoader.getSystemResource(img + "MushroomJump4.png").toString());

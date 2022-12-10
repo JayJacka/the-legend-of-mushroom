@@ -36,4 +36,8 @@ public class LevelManager {
 			}
 		}
 	}
+	
+	public int[][] getLevelData() {
+		return levelOneData;
+	}
 }
