@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Delayed;
 
 import entities.base.Entity;
+import gamestates.GameState;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -29,7 +30,7 @@ public class Player extends Entity{
 	private int yDrawOffset = 10;
 	
 	private double airSpeed = 0;
-	private double gravity = 0.5;
+	private double gravity = 0.3;
 	private double jumpSpeed = -15;
 	private double fallSpeedAfterCollision = 1;
 	private boolean inAir = false;
@@ -46,7 +47,6 @@ public class Player extends Entity{
 		render(gc);
 	}
 	public void update() {
-		System.out.println(this.x + " " + this.y);
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
@@ -197,6 +197,12 @@ public class Player extends Entity{
 			}
 			else if (e.getCode() == KeyCode.Z) {
 				setAttack(true);
+			} 
+			else if (e.getCode() == KeyCode.ESCAPE) {
+				GameState.state = GameState.MENU;
+			}
+			else if (e.getCode() == KeyCode.ENTER) {
+				GameState.state = GameState.PLAYING;
 			}
 		});
 

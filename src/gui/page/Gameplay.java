@@ -3,6 +3,9 @@ package gui.page;
 import java.util.ArrayList;
 
 import entities.Player;
+import gamestates.GameState;
+import gamestates.Menu;
+import gamestates.Playing;
 
 import static utils.Constants.PlayerConstants.*;
 import static utils.Constants.Directions.*;
@@ -30,18 +33,17 @@ public class Gameplay extends Pane{
 	private int playerAction = IDLE;
 	private int playerDirection = -1;
 	private boolean isMoving = false;
-	private LevelManager levelManager;
 	private static int tileWidthCount = 40;
 	private static int tileHeightCount = 23;
-	private Player player;
+	private Playing playing;
+	private Menu menu;
 	
 	
 	public Gameplay(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		setStage();
-		levelManager = new LevelManager(this);
-		player = new Player(x,y,scene);
-		player.loadLevelData(levelManager.getLevelData());
+		playing = new Playing(this, scene);
+		menu = new Menu(scene);
 		gameLoop();
 		primaryStage.show();
 	}
@@ -61,9 +63,19 @@ public class Gameplay extends Pane{
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
 				clearScreen();
-				levelManager.Draw(gc);
-				player.draw(gc);
+				
+				switch (GameState.state) {
+				case MENU:
+					playing.drawLastFrame(gc);
+					break;
+				case PLAYING:
+					playing.update(gc);
+					break;
+				default:
+					break;
+				}
 			}
+			
 		};
 		gameLoop.start();
 	}
