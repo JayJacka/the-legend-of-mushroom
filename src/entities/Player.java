@@ -102,7 +102,7 @@ public class Player extends Entity{
 		this.isMoving = isMoving;
 	}
 
-	private void addKeyListener(Scene sc) {
+	public void addKeyListener(Scene sc) {
 		sc.setOnKeyPressed((KeyEvent e) -> {
 			if (e.getCode() == KeyCode.LEFT) {
 				setDirection(LEFT);
