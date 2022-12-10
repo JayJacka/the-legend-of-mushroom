@@ -53,6 +53,23 @@ public class RenderableHolder {
 	public static Image mushRoomJump6;
 	public static Image mushRoomJump7;
 	public static Image mushRoomJump8;
+	
+	
+	//Tomato Image
+	public static Image TomatoIdle0;
+	public static Image TomatoIdle1;
+	public static Image TomatoIdle2;
+	public static Image TomatoIdle3;
+	public static Image TomatoIdle4;
+	public static Image TomatoIdle5;
+	
+	public static Image TomatoHit0;
+	public static Image TomatoHit1;
+	public static Image TomatoHit2;
+	public static Image TomatoHit3;
+	public static Image TomatoHit4;
+	public static Image TomatoHit5;
+	
 
 	static {
 		loadResource();
@@ -87,6 +104,7 @@ public class RenderableHolder {
 		mushRoomIdle7 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle7.png").toString());
 		//mushRoomIdle8 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle8.png").toString());
 		//mushRoomIdle9 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle9.png").toString());
+		
 		//Attack
 		mushRoomAttack0 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack0.png").toString());
 		mushRoomAttack1 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack1.png").toString());
@@ -98,6 +116,7 @@ public class RenderableHolder {
 		mushRoomAttack7 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
 		//mushRoomAttack8 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
 		//mushRoomAttack9 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
+		
 		//Jump
 		mushRoomJump0 = new Image(ClassLoader.getSystemResource(img + "MushroomJump0.png").toString());
 		mushRoomJump1 = new Image(ClassLoader.getSystemResource(img + "MushroomJump1.png").toString());
@@ -119,6 +138,22 @@ public class RenderableHolder {
 		mushRoomWalk6 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk6.png").toString());
 		mushRoomWalk7 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk2.png").toString());
 		
+		
+		//Tomato Image
+		//Idle
+		TomatoIdle0 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle0.png").toString());
+		TomatoIdle1 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle1.png").toString());
+		TomatoIdle2 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle2.png").toString());
+		TomatoIdle3 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle3.png").toString());
+		TomatoIdle4 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle4.png").toString());
+		TomatoIdle5 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle5.png").toString());
+		
+		TomatoHit0 = new Image(ClassLoader.getSystemResource(img + "TomatoHit0.png").toString());
+		TomatoHit1 = new Image(ClassLoader.getSystemResource(img + "TomatoHit1.png").toString());
+		TomatoHit2 = new Image(ClassLoader.getSystemResource(img + "TomatoHit2.png").toString());
+		TomatoHit3 = new Image(ClassLoader.getSystemResource(img + "TomatoHit3.png").toString());
+		TomatoHit4 = new Image(ClassLoader.getSystemResource(img + "TomatoHit4.png").toString());
+		TomatoHit5 = new Image(ClassLoader.getSystemResource(img + "TomatoHit5.png").toString());
 	}
 	
 	public void add(IRenderable entity) {
