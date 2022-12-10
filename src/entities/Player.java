@@ -1,14 +1,9 @@
 package entities;
 
-import static utils.Constants.Directions.DOWN;
-import static utils.Constants.Directions.LEFT;
-import static utils.Constants.Directions.RIGHT;
-import static utils.Constants.Directions.UP;
-import static utils.Constants.PlayerConstants.GetSpriteAmount;
-import static utils.Constants.PlayerConstants.IDLE;
-import static utils.Constants.PlayerConstants.WALK;
+import static utils.Constants.PlayerConstants.*;
 
 import java.util.ArrayList;
+import java.util.concurrent.Delayed;
 
 import entities.base.Entity;
 import javafx.scene.Scene;
@@ -16,7 +11,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import sharedObject.IRenderable;
 import utils.Animations;
 
 public class Player extends Entity{
@@ -24,8 +18,9 @@ public class Player extends Entity{
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 20;
 	private int playerAction = IDLE;
-	private int playerDirection = -1;
-	private boolean isMoving = false;
+	private boolean isMoving = false, attacking = false;
+	private boolean left, up, right, down;
+	private float playerSpeed = 2;
 	
 	public Player(float x, float y, Scene scene) {
 		super(x, y);
@@ -34,14 +29,13 @@ public class Player extends Entity{
 	}
 	
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		update();
 		render(gc);
 	}
 	public void update() {
+		updatePos();
 		updateAnimationTick();
 		setAnimation();
-		updatePos();
 	}
 	
 	public void render(GraphicsContext gc) {
@@ -56,30 +50,37 @@ public class Player extends Entity{
 	}
 	
 	private void updatePos() {
-		if(isMoving) {
-			switch (playerDirection) {
-			case LEFT: 
-				x-=1;
-				break;
-			case RIGHT: 
-				x+=1;
-				break;
-			case UP: 
-				y-=1;
-				break;
-			case DOWN: 
-				y+=1;
-				break;
-			}
+		isMoving = false;
+		if(left && !right) {
+			x -= playerSpeed;
+			isMoving = true;
+		}
+		else if(right && !left) {
+			x += playerSpeed;
+			isMoving = true;
 		}
 		
+		if (up && !down) {
+			y -= playerSpeed;
+			isMoving = true;
+		}
+		else if (down && !up) {
+			y += playerSpeed;
+			isMoving = true;
+		}
 	}
 
 	private void setAnimation() {
-		if(isMoving)
+		if(isMoving) {
 			playerAction = WALK;
-		else
+		}
+		else {
 			playerAction = IDLE;
+		}
+		
+		if(attacking) {
+			playerAction = ATTACK;
+		}
 	}
 
 	private void updateAnimationTick() {
@@ -89,55 +90,82 @@ public class Player extends Entity{
 			aniIndex++;
 			if(aniIndex >= GetSpriteAmount(playerAction)) {
 				aniIndex = 0;
+				attacking = false;
 			}
 		}
 	}
 	
-	public void setDirection(int direct) {
-		this.playerDirection = direct;
-		setMoving(true);
-	}
-	
-	public void setMoving(boolean isMoving) {
-		this.isMoving = isMoving;
-	}
-
 	public void addKeyListener(Scene sc) {
 		sc.setOnKeyPressed((KeyEvent e) -> {
 			if (e.getCode() == KeyCode.LEFT) {
-				setDirection(LEFT);
+				setLeft(true);
 			}
 			else if (e.getCode() == KeyCode.RIGHT) {
-				setDirection(RIGHT);
+				setRight(true);
 			}
 			else if (e.getCode() == KeyCode.UP) {
-				setDirection(UP);
+				setUp(true);
 			}
 			else if (e.getCode() == KeyCode.DOWN) {
-				setDirection(DOWN);
+				setDown(true);
 			}
 			else if (e.getCode() == KeyCode.Z) {
-				System.out.println("Z");
+				setAttack(true);
 			}
 		});
 
 		sc.setOnKeyReleased((KeyEvent e) -> {
 			if (e.getCode() == KeyCode.LEFT) {
-				setMoving(false);
+				setLeft(false);
 			}
 			else if (e.getCode() == KeyCode.RIGHT) {
-				setMoving(false);
+				setRight(false);
 			}
 			else if (e.getCode() == KeyCode.UP) {
-				setMoving(false);
+				setUp(false);
 			}
 			else if (e.getCode() == KeyCode.DOWN) {
-				setMoving(false);
+				setDown(false);
 			}
 			else if (e.getCode() == KeyCode.Z) {
-				setMoving(false);
+				setAttack(false);
 			}
 		});
 	}
 
+	public void setAttack(boolean attacking) {
+		this.attacking = attacking;
+	}
+	public boolean isLeft() {
+		return left;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+
+	public boolean isUp() {
+		return up;
+	}
+
+	public void setUp(boolean up) {
+		this.up = up;
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
+	public boolean isDown() {
+		return down;
+	}
+
+	public void setDown(boolean down) {
+		this.down = down;
+	}
+	
 }
