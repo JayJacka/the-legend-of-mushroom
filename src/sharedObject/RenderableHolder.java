@@ -98,6 +98,9 @@ public class RenderableHolder {
 	public static Image tree2;
 	public static Image treeHouse;
 	public static Image woodenHouse;
+	public static Image plant;
+	public static Image bigCrate;
+	public static Image fence;
 	
 	static {
 		loadResource();
@@ -214,6 +217,9 @@ public class RenderableHolder {
 		treeHouse = new Image(ClassLoader.getSystemResource("tree-house.png").toString());
 		woodenHouse = new Image(ClassLoader.getSystemResource("wooden-house.png").toString());
 		pine = new Image(ClassLoader.getSystemResource("pine.png").toString());
+		plant = new Image(ClassLoader.getSystemResource("plant1.png").toString());
+		bigCrate = new Image(ClassLoader.getSystemResource("big-crate.png").toString());
+		fence = new Image(ClassLoader.getSystemResource("fence.png").toString());
 	}
 	
 	public void add(IRenderable entity) {
