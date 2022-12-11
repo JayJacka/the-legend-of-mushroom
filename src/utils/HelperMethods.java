@@ -30,7 +30,23 @@ public class HelperMethods {
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
-		if (value > 0) {
+		if (value > 0 && value != 199 && value != 234 && value != 123) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean InClearZone(float x, float y, int width, int height, int[][] levelData) {
+		return ClearLevelZone(x+width,y, levelData);
+	}
+	
+	private static boolean ClearLevelZone(float x, float y, int[][] levelData) {
+		float xIndex = x/32;
+		float yIndex = y/32;
+		
+		int value = levelData[(int) yIndex][(int) xIndex];
+		
+		if (value == 199) {
 			return true;
 		}
 		return false;

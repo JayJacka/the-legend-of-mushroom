@@ -14,11 +14,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class Player extends Entity{
-	private int x = 64,y = 488;
+	private int x,y;
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE;
-	private float playerSpeed = 8f;
+	private float playerSpeed = 5f;
 	private int[][] levelData;
 	private boolean isMoving = false, attacking = false;
 	private boolean left, up, right, down, jump;
@@ -31,10 +31,13 @@ public class Player extends Entity{
 	private float fallSpeedAfterCollision = 2f;
 	private boolean inAir = false;
 	private int damage;
-	
+	private int health;
+	public float xSpeed;
+	public float knockbackSpeed = 0f;
 	public Player(float x, float y, Scene scene) {
 		super(x, y, 32, 44);
-		this.damage = 5;
+		this.damage = 10;
+		this.health = 100;
 		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
 		addKeyListener(scene);
 		loadAnimations();
@@ -45,11 +48,19 @@ public class Player extends Entity{
 		render(gc);
 	}
 	public void update() {
+		if (knockbackSpeed != 0)  {
+			if (knockbackSpeed < 0) {
+				knockbackSpeed += 1f;
+			} else {
+				knockbackSpeed -= 1f;
+			}
+		}
 		if(!inAir) {
 			if (!isEntityOnFloor(hitbox, levelData)) {
 				inAir = true;
 			}
 		}
+		System.out.println(this.health);
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
@@ -72,15 +83,16 @@ public class Player extends Entity{
 		this.levelData = levelData;
 	}
 	
-	private void updatePos() {
+	public void updatePos() {
 		isMoving = false;
 		if (jump) {
 			jump();
 		}
-		if (!left && !right && !inAir)
-			return;
+		if (left || right || inAir)
+			isMoving = true;
 		
-		float xSpeed = 0f;
+		xSpeed = 0f;
+		xSpeed += knockbackSpeed;
 		
 		if(left) {
 			xSpeed -= playerSpeed;
@@ -114,7 +126,7 @@ public class Player extends Entity{
 		} else {
 			updateXPos(xSpeed);
 		}
-		isMoving = true;
+//		isMoving = true;
 	}
 
 	private void jump() {
@@ -286,4 +298,14 @@ public class Player extends Entity{
 		return false;
 	}
 	
+	public boolean isPlayerInClearZone() {
+		return InClearZone(this.x, this.y,(int) this.getHitbox().getWidth(),(int) this.getHitbox().getHeight(), levelData);
+	}
+	
+	public int getHealth() {
+		return this.health;
+	}
+	public void setHealth(int health) {
+		this.health = health;
+	}
 }

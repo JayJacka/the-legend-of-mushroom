@@ -24,19 +24,23 @@ public class EnemyManager {
 	
 	private void initializeEnemy() {
 		// TODO Auto-generated method stub
-		Image enemyDataImage = new Image(ClassLoader.getSystemResource("level/LevelOneData.png").toString());
+		Image enemyDataImage = new Image(ClassLoader.getSystemResource("level/Map"+ GameLogic.getInstance().getCurrentLevel()%3 + ".png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
-				if ((int) (color.getRed()*255) == 255) {
+				if ((int) (color.getRed()*255) == 234) {
 					tomatoes.add(new Tomato(i*32-13, j*32-21, 0));
 				}
-				if ((int) (color.getRed()*255) == 128) {
+				if ((int) (color.getRed()*255) == 123) {
 					pineapples.add(new Pineapple(i*32-13, j*32-21, 1));
 				}
 			}
 		}
 		
+	}
+
+	public boolean levelCleared() {
+		return tomatoes.size() == 0 && pineapples.size() == 0;
 	}
 
 	public void update(Player player) {
@@ -59,10 +63,6 @@ public class EnemyManager {
 		}
 		for (Pineapple p: pToBeRemoved) {
 			pineapples.remove(p);
-		}
-		
-		if (tomatoes.size() == 0 && pineapples.size() == 0) {
-			GameLogic.getInstance().changeLevel();
 		}
 	}
 	

@@ -39,6 +39,7 @@ public class GameLogic {
 		menu = new Menu(scene);
 		this.player = playing.getPlayer();
 		gameLoop(gc);
+		System.out.println(currentLevel);
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
@@ -68,6 +69,7 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
+		System.out.println(currentLevel);
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {

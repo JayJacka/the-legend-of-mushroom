@@ -2,13 +2,12 @@ package gamestates;
 
 import entities.EnemyManager;
 import entities.Player;
-import gui.page.Gameplay;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import levels.LevelManager;
+import logic.GameLogic;
 
 public class Playing {
 	private Player player;
@@ -17,16 +16,18 @@ public class Playing {
 	
 	public Playing(Scene scene) {
 		levelManager = new LevelManager();
-		player = new Player(64,488,scene);
+		player = new Player(0,0, scene);
 		enemyManager = new EnemyManager(player);
 		player.loadLevelData(levelManager.getLevelData());
-		
 	}
 	
 	public void update(GraphicsContext gc) {
 		levelManager.Draw(gc);
 		enemyManager.draw(gc);
 		player.draw(gc);
+		if (enemyManager.levelCleared() && player.isPlayerInClearZone()) {
+			GameLogic.getInstance().changeLevel();
+		}
 	}
 	
 	public void drawLastFrame(GraphicsContext gc) {

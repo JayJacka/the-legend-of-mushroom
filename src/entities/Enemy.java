@@ -9,7 +9,9 @@ import utils.Constants.EnemyConstant;
 public abstract class Enemy extends Entity{
 	private int aniIndex, State, Type;
 	private int aniTick, aniSpeed = 10;
-	protected int attackRange = 48;
+	protected int playerAttackRange = 48;
+	protected int attackRange = 20;
+	protected int attackDamage = 5;
 	public int health;
 
 	public Enemy(float x, float y, int Type, int hitboxWidth, int hitboxHeight, int health) {
@@ -36,6 +38,16 @@ public abstract class Enemy extends Entity{
 			if (player.getPlayerAttack()) {
 				this.health -= player.getDamage();
 				this.State = EnemyConstant.HIT;
+			}
+		}
+		if (canAttackPlayer(player)) {
+			player.setHealth(player.getHealth() - this.attackDamage);
+			if ((int) (player.getHitbox().getX() - this.getHitbox().getX()) < 0 ) {
+				player.knockbackSpeed = -10f;
+				player.updatePos();
+			} else {
+				player.knockbackSpeed = 10f;
+				player.updatePos();
 			}
 		}
 		updateAnimationTick();
@@ -67,7 +79,22 @@ public abstract class Enemy extends Entity{
 	protected boolean isPlayerInRange(Player player) {
 		int range = (int) Math.abs(player.getHitbox().getX() - this.getHitbox().getX());
 //		System.out.println(range);
-		return range <= attackRange ;
+		return range <= playerAttackRange ;
+	}
+	
+	protected boolean canAttackPlayer(Player player) {
+		int playerTileY = (int) (player.getHitbox().getY()/32);
+		if (playerTileY == (int) (this.getHitbox().getY()/32)) {
+			if (isPlayerInAttackRange(player)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	protected boolean isPlayerInAttackRange (Player player) {
+		int range = (int) Math.abs(player.getHitbox().getX() - this.getHitbox().getX());
+		return range <= attackRange;
 	}
 	
 	public int getHealth() {
