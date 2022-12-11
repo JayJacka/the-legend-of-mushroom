@@ -3,6 +3,7 @@ package entities;
 import static utils.Constants.EnemyConstant.GetSpriteAmount;
 
 import entities.base.Entity;
+import logic.GameLogic;
 import utils.Constants.EnemyConstant;
 
 public abstract class Enemy extends Entity{
@@ -55,7 +56,7 @@ public abstract class Enemy extends Entity{
 	protected boolean canSeePlayer(Player player) {
 		int playerTileY = (int) (player.getHitbox().getY()/32);
 //		System.out.println(playerTileY + " " +(int) (this.getHitbox().getY()/32));
-		if (playerTileY == (int) (this.getHitbox().getY()/32)) {
+		if (playerTileY <= (int) (this.getHitbox().getY()/32 + 1) && playerTileY >= (int) (this.getHitbox().getY()/32 - 1) ) {
 			if (isPlayerInRange(player)) {
 				return true;
 			}

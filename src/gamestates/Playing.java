@@ -15,10 +15,10 @@ public class Playing {
 	private LevelManager levelManager;
 	private EnemyManager enemyManager;
 	
-	public Playing(Gameplay gameplay, Scene scene) {
-		levelManager = new LevelManager(gameplay);
+	public Playing(Scene scene) {
+		levelManager = new LevelManager();
 		player = new Player(64,488,scene);
-		enemyManager = new EnemyManager(gameplay, player);
+		enemyManager = new EnemyManager(player);
 		player.loadLevelData(levelManager.getLevelData());
 		
 	}
@@ -40,5 +40,9 @@ public class Playing {
 		gc.fillText("PAUSED", 550, 350);
 		gc.setFont(Font.font(25));
 		gc.fillText("Press Enter to Resume Game", 490, 400);
+	}
+	
+	public Player getPlayer() {
+		return this.player;
 	}
 }

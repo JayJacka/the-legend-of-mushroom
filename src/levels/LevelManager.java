@@ -5,23 +5,22 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import levels.MapManager;
+import logic.GameLogic;
 import sharedObject.RenderableHolder;
 
 public class LevelManager {
 	
-	private Gameplay gamePlay;
 	private Image levelSprite;
 	private int[][] levelData;
 
-	public LevelManager(Gameplay gamePlay) {
-		this.gamePlay = gamePlay;
+	public LevelManager() {
 		levelSprite = new Image(ClassLoader.getSystemResource("level/ground.png").toString());
 		levelData = new int[23][40];
 		initializeLevel();
 	}
 	
 	public void initializeLevel() {
-		Image dataImage = new Image(ClassLoader.getSystemResource("level/LevelOneData.png").toString());
+		Image dataImage = new Image(ClassLoader.getSystemResource("level/Map" + (GameLogic.getInstance().getCurrentLevel()) + ".png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i< 40; i++) {
 				Color color = dataImage.getPixelReader().getColor(i, j);

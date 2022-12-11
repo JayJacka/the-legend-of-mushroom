@@ -1,26 +1,22 @@
 package entities;
 
-import java.awt.print.Printable;
 import java.util.ArrayList;
-
-import gui.page.Gameplay;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import logic.GameLogic;
 import utils.Animations;
 
 public class EnemyManager {
-	private Gameplay gameplay;
 	private ArrayList<ArrayList<Image>> tomatoeAni;
 	private ArrayList<Tomato> tomatoes;
 	private ArrayList<Pineapple> pineapples;
 	private ArrayList<ArrayList<Image>> pineappleAni;
 	private Player player;
 	
-	public EnemyManager(Gameplay gameplay, Player player) {
+	public EnemyManager(Player player) {
 		tomatoes = new ArrayList<Tomato>();
 		pineapples = new ArrayList<Pineapple>();
-		this.gameplay = gameplay;
 		this.player = player;
 		loadEnemyAnimations();
 		initializeEnemy();
@@ -64,6 +60,10 @@ public class EnemyManager {
 		for (Pineapple p: pToBeRemoved) {
 			pineapples.remove(p);
 		}
+		
+		if (tomatoes.size() == 0 && pineapples.size() == 0) {
+			GameLogic.getInstance().changeLevel();
+		}
 	}
 	
 	public void draw(GraphicsContext gc) {
@@ -73,7 +73,7 @@ public class EnemyManager {
 	
 	public void drawEnemies(GraphicsContext gc) {
 		for(Tomato t : tomatoes) {
-			System.out.println(t.getAniIndex() + " " + t.getState());
+//			System.out.println(t.getAniIndex() + " " + t.getState());
 			gc.drawImage(tomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getX(), t.getY());
 			t.drawHitbox(gc);
 		}
