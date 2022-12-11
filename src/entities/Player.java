@@ -2,10 +2,9 @@ package entities;
 
 import static utils.Constants.PlayerConstants.*;
 import static utils.HelperMethods.*;
+import utils.Animations;
 
 import java.util.ArrayList;
-import java.util.concurrent.Delayed;
-
 import entities.base.Entity;
 import gamestates.GameState;
 import javafx.scene.Scene;
@@ -13,8 +12,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import utils.Animations;
-import utils.HelperMethods;
 
 public class Player extends Entity{
 	private int x = 64,y = 488;
@@ -22,7 +19,6 @@ public class Player extends Entity{
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE;
 	private float playerSpeed = 8f;
-	private int playerDirection = -1;
 	private int[][] levelData;
 	private boolean isMoving = false, attacking = false;
 	private boolean left, up, right, down, jump;
@@ -34,9 +30,11 @@ public class Player extends Entity{
 	private float jumpSpeed = -15f;
 	private float fallSpeedAfterCollision = 2f;
 	private boolean inAir = false;
+	private int damage;
 	
 	public Player(float x, float y, Scene scene) {
 		super(x, y, 32, 44);
+		this.damage = 5;
 		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
 		addKeyListener(scene);
 		loadAnimations();
@@ -106,7 +104,6 @@ public class Player extends Entity{
 				updateXPos(xSpeed);
 			} else {
 				hitbox.setY((GetEntityPosRoofFloor(hitbox, airSpeed)));
-//				this.y += (int) GetEntityPosRoofFloor(hitbox, airSpeed);
 				if (airSpeed > 0) {
 					resetInAir();
 				} else {
@@ -118,15 +115,6 @@ public class Player extends Entity{
 			updateXPos(xSpeed);
 		}
 		isMoving = true;
-		
-		
-//		if (CanMoveHere((int) hitbox.getX()+xSpeed, (int) hitbox.getY()+ySpeed, 32, 44, levelData)) {
-//			hitbox.setX(hitbox.getX()+xSpeed);
-//			hitbox.setY(hitbox.getY()+ySpeed);
-//			this.x += xSpeed;
-//			this.y += ySpeed;
-//			isMoving = true;
-//		}
 	}
 
 	private void jump() {
@@ -151,9 +139,7 @@ public class Player extends Entity{
 			hitbox.setX((hitbox.getX()+xSpeed));
 			this.x += xSpeed;
 		} else {
-			System.out.println(hitbox.getX() + hitbox.getWidth());
 			hitbox.setX(GetEntityXPosNextToWall(hitbox, xSpeed));
-//			this.x += GetEntityXPosNextToWall(hitbox, xSpeed) - 16;
 		}
 	}
 
@@ -268,6 +254,36 @@ public class Player extends Entity{
 
 	public void setDown(boolean down) {
 		this.down = down;
+	}
+	
+	public boolean getPlayerAttack() {
+		return playerAction == ATTACK;
+	}
+	
+	public int getDamage() {
+		return this.damage;
+	}
+	
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isRemoved() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

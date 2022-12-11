@@ -1,5 +1,6 @@
 package entities;
 
+import java.awt.print.Printable;
 import java.util.ArrayList;
 
 import gui.page.Gameplay;
@@ -10,12 +11,17 @@ import utils.Animations;
 
 public class EnemyManager {
 	private Gameplay gameplay;
-	private ArrayList<ArrayList<Image>> TomatoeAni;
-	private ArrayList<Tomato> Tomatoes;
+	private ArrayList<ArrayList<Image>> tomatoeAni;
+	private ArrayList<Tomato> tomatoes;
+	private ArrayList<Pineapple> pineapples;
+	private ArrayList<ArrayList<Image>> pineappleAni;
+	private Player player;
 	
-	public EnemyManager(Gameplay gameplay) {
-		Tomatoes = new ArrayList<Tomato>();
+	public EnemyManager(Gameplay gameplay, Player player) {
+		tomatoes = new ArrayList<Tomato>();
+		pineapples = new ArrayList<Pineapple>();
 		this.gameplay = gameplay;
+		this.player = player;
 		loadEnemyAnimations();
 		initializeEnemy();
 	}
@@ -26,35 +32,68 @@ public class EnemyManager {
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
-				if (color.getRed()*255 == 255) {
-					Tomatoes.add(new Tomato(i*32-13, j*32-21, 0));
+				if ((int) (color.getRed()*255) == 255) {
+					tomatoes.add(new Tomato(i*32-13, j*32-21, 0));
+				}
+				if ((int) (color.getRed()*255) == 128) {
+					pineapples.add(new Pineapple(i*32-13, j*32-21, 1));
 				}
 			}
 		}
 		
 	}
 
-	public void update() {
-		for(Tomato t : Tomatoes) {
-			t.update();
+	public void update(Player player) {
+		ArrayList<Tomato> tToBeRemoved = new ArrayList<Tomato>();
+		for(Tomato t : tomatoes) {
+			t.update(player);
+			if (t.getHealth() <= 0) {
+				tToBeRemoved.add(t);
+			}
+		}
+		for (Tomato t: tToBeRemoved) {
+			tomatoes.remove(t);
+		}
+		ArrayList<Pineapple> pToBeRemoved = new ArrayList<Pineapple>();
+		for(Pineapple p : pineapples) {
+			p.update(player);
+			if (p.getHealth() <= 0) {
+				pToBeRemoved.add(p);
+			}
+		}
+		for (Pineapple p: pToBeRemoved) {
+			pineapples.remove(p);
 		}
 	}
 	
 	public void draw(GraphicsContext gc) {
-		drawTomatoes(gc);
-		update();
+		drawEnemies(gc);
+		update(player);
 	}
 	
-	private void drawTomatoes(GraphicsContext gc) {
-		for(Tomato t : Tomatoes) {
-			gc.drawImage(TomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getX(), t.getY());
+	public void drawEnemies(GraphicsContext gc) {
+		for(Tomato t : tomatoes) {
+			System.out.println(t.getAniIndex() + " " + t.getState());
+			gc.drawImage(tomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getX(), t.getY());
 			t.drawHitbox(gc);
 		}
+		for(Pineapple p : pineapples) {
+			gc.drawImage(pineappleAni.get(p.getState()).get(p.getAniIndex()), p.getX(), p.getY());
+			p.drawHitbox(gc);
+		}
+		
 	}
 
 	private void loadEnemyAnimations() {
-		TomatoeAni = new ArrayList<ArrayList<Image>>();
-		TomatoeAni.add(Animations.getTomatoIdle());
-		TomatoeAni.add(Animations.getTomatoHit());
+		tomatoeAni = new ArrayList<ArrayList<Image>>();
+		tomatoeAni.add(Animations.getTomatoIdle());
+		tomatoeAni.add(Animations.getTomatoIdle());
+		tomatoeAni.add(Animations.getTomatoIdle());
+		tomatoeAni.add(Animations.getTomatoHit());
+		pineappleAni = new ArrayList<ArrayList<Image>>();
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleHit());
 	}
 }

@@ -21,11 +21,11 @@ public class LevelManager {
 	}
 	
 	public void initializeLevel() {
-		Image dataImage = new Image(ClassLoader.getSystemResource("level/Map1.png").toString());
+		Image dataImage = new Image(ClassLoader.getSystemResource("level/LevelOneData.png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i< 40; i++) {
 				Color color = dataImage.getPixelReader().getColor(i, j);
-				if (color.getRed()*255 == 255) {
+				if ((int) (color.getRed()*255) == 255 || (int) (color.getRed()*255) == 128) {
 					continue;
 				} else {
 					levelData[j][i] = (int) (color.getRed()*255);

@@ -376,7 +376,7 @@ public class MainMenuElement extends StackPane {
 		left.setTranslateX(-380);
 		left.setTranslateY(150);
 		Text right = new Text();
-		right.setText("use D to move right");
+		right.setText("use ➜ to move right");
 		right.setFont(Font.font(20));
 		right.setTranslateY(150);
 		right.setTranslateX(-40);

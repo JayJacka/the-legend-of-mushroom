@@ -17,8 +17,8 @@ public class Playing {
 	
 	public Playing(Gameplay gameplay, Scene scene) {
 		levelManager = new LevelManager(gameplay);
-		enemyManager = new EnemyManager(gameplay);
 		player = new Player(64,488,scene);
+		enemyManager = new EnemyManager(gameplay, player);
 		player.loadLevelData(levelManager.getLevelData());
 		
 	}
@@ -32,6 +32,7 @@ public class Playing {
 	public void drawLastFrame(GraphicsContext gc) {
 		levelManager.Draw(gc);
 		player.render(gc);
+		enemyManager.drawEnemies(gc);
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
 		gc.setFont(Font.font(50));

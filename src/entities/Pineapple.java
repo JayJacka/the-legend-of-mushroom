@@ -2,13 +2,13 @@ package entities;
 import static utils.Constants.EnemyConstant.*;
 
 import javafx.scene.canvas.GraphicsContext;
-public class Tomato extends Enemy{
+public class Pineapple extends Enemy{
 	
-	private int offSetx = 13;
-	private int offSety = 11;
+	private int offSetx = 18;
+	private int offSety = 10;
 	
-	public Tomato(float x, float y, int Type) {
-		super(x, y, TOMATO, 38, 48, 100);
+	public Pineapple(float x, float y, int Type) {
+		super(x, y, PINEAPPLE, 29, 46, 100);
 		initializeHitbox(x + offSetx, y + offSety);
 	}
 
