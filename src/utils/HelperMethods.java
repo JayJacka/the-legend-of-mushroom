@@ -43,8 +43,8 @@ public class HelperMethods {
 		if (xSpeed > 0) {
 			//right
 			float tileXPos = currentTile * 32;
-			float xOffset = (float) (32 - hitbox.getWidth());
-			return tileXPos + xOffset - 2;
+			float xOffset = (float) ((float)(32) - hitbox.getWidth());
+			return tileXPos + xOffset - 1;
 			
 		} else {
 			//left
@@ -58,7 +58,7 @@ public class HelperMethods {
 		if (airSpeed > 0) {
 			//fallilng
 			float tileYPos = currentTile * 32;
-			float yOffset = (float) (32 - hitbox.getHeight());
+			float yOffset = (float) ((float) (32) - hitbox.getHeight());
 			return tileYPos + yOffset;
 			
 		} else {

@@ -21,7 +21,7 @@ public class Player extends Entity{
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE;
-	private float playerSpeed = 2;
+	private float playerSpeed = 8f;
 	private int playerDirection = -1;
 	private int[][] levelData;
 	private boolean isMoving = false, attacking = false;
@@ -29,14 +29,14 @@ public class Player extends Entity{
 	private int xDrawOffset = 16;
 	private int yDrawOffset = 10;
 	
-	private double airSpeed = 0;
-	private double gravity = 0.3;
-	private double jumpSpeed = -10;
-	private double fallSpeedAfterCollision = 1;
+	private float airSpeed = 0;
+	private float gravity = 0.8f;
+	private float jumpSpeed = -15f;
+	private float fallSpeedAfterCollision = 2f;
 	private boolean inAir = false;
 	
 	public Player(float x, float y, Scene scene) {
-		super(x, y);
+		super(x, y, 32, 44);
 		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
 		addKeyListener(scene);
 		loadAnimations();
@@ -47,10 +47,14 @@ public class Player extends Entity{
 		render(gc);
 	}
 	public void update() {
+		if(!inAir) {
+			if (!isEntityOnFloor(hitbox, levelData)) {
+				inAir = true;
+			}
+		}
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
-		updatePos();
 		super.updateHitbox(this.x + xDrawOffset, this.y + yDrawOffset);
 	}
 	
@@ -78,7 +82,7 @@ public class Player extends Entity{
 		if (!left && !right && !inAir)
 			return;
 		
-		float xSpeed = 0;
+		float xSpeed = 0f;
 		
 		if(left) {
 			xSpeed -= playerSpeed;
@@ -96,12 +100,12 @@ public class Player extends Entity{
 		
 		if (inAir) {
 			if (CanMoveHere((int) hitbox.getX(),(int) (hitbox.getY() + airSpeed), 32, 44, levelData)) {
-				hitbox.setY((int) (hitbox.getY() + airSpeed));
-				this.y += (int) (airSpeed);
+				hitbox.setY((hitbox.getY() + airSpeed));
+				this.y += (airSpeed);
 				airSpeed += gravity;
 				updateXPos(xSpeed);
 			} else {
-				hitbox.setY((int) (GetEntityPosRoofFloor(hitbox, (int) airSpeed)));
+				hitbox.setY((GetEntityPosRoofFloor(hitbox, airSpeed)));
 //				this.y += (int) GetEntityPosRoofFloor(hitbox, airSpeed);
 				if (airSpeed > 0) {
 					resetInAir();
@@ -143,12 +147,13 @@ public class Player extends Entity{
 
 	private void updateXPos(float xSpeed) {
 		// TODO Auto-generated method stub
-		if (CanMoveHere((int) hitbox.getX()+xSpeed, (int) hitbox.getY(), 32, 44, levelData)) {
-			hitbox.setX((int) (hitbox.getX()+xSpeed));
+		if (CanMoveHere((int) (hitbox.getX()+xSpeed), (int) hitbox.getY(), 32, 44, levelData)) {
+			hitbox.setX((hitbox.getX()+xSpeed));
 			this.x += xSpeed;
 		} else {
-			hitbox.setX((int) GetEntityXPosNextToWall(hitbox, xSpeed));
-//			this.x += GetEntityXPosNextToWall(hitbox, xSpeed);
+			System.out.println(hitbox.getX() + hitbox.getWidth());
+			hitbox.setX(GetEntityXPosNextToWall(hitbox, xSpeed));
+//			this.x += GetEntityXPosNextToWall(hitbox, xSpeed) - 16;
 		}
 	}
 

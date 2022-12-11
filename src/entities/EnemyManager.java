@@ -27,7 +27,7 @@ public class EnemyManager {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
 				if (color.getRed()*255 == 255) {
-					Tomatoes.add(new Tomato(i*32, j*32, 0));
+					Tomatoes.add(new Tomato(i*32-13, j*32-21, 0));
 				}
 			}
 		}
@@ -47,7 +47,8 @@ public class EnemyManager {
 	
 	private void drawTomatoes(GraphicsContext gc) {
 		for(Tomato t : Tomatoes) {
-			gc.drawImage(TomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getHitbox().getX(), t.getHitbox().getY());
+			gc.drawImage(TomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getX(), t.getY());
+			t.drawHitbox(gc);
 		}
 	}
 

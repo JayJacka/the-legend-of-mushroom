@@ -8,8 +8,8 @@ public abstract class Enemy extends Entity{
 	private int aniIndex, State, Type;
 	private int aniTick, aniSpeed = 10;
 
-	public Enemy(float x, float y, int Type) {
-		super(x, y);
+	public Enemy(float x, float y, int Type, int hitboxWidth, int hitboxHeight) {
+		super(x, y, hitboxWidth, hitboxHeight);
 		this.Type = Type;
 	}
 
