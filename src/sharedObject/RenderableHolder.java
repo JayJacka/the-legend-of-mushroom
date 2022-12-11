@@ -85,6 +85,20 @@ public class RenderableHolder {
 	public static Image PineappleHit2;
 	public static Image PineappleHit3;
 
+	//Environment Image
+	public static Image GameBackground;
+	public static Image Bush;
+	public static Image palm;
+	public static Image pine;
+	public static Image plantHouse;
+	public static Image strawHouse;
+	public static Image rock1;
+	public static Image rock2;
+	public static Image tree1;
+	public static Image tree2;
+	public static Image treeHouse;
+	public static Image woodenHouse;
+	
 	static {
 		loadResource();
 	}
@@ -186,6 +200,20 @@ public class RenderableHolder {
 		PineappleHit2 = new Image(ClassLoader.getSystemResource(img + "PineappleHit2.png").toString());
 		PineappleHit3 = new Image(ClassLoader.getSystemResource(img + "PineappleHit3.png").toString());
 		
+		
+		//Environment
+		GameBackground = new Image(ClassLoader.getSystemResource("back-export.png").toString());
+		Bush = new Image(ClassLoader.getSystemResource("Bush.png").toString());
+		palm = new Image(ClassLoader.getSystemResource("palm.png").toString());
+		plantHouse = new Image(ClassLoader.getSystemResource("plant-house.png").toString());
+		strawHouse = new Image(ClassLoader.getSystemResource("straw-house.png").toString());
+		rock1 = new Image(ClassLoader.getSystemResource("rock-1.png").toString());
+		rock2 = new Image(ClassLoader.getSystemResource("rock-2.png").toString());
+		tree1 = new Image(ClassLoader.getSystemResource("tree.png").toString());
+		tree2 = new Image(ClassLoader.getSystemResource("tree2.png").toString());
+		treeHouse = new Image(ClassLoader.getSystemResource("tree-house.png").toString());
+		woodenHouse = new Image(ClassLoader.getSystemResource("wooden-house.png").toString());
+		pine = new Image(ClassLoader.getSystemResource("pine.png").toString());
 	}
 	
 	public void add(IRenderable entity) {
