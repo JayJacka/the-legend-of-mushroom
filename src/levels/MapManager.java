@@ -55,17 +55,50 @@ public class MapManager {
 	}
 
 	private static void drawElementMap2Third(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.drawImage(RenderableHolder.tree2,800,410,210,200);
+		gc.drawImage(RenderableHolder.tree2,530,440,210,200);
+		gc.drawImage(RenderableHolder.tree2,940,384,210,200);
+		gc.drawImage(RenderableHolder.strawHouse,400,-10,200,170);
+		gc.drawImage(RenderableHolder.pine, 1000,0,150,230);
+		gc.drawImage(RenderableHolder.pine, 1080,0,150,230);
+		gc.drawImage(RenderableHolder.pine, 1160,0,150,230);
+		gc.drawImage(RenderableHolder.pine, 1240,0,150,230);
+		gc.drawImage(RenderableHolder.pine, 920,0,150,230);
+		gc.drawImage(RenderableHolder.rock1, 600,590);
+		gc.drawImage(RenderableHolder.rock2, 640,590);
+		gc.drawImage(RenderableHolder.Bush,520,325,100,60);
+		gc.drawImage(RenderableHolder.Bush,560,325,100,60);
+		gc.drawImage(RenderableHolder.Bush,600,325,100,60);
+		gc.drawImage(RenderableHolder.Bush,640,325,100,60);
+		gc.drawImage(RenderableHolder.Bush,680,325,100,60);
+		gc.drawImage(RenderableHolder.Bush,720,325,100,60);
 	}
 
 	private static void drawElementMap2Second(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.drawImage(RenderableHolder.Bush,-20,500,120,80);
+		gc.drawImage(RenderableHolder.Bush,55,500,120,80);
+		gc.drawImage(RenderableHolder.Bush,130,500,120,80);
+		gc.drawImage(RenderableHolder.Bush,-20,560,120,80);
+		gc.drawImage(RenderableHolder.Bush,55,560,120,80);
+		gc.drawImage(RenderableHolder.Bush,130,560,120,80);
+		gc.drawImage(RenderableHolder.Bush,190,500,120,80);
+		gc.drawImage(RenderableHolder.Bush,190,560,120,80);
+		gc.drawImage(RenderableHolder.plant,300,130,30,30);
+		gc.drawImage(RenderableHolder.bigCrate,350,97,64,64);
+		gc.drawImage(RenderableHolder.bigCrate,400,113,48,48);
 	}
 
 	private static void drawElementMap2First(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.drawImage(RenderableHolder.tree1,250,-30,210,200);
+		gc.drawImage(RenderableHolder.tree2,600,-30,210,200);
+		gc.drawImage(RenderableHolder.pine, 550,-60,150,230);
+		gc.drawImage(RenderableHolder.fence,250,120,48,48);
+		gc.drawImage(RenderableHolder.fence,283,120,48,48);
+		gc.drawImage(RenderableHolder.fence,316,120,48,48);
+		gc.drawImage(RenderableHolder.fence,349,120,48,48);
+		gc.drawImage(RenderableHolder.fence,550,120,48,48);
+		gc.drawImage(RenderableHolder.fence,583,120,48,48);
+		gc.drawImage(RenderableHolder.fence,616,120,48,48);
+		gc.drawImage(RenderableHolder.fence,649,120,48,48);
 	}
 }
