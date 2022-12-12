@@ -28,7 +28,9 @@ public class ObjectManager {
 	}
 	
 	public void draw(GraphicsContext gc) {
-		
+		for (PineappleAmmo a: objects) {
+			a.draw(gc);
+		}
 	}
 	
 	public ArrayList<PineappleAmmo> getCurrentAmmo() {

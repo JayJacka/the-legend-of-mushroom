@@ -1,68 +1,73 @@
 package gamestates;
 
+import java.util.ArrayList;
+
 import entities.EnemyManager;
 import entities.Player;
 import gui.element.PauseMenu;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import levels.LevelManager;
 import logic.GameLogic;
+import objects.ObjectManager;
+import objects.PineappleAmmo;
 import sharedObject.RenderableHolder;
 
 public class Playing {
-	private Player player;
-	private LevelManager levelManager;
-	private EnemyManager enemyManager;
+    private Player player;
+    private LevelManager levelManager;
+    private EnemyManager enemyManager;
+    private ObjectManager objectManager;
 	private AnimationTimer BattleMusic;
 	private PauseMenu pausePane;
-	
-	public Playing(Scene scene) {
-		levelManager = new LevelManager();
-		player = new Player(0,0, scene);
-		enemyManager = new EnemyManager(player);
-		player.loadLevelData(levelManager.getLevelData());
-		pausePane = new PauseMenu();
+    
+    public Playing(Scene scene) {
+        levelManager = new LevelManager();
+        player = new Player(0,0, scene);
+        enemyManager = new EnemyManager(player);
+        objectManager = new ObjectManager();
+        player.loadLevelData(levelManager.getLevelData());
+        pausePane = new PauseMenu();
 		pausePane.setVisible(false);
 		GameLogic.getInstance().getGameplay().getChildren().add(pausePane);
-	}
-
-	public void update(GraphicsContext gc) {
-		levelManager.Draw(gc);
+    }
+    
+    public void update(GraphicsContext gc) {
+    	levelManager.Draw(gc);
 		enemyManager.draw(gc);
+		objectManager.update(gc);
 		player.draw(gc);
 		drawGameStatus(gc);
 		System.out.println(GameLogic.getInstance().getCurrentScore());
 		if (enemyManager.levelCleared() && player.isPlayerInClearZone()) {
 			GameLogic.getInstance().changeLevel();
 		}
-	}
-	
-	public void drawLastFrame(GraphicsContext gc) {
-		levelManager.Draw(gc);
+    }
+    
+    public void drawLastFrame(GraphicsContext gc) {
+    	levelManager.Draw(gc);
 		player.render(gc);
 		enemyManager.drawEnemies(gc);
+		objectManager.draw(gc);
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
 		pausePane.setVisible(true);
-		/*
-		gc.setFont(Font.font(50));
-		gc.setFill(Color.WHITE);
-		gc.fillText("PAUSED", 550, 350);
-		gc.setFont(Font.font(25));
-		gc.fillText("Press Enter to Resume Game", 490, 400);*/
-	}
-	
-	public Player getPlayer() {
-		return this.player;
-	}
+    }
+    
+    public Player getPlayer() {
+        return this.player;
+    }
+    
+    public ArrayList<PineappleAmmo> getAmmoFromManager() {
+        return objectManager.getCurrentAmmo();
+    }
+    
+    public int[][] getLevelData() {
+        return levelManager.getLevelData();
+    }
 
 	public void playBattleMusic() {
 		BattleMusic = new AnimationTimer() {
@@ -101,5 +106,5 @@ public class Playing {
 		gc.setFill(Color.SANDYBROWN);
 		gc.fillText("Level : " + GameLogic.getInstance().getCurrentLevel(), 570, 40);
 	}
-
 }
+

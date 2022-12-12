@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 import entities.Player;
 import gamestates.GameState;
 import gamestates.Menu;
@@ -8,6 +10,7 @@ import gui.page.Gameplay;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import objects.PineappleAmmo;
 
 public class GameLogic {
 	private static GameLogic instance = null;
@@ -98,4 +101,11 @@ public class GameLogic {
 	public Gameplay getGameplay() {
 		return this.gameplay;
 	}
+	public ArrayList<PineappleAmmo> getCurrentAmmo() {
+        return playing.getAmmoFromManager();
+    }
+
+    public int[][] getCurrentLevelData() {
+        return playing.getLevelData();
+    }
 }
