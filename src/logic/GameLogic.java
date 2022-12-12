@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 import entities.Player;
 import gamestates.GameState;
 import gamestates.Menu;
@@ -7,6 +9,7 @@ import gamestates.Playing;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import objects.PineappleAmmo;
 
 public class GameLogic {
 	private static GameLogic instance = null;
@@ -39,7 +42,7 @@ public class GameLogic {
 		menu = new Menu(scene);
 		this.player = playing.getPlayer();
 		gameLoop(gc);
-		System.out.println(currentLevel);
+//		System.out.println(currentLevel);
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
@@ -69,7 +72,7 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
-		System.out.println(currentLevel);
+//		System.out.println(currentLevel);
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {
@@ -88,4 +91,11 @@ public class GameLogic {
 		return this.player;
 	}
 	
+	public ArrayList<PineappleAmmo> getCurrentAmmo() {
+		return playing.getAmmoFromManager();
+	}
+
+	public int[][] getCurrentLevelData() {
+		return playing.getLevelData();
+	}
 }

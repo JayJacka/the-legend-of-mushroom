@@ -3,12 +3,11 @@ package entities;
 import static utils.Constants.EnemyConstant.GetSpriteAmount;
 
 import entities.base.Entity;
-import logic.GameLogic;
 import utils.Constants.EnemyConstant;
 
 public abstract class Enemy extends Entity{
-	private int aniIndex, State, Type;
-	private int aniTick, aniSpeed = 10;
+	protected int aniIndex, State, Type;
+	protected int aniTick, aniSpeed = 10;
 	protected int playerAttackRange = 48;
 	protected int attackRange = 20;
 	protected int attackDamage = 5;
@@ -20,7 +19,7 @@ public abstract class Enemy extends Entity{
 		this.health = health;
 	}
 
-	private void updateAnimationTick() {
+	protected void updateAnimationTick() {
 		aniTick++;
 		if (aniTick >= aniSpeed) {
 			aniTick = 0;
@@ -85,14 +84,14 @@ public abstract class Enemy extends Entity{
 	protected boolean canAttackPlayer(Player player) {
 		int playerTileY = (int) (player.getHitbox().getY()/32);
 		if (playerTileY == (int) (this.getHitbox().getY()/32)) {
-			if (isPlayerInAttackRange(player)) {
+			if (isPlayerInAttackRange(player, this.attackRange)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	protected boolean isPlayerInAttackRange (Player player) {
+	protected boolean isPlayerInAttackRange (Player player, int attackRange) {
 		int range = (int) Math.abs(player.getHitbox().getX() - this.getHitbox().getX());
 		return range <= attackRange;
 	}

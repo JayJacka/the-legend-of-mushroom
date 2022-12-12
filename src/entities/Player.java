@@ -193,7 +193,7 @@ public class Player extends Entity{
 			if(aniIndex == 6 && attacking) {
 				RenderableHolder.mushRoomAttack.play();
 			}
-			if(aniIndex == 6 && jump) {
+			if(aniIndex == 1 && jump) {
 				RenderableHolder.mushRoomJump.play();
 			}
 			if(aniIndex == 6 && playerAction == WALK) {
