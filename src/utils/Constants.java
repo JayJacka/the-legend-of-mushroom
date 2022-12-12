@@ -7,6 +7,7 @@ public class Constants {
 		public static final int ATTACK = 1;
 		public static final int JUMP = 2;
 		public static final int WALK = 3;
+		public static final int DEATH = 4;
 		
 		public static int GetSpriteAmount(int playerAction) {
 			switch(playerAction){

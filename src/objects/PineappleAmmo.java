@@ -5,6 +5,7 @@ import entities.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.GameLogic;
+import sharedObject.RenderableHolder;
 import utils.HelperMethods.*;
 
 public class PineappleAmmo extends Entity {
@@ -36,7 +37,7 @@ public class PineappleAmmo extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(new Image(ClassLoader.getSystemResource("PineappleAmmo.png").toString()), this.x, this.y);
+		gc.drawImage(RenderableHolder.PineappleAmmo, this.x, this.y);
 		this.drawHitbox(gc);
 	}
 

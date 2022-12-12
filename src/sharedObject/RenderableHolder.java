@@ -87,6 +87,7 @@ public class RenderableHolder {
 	public static Image PineappleHit1;
 	public static Image PineappleHit2;
 	public static Image PineappleHit3;
+	public static Image PineappleAmmo;
 
 	//Environment Image
 	public static Image GameBackground;
@@ -236,6 +237,8 @@ public class RenderableHolder {
 		PineappleHit2 = new Image(ClassLoader.getSystemResource(img + "PineappleHit2.png").toString());
 		PineappleHit3 = new Image(ClassLoader.getSystemResource(img + "PineappleHit3.png").toString());
 		
+		//Ball
+		PineappleAmmo = new Image(ClassLoader.getSystemResource(img + "PineappleAmmo.png").toString());
 		
 		//Environment
 		GameBackground = new Image(ClassLoader.getSystemResource(img + "back-export.png").toString());
