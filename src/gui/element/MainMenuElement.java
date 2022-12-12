@@ -1,6 +1,7 @@
 package gui.element;
 
 import gui.page.Gameplay;
+import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
@@ -17,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.HLineTo;
 import javafx.scene.shape.LineTo;
@@ -28,6 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sharedObject.RenderableHolder;
 
 public class MainMenuElement extends StackPane {
 	
@@ -39,7 +42,11 @@ public class MainMenuElement extends StackPane {
 	private Rectangle rectangle;
 	private StackPane helpPane;
 	private ImageView character;
+	private ImageView soundOnButton;
+	private ImageView soundOffButton;
 	
+	private AnimationTimer BackgroundMusic;
+
 	public MainMenuElement(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		setPrefWidth(1280);
@@ -50,12 +57,18 @@ public class MainMenuElement extends StackPane {
 		background = new ImageView(backgroundPath);
 		background.setFitHeight(720);
 		background.setFitWidth(1280);
+		initializeBackgroundMusic();
+		BackgroundMusic.start();
 		initializeHelpPane();
 		initializeStartButton();
 		initializeHelpButton();
 		initializeQuitButton();
+		initializeSoundOnButton();
+		initializeSoundOffButton();
 		VBox buttonContainer = new VBox();
-		buttonContainer.getChildren().addAll(startButton, helpButton, quitButton);
+		StackPane soundButton = new StackPane();
+		soundButton.getChildren().addAll(soundOffButton,soundOnButton);
+		buttonContainer.getChildren().addAll(startButton, helpButton, quitButton,soundButton);
 		buttonContainer.setTranslateX(450);
 		buttonContainer.setTranslateY(100);
 		buttonContainer.setAlignment(Pos.CENTER);
@@ -85,6 +98,7 @@ public class MainMenuElement extends StackPane {
 				// TODO Auto-generated method stub
 				startButton.setFitHeight(88);
 				startButton.setFitWidth(220);
+				RenderableHolder.MouseEnter.play();
 			}
 		});
 		
@@ -123,6 +137,7 @@ public class MainMenuElement extends StackPane {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				startButtonHandler();
+				RenderableHolder.Start.play();
 			}
 		});;
 	}
@@ -167,6 +182,7 @@ public class MainMenuElement extends StackPane {
 				// TODO Auto-generated method stub
 				helpButton.setFitHeight(88);
 				helpButton.setFitWidth(220);
+				RenderableHolder.MouseEnter.play();
 			}
 		});
 		
@@ -237,10 +253,12 @@ public class MainMenuElement extends StackPane {
 				// TODO Auto-generated method stub
 				quitButton.setFitHeight(88);
 				quitButton.setFitWidth(220);
+				RenderableHolder.MouseEnter.play();
 			}
 		});
 		
 		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+
 			
 			@Override
 			public void handle(MouseEvent arg0) {
@@ -392,5 +410,94 @@ public class MainMenuElement extends StackPane {
 		specialAttack.setTranslateY(230);
 		helpPane.getChildren().addAll(xButton, titleText, storyText, controlText, characterIdle, characterAttack, jump, left, right, attack, specialAttack);
 		helpPane.setVisible(false);
+	}
+	
+	void initializeSoundOnButton() {
+		String soundOnButtonPath = ClassLoader.getSystemResource("SoundOn.png").toString();
+		soundOnButton = new ImageView(soundOnButtonPath);
+		soundOnButton.setCursor(Cursor.HAND);
+		soundOnButton.setFitHeight(64);
+		soundOnButton.setFitWidth(64);
+		soundOnButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				RenderableHolder.BackgroundMusic.stop();
+				BackgroundMusic.stop();
+				soundOnButton.setVisible(false);
+				soundOffButton.setVisible(true);
+			}
+			
+		});
+		soundOnButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundOnButton.setFitHeight(70);
+				soundOnButton.setFitWidth(70);
+				RenderableHolder.MouseEnter.play();
+			}
+		});
+		
+		soundOnButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundOnButton.setFitHeight(64);
+				soundOnButton.setFitWidth(64);
+			}
+		});
+	}
+	void initializeSoundOffButton() {
+		String soundOffButtonPath = ClassLoader.getSystemResource("SoundOff.png").toString();
+		soundOffButton = new ImageView(soundOffButtonPath);
+		soundOffButton.setCursor(Cursor.HAND);
+		soundOffButton.setFitHeight(64);
+		soundOffButton.setFitWidth(64);
+		soundOffButton.setVisible(false);
+		soundOffButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				BackgroundMusic.start();
+				soundOnButton.setVisible(true);
+				soundOffButton.setVisible(false);
+			}
+			
+		});
+		soundOffButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundOffButton.setFitHeight(70);
+				soundOffButton.setFitWidth(70);
+				RenderableHolder.MouseEnter.play();
+			}
+		});
+		
+		soundOffButton.setOnMouseExited(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				soundOffButton.setFitHeight(64);
+				soundOffButton.setFitWidth(64);
+			}
+		});
+	}
+	public void initializeBackgroundMusic() {
+		BackgroundMusic = new AnimationTimer() {
+			
+			@Override
+			public void handle(long arg0) {
+				// TODO Auto-generated method stub
+				if(!RenderableHolder.BackgroundMusic.isPlaying()) 
+					RenderableHolder.BackgroundMusic.play();
+			}
+		};
 	}
 }

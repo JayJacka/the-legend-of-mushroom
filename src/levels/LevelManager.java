@@ -32,8 +32,7 @@ public class LevelManager {
 	
 	public void Draw(GraphicsContext gc) {
 		gc.drawImage(RenderableHolder.GameBackground,0,0);
-		MapManager.drawElementMap1(gc);
-		MapManager.drawElementMap2(gc);
+		MapManager.drawElement(GameLogic.getInstance().getCurrentLevel()%3,gc);
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
 				if (levelData[j][i] == 199) {

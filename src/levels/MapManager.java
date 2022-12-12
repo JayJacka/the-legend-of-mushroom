@@ -5,6 +5,21 @@ import javafx.scene.image.Image;
 import sharedObject.RenderableHolder;
 
 public class MapManager {
+	public static void drawElement(int map, GraphicsContext gc) {
+		System.out.println(map);
+		switch(map) {
+		case 0: 
+			drawElementMap1(gc);
+			break;
+		case 1:
+			drawElementMap2(gc);
+			break;
+		case 2:
+			drawElementMap3(gc);
+			break;
+		}
+	}
+	
 	public static void drawElementMap1(GraphicsContext gc) {
 		drawElementMap1First(gc);
 		drawElementMap1Second(gc);

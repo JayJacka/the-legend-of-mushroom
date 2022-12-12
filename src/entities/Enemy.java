@@ -35,7 +35,7 @@ public abstract class Enemy extends Entity{
 //		System.out.println(canSeePlayer(player));
 		this.State = EnemyConstant.IDLE;
 		if (canSeePlayer(player)) {
-			if (player.getPlayerAttack()) {
+			if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
 				this.health -= player.getDamage();
 				this.State = EnemyConstant.HIT;
 			}
@@ -99,6 +99,10 @@ public abstract class Enemy extends Entity{
 	
 	public int getHealth() {
 		return this.health;
+	}
+
+	public void setAniIndex(int aniIndex) {
+		this.aniIndex = aniIndex;
 	}
 	
 	

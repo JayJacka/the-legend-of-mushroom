@@ -12,6 +12,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import sharedObject.RenderableHolder;
 
 public class Player extends Entity{
 	private int x,y;
@@ -60,7 +62,7 @@ public class Player extends Entity{
 				inAir = true;
 			}
 		}
-		System.out.println(this.health);
+		//System.out.println(this.health);
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
@@ -69,6 +71,7 @@ public class Player extends Entity{
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(animations.get(playerAction).get(aniIndex), x, y);
+		updateHpBar(gc,getHealth());
 		drawHitbox(gc);
 	}
 	private void loadAnimations() {
@@ -156,6 +159,8 @@ public class Player extends Entity{
 	}
 
 	private void setAnimation() {
+		int oldAni = playerAction;
+	
 		if(isMoving) {
 			playerAction = WALK;
 		}
@@ -170,6 +175,10 @@ public class Player extends Entity{
 		if(jump) {
 			playerAction = JUMP;
 		}
+		if (oldAni != playerAction) {
+			aniIndex = 0;
+			aniTick = 0;
+		}	
 	}
 
 	private void updateAnimationTick() {
@@ -181,7 +190,17 @@ public class Player extends Entity{
 				aniIndex = 0;
 				attacking = false;
 			}
+			if(aniIndex == 6 && attacking) {
+				RenderableHolder.mushRoomAttack.play();
+			}
+			if(aniIndex == 6 && jump) {
+				RenderableHolder.mushRoomJump.play();
+			}
+			if(aniIndex == 6 && playerAction == WALK) {
+				RenderableHolder.mushRoomWalk.play();
+			}
 		}
+		
 	}
 	
 	public void addKeyListener(Scene sc) {
@@ -307,5 +326,15 @@ public class Player extends Entity{
 	}
 	public void setHealth(int health) {
 		this.health = health;
+	}
+
+	public int getAniIndex() {
+		return aniIndex;
+	}
+	
+	public void updateHpBar(GraphicsContext gc, double hp) {
+		gc.drawImage(RenderableHolder.hpBar,0,0,400,64);
+		gc.setFill(Color.LIMEGREEN);
+		gc.fillRect(66.5, 26.5, 287*hp/100, 9);
 	}
 }
