@@ -6,7 +6,7 @@ import sharedObject.RenderableHolder;
 
 public class MapManager {
 	public static void drawElement(int map, GraphicsContext gc) {
-//		System.out.println(map);
+		System.out.println(map);
 		switch(map) {
 		case 0: 
 			drawElementMap1(gc);
