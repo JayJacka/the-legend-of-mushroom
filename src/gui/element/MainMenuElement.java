@@ -53,7 +53,7 @@ public class MainMenuElement extends StackPane {
 		setPrefHeight(720);
 		setMinWidth(1280);
 		setMinHeight(700);
-		String backgroundPath = ClassLoader.getSystemResource("Background.png").toString();
+		String backgroundPath = ClassLoader.getSystemResource("BackGround.png").toString();
 		background = new ImageView(backgroundPath);
 		background.setFitHeight(720);
 		background.setFitWidth(1280);
