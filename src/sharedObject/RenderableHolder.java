@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 
@@ -108,6 +109,7 @@ public class RenderableHolder {
 	public static Image Quit;
 	public static Image Resume;
 	
+	//Sounds
 	public static AudioClip BattleMusic;
 	public static AudioClip MainMusic;
 	public static AudioClip mushRoomAttack;
@@ -117,7 +119,22 @@ public class RenderableHolder {
 	public static AudioClip MouseEnter;
 	public static AudioClip mushRoomWalk;
 	
+	//GUI
 	public static String myFont;
+	public static Image MainBackground;
+	public static Image NameLogo;
+	public static Image MushroomIdleGIF;
+	public static Image StartButton;
+	public static Image MushroomWalkGIF;
+	public static Image HelpButton;
+	public static Image QuitButton;
+	public static Image HelpPane;
+	public static Image xButton;
+	public static Image MushroomAttackGIF;
+	public static Image SoundOn;
+	public static Image SoundOff;
+	public static Image icon;
+	
 	static {
 		loadResource();
 	}
@@ -221,22 +238,22 @@ public class RenderableHolder {
 		
 		
 		//Environment
-		GameBackground = new Image(ClassLoader.getSystemResource("back-export.png").toString());
-		Bush = new Image(ClassLoader.getSystemResource("Bush.png").toString());
-		palm = new Image(ClassLoader.getSystemResource("palm.png").toString());
-		plantHouse = new Image(ClassLoader.getSystemResource("plant-house.png").toString());
-		strawHouse = new Image(ClassLoader.getSystemResource("straw-house.png").toString());
-		rock1 = new Image(ClassLoader.getSystemResource("rock-1.png").toString());
-		rock2 = new Image(ClassLoader.getSystemResource("rock-2.png").toString());
-		tree1 = new Image(ClassLoader.getSystemResource("tree.png").toString());
-		tree2 = new Image(ClassLoader.getSystemResource("tree2.png").toString());
-		treeHouse = new Image(ClassLoader.getSystemResource("tree-house.png").toString());
-		woodenHouse = new Image(ClassLoader.getSystemResource("wooden-house.png").toString());
-		pine = new Image(ClassLoader.getSystemResource("pine.png").toString());
-		plant = new Image(ClassLoader.getSystemResource("plant1.png").toString());
-		bigCrate = new Image(ClassLoader.getSystemResource("big-crate.png").toString());
-		fence = new Image(ClassLoader.getSystemResource("fence.png").toString());
-		hpBar = new Image(ClassLoader.getSystemResource("HealthBar.png").toString());
+		GameBackground = new Image(ClassLoader.getSystemResource(img + "back-export.png").toString());
+		Bush = new Image(ClassLoader.getSystemResource(img + "Bush.png").toString());
+		palm = new Image(ClassLoader.getSystemResource(img + "palm.png").toString());
+		plantHouse = new Image(ClassLoader.getSystemResource(img + "plant-house.png").toString());
+		strawHouse = new Image(ClassLoader.getSystemResource(img + "straw-house.png").toString());
+		rock1 = new Image(ClassLoader.getSystemResource(img + "rock-1.png").toString());
+		rock2 = new Image(ClassLoader.getSystemResource(img + "rock-2.png").toString());
+		tree1 = new Image(ClassLoader.getSystemResource(img + "tree.png").toString());
+		tree2 = new Image(ClassLoader.getSystemResource(img + "tree2.png").toString());
+		treeHouse = new Image(ClassLoader.getSystemResource(img + "tree-house.png").toString());
+		woodenHouse = new Image(ClassLoader.getSystemResource(img + "wooden-house.png").toString());
+		pine = new Image(ClassLoader.getSystemResource(img + "pine.png").toString());
+		plant = new Image(ClassLoader.getSystemResource(img + "plant1.png").toString());
+		bigCrate = new Image(ClassLoader.getSystemResource(img + "big-crate.png").toString());
+		fence = new Image(ClassLoader.getSystemResource(img + "fence.png").toString());
+		hpBar = new Image(ClassLoader.getSystemResource(img + "HealthBar.png").toString());
 		
 		//Sounds
 		MainMusic = new AudioClip(ClassLoader.getSystemResource(sd+"MainMusic.mp3").toString());
@@ -249,9 +266,22 @@ public class RenderableHolder {
 		BattleMusic = new AudioClip(ClassLoader.getSystemResource(sd+"BattleMusic.mp3").toString());
 		
 		//GUI
-		WoodenBoard = new Image(ClassLoader.getSystemResource("WoodenBoard.png").toString());
-		Quit = new Image(ClassLoader.getSystemResource("QuitButton.png").toString());
-		Resume = new Image(ClassLoader.getSystemResource("ResumeButton.png").toString());
+		WoodenBoard = new Image(ClassLoader.getSystemResource(img + "WoodenBoard.png").toString());
+		Quit = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
+		Resume = new Image(ClassLoader.getSystemResource(img + "ResumeButton.png").toString());
+		MainBackground = new Image(ClassLoader.getSystemResource(img + "BackGround.png").toString());
+		NameLogo = new Image(ClassLoader.getSystemResource(img + "NameLogo.png").toString());
+		MushroomIdleGIF = new Image(ClassLoader.getSystemResource(img + "MushroomIdle.gif").toString());
+		StartButton = new Image(ClassLoader.getSystemResource(img + "StartButton.png").toString());
+		MushroomWalkGIF = new Image(ClassLoader.getSystemResource(img + "MushroomWalking.gif").toString());
+		HelpButton = new Image(ClassLoader.getSystemResource(img + "HelpButton.png").toString());
+		QuitButton = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
+		HelpPane = new Image(ClassLoader.getSystemResource(img + "HelpPane.png").toString());
+		xButton = new Image(ClassLoader.getSystemResource(img + "xButton.png").toString());
+		MushroomAttackGIF = new Image(ClassLoader.getSystemResource(img + "MushroomAttack.gif").toString());
+		SoundOn = new Image(ClassLoader.getSystemResource(img + "SoundOn.png").toString());
+		SoundOff = new Image(ClassLoader.getSystemResource(img + "SoundOff.png").toString());
+		icon = new Image(ClassLoader.getSystemResource(img + "Mushroom.png").toString());
 		
 		//Font
 		//InputStream fontStream = CustomFontTest.class.getResourceAsStream("font/8-BIT WONDER.ttf");

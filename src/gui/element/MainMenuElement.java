@@ -53,8 +53,7 @@ public class MainMenuElement extends StackPane {
 		setPrefHeight(720);
 		setMinWidth(1280);
 		setMinHeight(700);
-		String backgroundPath = ClassLoader.getSystemResource("BackGround.png").toString();
-		background = new ImageView(backgroundPath);
+		background = new ImageView(RenderableHolder.MainBackground);
 		background.setFitHeight(720);
 		background.setFitWidth(1280);
 		initializeBackgroundMusic();
@@ -73,12 +72,12 @@ public class MainMenuElement extends StackPane {
 		buttonContainer.setTranslateY(100);
 		buttonContainer.setAlignment(Pos.CENTER);
 		buttonContainer.setSpacing(5);
-		ImageView nameLogo = new ImageView(ClassLoader.getSystemResource("NameLogo.png").toString());
+		ImageView nameLogo = new ImageView(RenderableHolder.NameLogo);
 		nameLogo.setFitWidth(860);
 		nameLogo.setFitHeight(140);
 		nameLogo.setTranslateX(-200);
 		nameLogo.setTranslateY(-280);
-		character = new ImageView(ClassLoader.getSystemResource("MushroomIdle.gif").toString());
+		character = new ImageView(RenderableHolder.MushroomIdleGIF);
 		character.setFitHeight(192);
 		character.setFitWidth(240);
 		character.setTranslateY(190);
@@ -86,8 +85,7 @@ public class MainMenuElement extends StackPane {
 	}
 	
 	public void initializeStartButton() {
-		String startButtonPath = ClassLoader.getSystemResource("StartButton.png").toString();
-		startButton = new ImageView(startButtonPath);
+		startButton = new ImageView(RenderableHolder.StartButton);
 		startButton.setCursor(Cursor.HAND);
 		startButton.setFitHeight(80);
 		startButton.setFitWidth(200);
@@ -147,7 +145,7 @@ public class MainMenuElement extends StackPane {
 		helpButton.setDisable(true);
 		quitButton.setDisable(true);
 		System.out.println("Start the Game");
-		character.setImage(new Image(ClassLoader.getSystemResource("MushroomWalking.gif").toString()));
+		character.setImage(RenderableHolder.MushroomWalkGIF);
 		Path path = new Path();
 		path.getElements().add(new MoveTo(120, 285));
 		path.getElements().add(new HLineTo(860));
@@ -174,8 +172,7 @@ public class MainMenuElement extends StackPane {
 		});
 	}
 	public void initializeHelpButton() {
-		String helpButtonPath = ClassLoader.getSystemResource("HelpButton.png").toString();
-		helpButton = new ImageView(helpButtonPath);
+		helpButton = new ImageView(RenderableHolder.HelpButton);
 		helpButton.setCursor(Cursor.HAND);
 		helpButton.setFitHeight(80);
 		helpButton.setFitWidth(200);
@@ -245,8 +242,7 @@ public class MainMenuElement extends StackPane {
 	}
 	
 	public void initializeQuitButton() {
-		String quitButtonPath = ClassLoader.getSystemResource("QuitButton.png").toString();
-		quitButton = new ImageView(quitButtonPath);
+		quitButton = new ImageView(RenderableHolder.QuitButton);
 		quitButton.setCursor(Cursor.HAND);
 		quitButton.setFitHeight(80);
 		quitButton.setFitWidth(200);
@@ -310,13 +306,11 @@ public class MainMenuElement extends StackPane {
 		rectangle.setOpacity(0.5);
 		rectangle.setVisible(false);
 		helpPane = new StackPane();
-		String helpPanePath = ClassLoader.getSystemResource("HelpPane.png").toString();
-		ImageView helpPaneImg = new ImageView(helpPanePath);
+		ImageView helpPaneImg = new ImageView(RenderableHolder.HelpPane);
 		helpPaneImg.setFitHeight(540);
 		helpPaneImg.setFitWidth(960);
 		helpPane.getChildren().add(helpPaneImg);
-		String xButtonPath = ClassLoader.getSystemResource("xButton.png").toString();
-		ImageView xButton = new ImageView(xButtonPath);
+		ImageView xButton = new ImageView(RenderableHolder.xButton);
 		xButton.setFitHeight(35);
 		xButton.setFitWidth(35);
 		xButton.setCursor(Cursor.HAND);
@@ -377,12 +371,12 @@ public class MainMenuElement extends StackPane {
 		controlText.setFont(Font.font(25));
 		controlText.setTranslateX(-280);
 		controlText.setTranslateY(-50);
-		ImageView characterIdle = new ImageView(ClassLoader.getSystemResource("MushroomIdle.gif").toString());
+		ImageView characterIdle = new ImageView(RenderableHolder.MushroomIdleGIF);
 		characterIdle.setFitHeight(160);
 		characterIdle.setFitWidth(200);
 		characterIdle.setTranslateY(150);
 		characterIdle.setTranslateX(-200);
-		ImageView characterAttack = new ImageView(ClassLoader.getSystemResource("MushroomAttack.gif").toString());
+		ImageView characterAttack = new ImageView(RenderableHolder.MushroomAttackGIF);
 		characterAttack.setFitHeight(160);
 		characterAttack.setFitWidth(200);
 		characterAttack.setTranslateY(150);
@@ -417,8 +411,7 @@ public class MainMenuElement extends StackPane {
 	}
 	
 	public void initializeSoundOnButton() {
-		String soundOnButtonPath = ClassLoader.getSystemResource("SoundOn.png").toString();
-		soundOnButton = new ImageView(soundOnButtonPath);
+		soundOnButton = new ImageView(RenderableHolder.SoundOn);
 		soundOnButton.setCursor(Cursor.HAND);
 		soundOnButton.setFitHeight(64);
 		soundOnButton.setFitWidth(64);
@@ -456,8 +449,7 @@ public class MainMenuElement extends StackPane {
 		});
 	}
 	public void initializeSoundOffButton() {
-		String soundOffButtonPath = ClassLoader.getSystemResource("SoundOff.png").toString();
-		soundOffButton = new ImageView(soundOffButtonPath);
+		soundOffButton = new ImageView(RenderableHolder.SoundOff);
 		soundOffButton.setCursor(Cursor.HAND);
 		soundOffButton.setFitHeight(64);
 		soundOffButton.setFitWidth(64);

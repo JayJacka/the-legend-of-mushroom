@@ -24,7 +24,6 @@ public class PauseMenu extends StackPane{
 	public PauseMenu() {
 		setMaxHeight(300);
 		setMaxWidth(230);
-		
 		VBox button = new VBox();
 		initializeBackgroundMusic();
 		BattleMusic.start();
@@ -112,8 +111,7 @@ public class PauseMenu extends StackPane{
 	}
 	
 	public void initializeSoundOnButton() {
-		String soundOnButtonPath = ClassLoader.getSystemResource("SoundOn.png").toString();
-		soundOnButton = new ImageView(soundOnButtonPath);
+		soundOnButton = new ImageView(RenderableHolder.SoundOn);
 		soundOnButton.setCursor(Cursor.HAND);
 		soundOnButton.setFitHeight(64);
 		soundOnButton.setFitWidth(64);
@@ -151,8 +149,7 @@ public class PauseMenu extends StackPane{
 		});
 	}
 	public void initializeSoundOffButton() {
-		String soundOffButtonPath = ClassLoader.getSystemResource("SoundOff.png").toString();
-		soundOffButton = new ImageView(soundOffButtonPath);
+		soundOffButton = new ImageView(RenderableHolder.SoundOff);
 		soundOffButton.setCursor(Cursor.HAND);
 		soundOffButton.setFitHeight(64);
 		soundOffButton.setFitWidth(64);
