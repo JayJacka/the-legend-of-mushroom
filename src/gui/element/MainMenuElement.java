@@ -45,7 +45,7 @@ public class MainMenuElement extends StackPane {
 	private ImageView soundOnButton;
 	private ImageView soundOffButton;
 	
-	private AnimationTimer BackgroundMusic;
+	private AnimationTimer MainMusic;
 
 	public MainMenuElement(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -58,7 +58,7 @@ public class MainMenuElement extends StackPane {
 		background.setFitHeight(720);
 		background.setFitWidth(1280);
 		initializeBackgroundMusic();
-		BackgroundMusic.start();
+		MainMusic.start();
 		initializeHelpPane();
 		initializeStartButton();
 		initializeHelpButton();
@@ -166,6 +166,10 @@ public class MainMenuElement extends StackPane {
 		});
 		pathTransition.play();
 		start.setOnFinished(e -> {
+			if (RenderableHolder.MainMusic.isPlaying()) {
+				RenderableHolder.MainMusic.stop();
+				MainMusic.stop();
+			}
 			Gameplay gamePlay = new Gameplay(this.primaryStage);
 		});
 	}
@@ -412,7 +416,7 @@ public class MainMenuElement extends StackPane {
 		helpPane.setVisible(false);
 	}
 	
-	void initializeSoundOnButton() {
+	public void initializeSoundOnButton() {
 		String soundOnButtonPath = ClassLoader.getSystemResource("SoundOn.png").toString();
 		soundOnButton = new ImageView(soundOnButtonPath);
 		soundOnButton.setCursor(Cursor.HAND);
@@ -423,8 +427,8 @@ public class MainMenuElement extends StackPane {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				RenderableHolder.BackgroundMusic.stop();
-				BackgroundMusic.stop();
+				RenderableHolder.MainMusic.stop();
+				MainMusic.stop();
 				soundOnButton.setVisible(false);
 				soundOffButton.setVisible(true);
 			}
@@ -451,7 +455,7 @@ public class MainMenuElement extends StackPane {
 			}
 		});
 	}
-	void initializeSoundOffButton() {
+	public void initializeSoundOffButton() {
 		String soundOffButtonPath = ClassLoader.getSystemResource("SoundOff.png").toString();
 		soundOffButton = new ImageView(soundOffButtonPath);
 		soundOffButton.setCursor(Cursor.HAND);
@@ -462,7 +466,7 @@ public class MainMenuElement extends StackPane {
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				BackgroundMusic.start();
+				MainMusic.start();
 				soundOnButton.setVisible(true);
 				soundOffButton.setVisible(false);
 			}
@@ -490,14 +494,20 @@ public class MainMenuElement extends StackPane {
 		});
 	}
 	public void initializeBackgroundMusic() {
-		BackgroundMusic = new AnimationTimer() {
+		MainMusic = new AnimationTimer() {
 			
 			@Override
 			public void handle(long arg0) {
 				// TODO Auto-generated method stub
-				if(!RenderableHolder.BackgroundMusic.isPlaying()) 
-					RenderableHolder.BackgroundMusic.play();
+				if(!RenderableHolder.MainMusic.isPlaying()) 
+					RenderableHolder.MainMusic.play();
 			}
 		};
+	}
+	
+	public boolean isMainMusicWasPlaying() {
+		if (!soundOffButton.isVisible())
+			return true;
+		return false;
 	}
 }

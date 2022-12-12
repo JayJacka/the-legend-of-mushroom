@@ -4,6 +4,7 @@ import entities.Player;
 import gamestates.GameState;
 import gamestates.Menu;
 import gamestates.Playing;
+import gui.page.Gameplay;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,6 +18,7 @@ public class GameLogic {
 	private Menu menu;
 	private boolean isGameEnd;
 	private boolean isGameWin;
+	private Gameplay gameplay;
 	private Scene scene;
 	
 	public static GameLogic getInstance() {
@@ -27,11 +29,12 @@ public class GameLogic {
 	}
 	
 	private GameLogic() {
-
+		
 	}
 
-	public void newGame(GraphicsContext gc, Scene scene) {
+	public void newGame(GraphicsContext gc, Scene scene, Gameplay gameplay) {
 		// TODO Auto-generated method stub
+		this.gameplay = gameplay;
 		this.score = 0;
 		this.currentLevel = 1;
 		this.scene = scene;
@@ -39,7 +42,7 @@ public class GameLogic {
 		menu = new Menu(scene);
 		this.player = playing.getPlayer();
 		gameLoop(gc);
-		System.out.println(currentLevel);
+		//System.out.println(currentLevel);
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
@@ -84,8 +87,15 @@ public class GameLogic {
 		return this.score;
 	}
 	
+	public void setCurrentScore(int score) {
+		this.score = score;
+	}
+	
 	public Player getPlayer() {
 		return this.player;
 	}
 	
+	public Gameplay getGameplay() {
+		return this.gameplay;
+	}
 }

@@ -26,7 +26,6 @@ public class Player extends Entity{
 	private boolean left, up, right, down, jump;
 	private int xDrawOffset = 16;
 	private int yDrawOffset = 10;
-	
 	private float airSpeed = 0;
 	private float gravity = 0.8f;
 	private float jumpSpeed = -15f;
@@ -71,7 +70,6 @@ public class Player extends Entity{
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(animations.get(playerAction).get(aniIndex), x, y);
-		updateHpBar(gc,getHealth());
 		drawHitbox(gc);
 	}
 	private void loadAnimations() {
@@ -191,13 +189,19 @@ public class Player extends Entity{
 				attacking = false;
 			}
 			if(aniIndex == 6 && attacking) {
-				RenderableHolder.mushRoomAttack.play();
+				if (!RenderableHolder.mushRoomJump.isPlaying()) {
+					RenderableHolder.mushRoomAttack.play();
+				}
 			}
-			if(aniIndex == 6 && jump) {
-				RenderableHolder.mushRoomJump.play();
+			if(jump) {
+				if (!RenderableHolder.mushRoomJump.isPlaying()) {
+					RenderableHolder.mushRoomJump.play();
+				}
 			}
 			if(aniIndex == 6 && playerAction == WALK) {
-				RenderableHolder.mushRoomWalk.play();
+				if (!RenderableHolder.mushRoomJump.isPlaying()) {
+					RenderableHolder.mushRoomWalk.play();
+				}
 			}
 		}
 		
@@ -222,9 +226,6 @@ public class Player extends Entity{
 			} 
 			else if (e.getCode() == KeyCode.ESCAPE) {
 				GameState.state = GameState.MENU;
-			}
-			else if (e.getCode() == KeyCode.ENTER) {
-				GameState.state = GameState.PLAYING;
 			}
 		});
 
@@ -332,9 +333,4 @@ public class Player extends Entity{
 		return aniIndex;
 	}
 	
-	public void updateHpBar(GraphicsContext gc, double hp) {
-		gc.drawImage(RenderableHolder.hpBar,0,0,400,64);
-		gc.setFill(Color.LIMEGREEN);
-		gc.fillRect(66.5, 26.5, 287*hp/100, 9);
-	}
 }

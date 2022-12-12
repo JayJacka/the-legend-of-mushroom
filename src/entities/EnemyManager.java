@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.ArrayList;
+
+import gamestates.Playing;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -53,6 +55,9 @@ public class EnemyManager {
 		}
 		for (Tomato t: tToBeRemoved) {
 			tomatoes.remove(t);
+			int nowScore = GameLogic.getInstance().getCurrentScore();
+			int nowLevel = GameLogic.getInstance().getCurrentLevel();
+			GameLogic.getInstance().setCurrentScore(nowScore+10*nowLevel);
 		}
 		ArrayList<Pineapple> pToBeRemoved = new ArrayList<Pineapple>();
 		for(Pineapple p : pineapples) {
@@ -63,6 +68,9 @@ public class EnemyManager {
 		}
 		for (Pineapple p: pToBeRemoved) {
 			pineapples.remove(p);
+			int nowScore = GameLogic.getInstance().getCurrentScore();
+			int nowLevel = GameLogic.getInstance().getCurrentLevel();
+			GameLogic.getInstance().setCurrentScore(nowScore+10*nowLevel);
 		}
 	}
 	
