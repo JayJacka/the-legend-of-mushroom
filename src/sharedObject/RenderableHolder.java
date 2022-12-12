@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -101,6 +102,15 @@ public class RenderableHolder {
 	public static Image plant;
 	public static Image bigCrate;
 	public static Image fence;
+	public static Image hpBar;
+	
+	public static AudioClip BackgroundMusic;
+	public static AudioClip mushRoomAttack;
+	public static AudioClip mushRoomDeath;
+	public static AudioClip mushRoomJump;
+	public static AudioClip Start;
+	public static AudioClip MouseEnter;
+	public static AudioClip mushRoomWalk;
 	
 	static {
 		loadResource();
@@ -121,7 +131,7 @@ public class RenderableHolder {
 
 	public static void loadResource() {
 		String img = "image/";
-		
+		String sd = "sounds/";
 		// Mushroom Image
 		
 		//Idle
@@ -220,6 +230,16 @@ public class RenderableHolder {
 		plant = new Image(ClassLoader.getSystemResource("plant1.png").toString());
 		bigCrate = new Image(ClassLoader.getSystemResource("big-crate.png").toString());
 		fence = new Image(ClassLoader.getSystemResource("fence.png").toString());
+		hpBar = new Image(ClassLoader.getSystemResource("HealthBar.png").toString());
+		
+		//Sounds
+		BackgroundMusic = new AudioClip(ClassLoader.getSystemResource(sd+"BackgroundMusic.mp3").toString());
+		mushRoomJump = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerJump.mp3").toString());
+		mushRoomAttack = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerAttack.mp3").toString());
+		mushRoomDeath = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerDeath.mp3").toString());
+		Start = new AudioClip(ClassLoader.getSystemResource(sd+"StartGame.mp3").toString());
+		MouseEnter = new AudioClip(ClassLoader.getSystemResource(sd+"MouseEnter.mp3").toString());
+		mushRoomWalk =  new AudioClip(ClassLoader.getSystemResource(sd+"PlayerWalk.mp3").toString());
 	}
 	
 	public void add(IRenderable entity) {
