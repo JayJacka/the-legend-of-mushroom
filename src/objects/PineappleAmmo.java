@@ -56,16 +56,19 @@ public class PineappleAmmo extends Entity {
 	
 		if (this.activated) {
 			updateHitbox(this.x, this.y);
-			if (this.direction == -1) {
-				if (Math.abs(player.getHitbox().getX() + player.getHitbox().getWidth() - this.getHitbox().getX()) <= 1) {
-					player.setHealth(player.getHealth() - 10);
-					this.activated = false;
+//			System.out.println((int) (player.getHitbox().getY()/32) + " " + (int) (this.getHitbox().getY()/32));
+			if ((int) (player.getHitbox().getY()/32) + 1 == (int) (this.getHitbox().getY()/32)) {
+				if (this.direction == -1) {
+					if (Math.abs(player.getHitbox().getX() + player.getHitbox().getWidth() - this.getHitbox().getX()) <= 1) {
+						player.setHealth(player.getHealth() - 10);
+						this.activated = false;
+					}
+				} else {
+					if (Math.abs(player.getHitbox().getX() - this.getHitbox().getX()) <= 1) {
+						player.setHealth(player.getHealth() - 10);
+						this.activated = false;
+					}	
 				}
-			} else {
-				if (Math.abs(player.getHitbox().getX() - this.getHitbox().getX()) <= 1) {
-					player.setHealth(player.getHealth() - 10);
-					this.activated = false;
-				}	
 			}
 			updatePosition();
 			draw(gc);
@@ -77,9 +80,10 @@ public class PineappleAmmo extends Entity {
 		int[][] levelData = GameLogic.getInstance().getCurrentLevelData();
 		int nextTileX = (int) ((this.getHitbox().getX()+direction*2)/32);
 		int currentTileY = (int) (this.getHitbox().getY()/32);
-		System.out.println(levelData[currentTileY][nextTileX]);
-		if (levelData[currentTileY][nextTileX] > 0 && levelData[currentTileY][nextTileX] < 11 ) {
-			this.activated = false; 
+		if (nextTileX < 40) {
+			if (levelData[currentTileY][nextTileX] > 0 && levelData[currentTileY][nextTileX] < 11 ) {
+				this.activated = false; 
+			}
 		}
 		this.x += direction*2;			
 	}
