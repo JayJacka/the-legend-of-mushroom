@@ -20,7 +20,7 @@ public abstract class Entity implements IRenderable{
 	
 	public void drawHitbox(GraphicsContext gc) {
 		// for debugging the hitbox
-//		gc.strokeRect(hitbox.getX(), hitbox.getY(),hitbox.getWidth(), hitbox.getHeight());
+		gc.strokeRect(hitbox.getX(), hitbox.getY(),hitbox.getWidth(), hitbox.getHeight());
 	}
 	
 	public void initializeHitbox(float x, float y) {

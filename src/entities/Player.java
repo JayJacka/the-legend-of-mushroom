@@ -193,10 +193,18 @@ public class Player extends Entity{
 					RenderableHolder.mushRoomAttack.play();
 				}
 			}
+<<<<<<< HEAD
 			if(jump) {
 				if (!RenderableHolder.mushRoomJump.isPlaying()) {
 					RenderableHolder.mushRoomJump.play();
 				}
+||||||| 1923d2b
+			if(aniIndex == 6 && jump) {
+				RenderableHolder.mushRoomJump.play();
+=======
+			if(aniIndex == 1 && jump) {
+				RenderableHolder.mushRoomJump.play();
+>>>>>>> d6c29962cc6c4e00c5d6f5a873b5dc36400b2ad0
 			}
 			if(aniIndex == 6 && playerAction == WALK) {
 				if (!RenderableHolder.mushRoomJump.isPlaying()) {
