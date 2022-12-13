@@ -5,6 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import logic.GameLogic;
 import objects.PineappleAmmo;
 import utils.Constants.EnemyConstant;
+import utils.Constants.UniversalConstants;
 public class Pineapple extends Enemy{
     
     private int offSetx = 18;
@@ -64,7 +65,7 @@ public class Pineapple extends Enemy{
                 player.updatePos();
             }
         }
-        if ((int) (player.getHitbox().getY()/32) == (int) (this.getHitbox().getY()/32)) {
+        if ((int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE) == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
             if (isPlayerInAttackRange(player, rangeAttackRange) && !shot) {
                 shot = true;
                 if (player.getHitbox().getX() - this.getHitbox().getX() <= 0) {

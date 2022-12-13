@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.GameLogic;
 import sharedObject.RenderableHolder;
+import utils.Constants.UniversalConstants;
 import utils.HelperMethods.*;
 
 public class PineappleAmmo extends Entity {
@@ -57,8 +58,8 @@ public class PineappleAmmo extends Entity {
 	
 		if (this.activated) {
 			updateHitbox(this.x, this.y);
-//			System.out.println((int) (player.getHitbox().getY()/32) + " " + (int) (this.getHitbox().getY()/32));
-			if ((int) (player.getHitbox().getY()/32) + 1 == (int) (this.getHitbox().getY()/32)) {
+//			System.out.println((int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE) + " " + (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE));
+			if ((int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE) + 1 == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
 				if (this.direction == -1) {
 					if (Math.abs(player.getHitbox().getX() + player.getHitbox().getWidth() - this.getHitbox().getX()) <= 1) {
 						player.setHealth(player.getHealth() - 10);
@@ -81,8 +82,8 @@ public class PineappleAmmo extends Entity {
 	private void updatePosition() {
 		// TODO Auto-generated method stub
 		int[][] levelData = GameLogic.getInstance().getCurrentLevelData();
-		int nextTileX = (int) ((this.getHitbox().getX()+direction*2)/32);
-		int currentTileY = (int) (this.getHitbox().getY()/32);
+		int nextTileX = (int) ((this.getHitbox().getX()+direction*2)/UniversalConstants.TILE_SIZE);
+		int currentTileY = (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE);
 		if (nextTileX < 40) {
 			if (levelData[currentTileY][nextTileX] > 0 && levelData[currentTileY][nextTileX] < 11 ) {
 				this.activated = false; 
