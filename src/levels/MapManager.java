@@ -53,7 +53,7 @@ public class MapManager {
 		gc.drawImage(RenderableHolder.tree1,240,-40,210,200);
 	}
 	public static void drawElementMap1Third(GraphicsContext gc) {
-		gc.drawImage(new Image(ClassLoader.getSystemResource("tree.png").toString()),-60,-40,210,200);
+		gc.drawImage(new Image(ClassLoader.getSystemResource("image/tree.png").toString()),-60,-40,210,200);
 		gc.drawImage(RenderableHolder.Bush,0,100,100,60);
 		gc.drawImage(RenderableHolder.Bush,50,100,100,60);
 		gc.drawImage(RenderableHolder.Bush,100,100,100,60);
