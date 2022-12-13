@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import entities.Player;
 import gamestates.GameState;
-import gamestates.Menu;
 import gamestates.Playing;
 import gui.page.Gameplay;
 import javafx.animation.AnimationTimer;
@@ -18,9 +17,6 @@ public class GameLogic {
 	private int score;
 	private Player player;
 	private Playing playing;
-	private Menu menu;
-	private boolean isGameEnd;
-	private boolean isGameWin;
 	private Gameplay gameplay;
 	private Scene scene;
 	private AnimationTimer gameLoop;
@@ -43,7 +39,6 @@ public class GameLogic {
 		this.currentLevel = 1;
 		this.scene = scene;
 		playing = new Playing(scene);
-		menu = new Menu(scene);
 		this.player = playing.getPlayer();
 		if (gameLoop != null) {
 			gameLoop.stop();
@@ -84,6 +79,9 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
+		if (currentLevel % 3 == 1) {
+			playing.getPlayer().setHealth(100);
+		}
 //		System.out.println(currentLevel);
 	}
 	

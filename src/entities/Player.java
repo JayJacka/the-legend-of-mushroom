@@ -25,22 +25,22 @@ public class Player extends Entity{
 	private int[][] levelData;
 	private boolean isMoving = false, attacking = false;
 	private boolean left, up, right, down, jump;
-	private int xDrawOffset = 16;
-	private int yDrawOffset = 10;
-	private float airSpeed = 0;
-	private float gravity = 0.8f;
-	private float jumpSpeed = -15f;
-	private float fallSpeedAfterCollision = 2f;
-	private boolean inAir = false;
-	private int damage;
-	private int health;
+	private static int xDrawOffset = X_DRAW_OFFSET;
+	private static int yDrawOffset = Y_DRAW_OFFSET;
+	private static int hboxWidth = HITBOXWIDTH;
+	private static int hboxHeight = HITBOXHEIGHT;
+	private static float airSpeed = AIRSPEED;
+	private static float gravity = GRAVITY;
+	private static float jumpSpeed = JUMP_SPEED;
+	private static float fallSpeedAfterCollision = FALL_SPEED_AFTER_COLLISION;
+	private static int damage = DAMAGE;
+	private static int health = HEALTH;
 	public float xSpeed;
-	public float knockbackSpeed = 0f;
+	public float knockbackSpeed = KNOCKBACK_SPEED;
+	private boolean inAir = false;
 	
 	public Player(float x, float y, Scene scene) {
-		super(x, y, 32, 44);
-		this.damage = 10;
-		this.health = 100;
+		super(x, y, hboxWidth, hboxHeight);
 		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
 		addKeyListener(scene);
 		loadAnimations();
@@ -312,11 +312,11 @@ public class Player extends Entity{
 	}
 	
 	public int getDamage() {
-		return this.damage;
+		return Player.damage;
 	}
 	
 	public void setDamage(int damage) {
-		this.damage = damage;
+		Player.damage = damage;
 	}
 
 	@Override
@@ -342,10 +342,10 @@ public class Player extends Entity{
 	}
 	
 	public int getHealth() {
-		return this.health;
+		return Player.health;
 	}
 	public void setHealth(int health) {
-		this.health = health;
+		Player.health = health;
 	}
 
 	public int getAniIndex() {

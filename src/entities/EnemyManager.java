@@ -2,24 +2,23 @@ package entities;
 
 import java.util.ArrayList;
 
-import gamestates.Playing;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+
 import logic.GameLogic;
+
 import utils.Animations;
 
 public class EnemyManager {
 	private ArrayList<ArrayList<Image>> tomatoeAni;
-	private ArrayList<Tomato> tomatoes;
-	private ArrayList<Pineapple> pineapples;
+	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Image>> pineappleAni;
 	private Player player;
 	
 	public EnemyManager(Player player) {
-		tomatoes = new ArrayList<Tomato>();
-		pineapples = new ArrayList<Pineapple>();
 		this.player = player;
+		enemies = new ArrayList<Enemy>();
 		loadEnemyAnimations();
 		initializeEnemy();
 	}
@@ -31,10 +30,10 @@ public class EnemyManager {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
 				if ((int) (color.getRed()*255) == 234) {
-					tomatoes.add(new Tomato(i*32-13, j*32-21, 0));
+					enemies.add(new Tomato(i*32-13, j*32-21, 0));
 				}
 				if ((int) (color.getRed()*255) == 123) {
-					pineapples.add(new Pineapple(i*32-13, j*32-21, 1));
+					enemies.add(new Pineapple(i*32-13, j*32-21, 1));
 				}
 			}
 		}
@@ -42,32 +41,19 @@ public class EnemyManager {
 	}
 
 	public boolean levelCleared() {
-		return tomatoes.size() == 0 && pineapples.size() == 0;
+		return enemies.size() == 0;
 	}
 
 	public void update(Player player) {
-		ArrayList<Tomato> tToBeRemoved = new ArrayList<Tomato>();
-		for(Tomato t : tomatoes) {
-			t.update(player);
-			if (t.getHealth() <= 0) {
-				tToBeRemoved.add(t);
+		ArrayList<Enemy> ToBeRemoved = new ArrayList<Enemy>();
+		for(Enemy e : enemies) {
+			e.update(player);
+			if (e.getHealth() <= 0) {
+				ToBeRemoved.add(e);
 			}
 		}
-		for (Tomato t: tToBeRemoved) {
-			tomatoes.remove(t);
-			int nowScore = GameLogic.getInstance().getCurrentScore();
-			int nowLevel = GameLogic.getInstance().getCurrentLevel();
-			GameLogic.getInstance().setCurrentScore(nowScore+10*nowLevel);
-		}
-		ArrayList<Pineapple> pToBeRemoved = new ArrayList<Pineapple>();
-		for(Pineapple p : pineapples) {
-			p.update(player);
-			if (p.getHealth() <= 0) {
-				pToBeRemoved.add(p);
-			}
-		}
-		for (Pineapple p: pToBeRemoved) {
-			pineapples.remove(p);
+		for (Enemy e: ToBeRemoved) {
+			enemies.remove(e);
 			int nowScore = GameLogic.getInstance().getCurrentScore();
 			int nowLevel = GameLogic.getInstance().getCurrentLevel();
 			GameLogic.getInstance().setCurrentScore(nowScore+10*nowLevel);
@@ -80,16 +66,14 @@ public class EnemyManager {
 	}
 	
 	public void drawEnemies(GraphicsContext gc) {
-		for(Tomato t : tomatoes) {
-//			System.out.println(t.getAniIndex() + " " + t.getState());
-			gc.drawImage(tomatoeAni.get(t.getState()).get(t.getAniIndex()),  t.getX(), t.getY());
-			t.drawHitbox(gc);
+		for(Enemy e : enemies) {
+			if (e instanceof Tomato) {
+				gc.drawImage(tomatoeAni.get(e.getState()).get(e.getAniIndex()),  e.getX(), e.getY());
+			} else if (e instanceof Pineapple) {
+				gc.drawImage(pineappleAni.get(e.getState()).get(e.getAniIndex()),  e.getX(), e.getY());
+			}
+			e.drawHitbox(gc);
 		}
-		for(Pineapple p : pineapples) {
-			gc.drawImage(pineappleAni.get(p.getState()).get(p.getAniIndex()), p.getX(), p.getY());
-			p.drawHitbox(gc);
-		}
-		
 	}
 
 	private void loadEnemyAnimations() {

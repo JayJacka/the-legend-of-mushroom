@@ -13,6 +13,21 @@ public class Constants {
 		public static final int WALK_RIGHT = 7;
 		public static final int DEATH = 8;
 		
+		public static final int X_DRAW_OFFSET = 16;
+		public static final int Y_DRAW_OFFSET = 10;
+		
+		public static final int HITBOXWIDTH = 32;
+		public static final int HITBOXHEIGHT = 44;
+		
+		public static final float AIRSPEED = 0f;
+		public static final float GRAVITY = 0.8f;
+		public static final float JUMP_SPEED = -15f;
+		public static final float FALL_SPEED_AFTER_COLLISION = 2f;
+		public static final float KNOCKBACK_SPEED = 0f;
+		
+		public static final int DAMAGE = 10;
+		public static final int HEALTH = 100;
+		
 		public static int GetSpriteAmount(int playerAction) {
 			switch(playerAction){
 			case ATTACK_LEFT: return 8;
