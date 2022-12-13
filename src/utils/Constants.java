@@ -70,10 +70,14 @@ public class Constants {
 		public static final int TOMATO_HITBOX_WIDTH = 38;
 		public static final int TOMATO_HITBOX_HEIGHT = 48;
 		
+		public static final int PINEAPPLE_HITBOX_WIDTH = 29;
+		public static final int PINEAPPLE_HITBOX_HEIGHT = 46;
+		
 		public static final int TOMATO_R_VALUE = 234;
 		public static final int PINEAPPLE_R_VALUE = 123;
 		
-		public static final int TOMATO_HEALTH = 100;
+		public static final int TOMATO_HEALTH = 200;
+		public static final int PINEAPPLE_HEALTH = 100;
 		
 		public static final int IDLE = 0;
 		public static final int ATTACK = 1;

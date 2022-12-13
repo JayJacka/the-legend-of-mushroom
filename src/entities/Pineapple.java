@@ -18,7 +18,7 @@ public class Pineapple extends Enemy{
     private int rangeAttackRange = 192;
     
     public Pineapple(float x, float y, int Type) {
-        super(x, y, PINEAPPLE, 29, 46, 100);
+        super(x, y, PINEAPPLE, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HEALTH);
         initializeHitbox(x + offSetx, y + offSety);
     }
 
