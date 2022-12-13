@@ -13,12 +13,11 @@ public class Gameplay extends StackPane{
 	private Canvas canvas;
 	private GraphicsContext gc;
 	private Scene scene;
-	
-	
+
 	public Gameplay(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		setStage();
-		GameLogic.getInstance().newGame(gc, scene,this);
+		GameLogic.getInstance().newGame(gc, scene, this);
 		primaryStage.show();
 	}
 
@@ -33,4 +32,9 @@ public class Gameplay extends StackPane{
 	public StackPane getGameplayPane() {
 		return this;
 	}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
 }

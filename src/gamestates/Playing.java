@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entities.EnemyManager;
 import entities.Player;
+import gui.element.GameEndMenu;
 import gui.element.PauseMenu;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class Playing {
     private ObjectManager objectManager;
 	private AnimationTimer BattleMusic;
 	private PauseMenu pausePane;
+	private GameEndMenu gameEndPane;
     
     public Playing(Scene scene) {
         levelManager = new LevelManager();
@@ -30,9 +32,12 @@ public class Playing {
         enemyManager = new EnemyManager(player);
         objectManager = new ObjectManager();
         player.loadLevelData(levelManager.getLevelData());
+        //playBattleMusic();
         pausePane = new PauseMenu();
 		pausePane.setVisible(false);
-		GameLogic.getInstance().getGameplay().getChildren().add(pausePane);
+		gameEndPane = new GameEndMenu();
+		gameEndPane.setVisible(false);
+		GameLogic.getInstance().getGameplay().getChildren().addAll(pausePane,gameEndPane);
     }
     
     public void update(GraphicsContext gc) {
@@ -41,9 +46,12 @@ public class Playing {
 		objectManager.update(gc);
 		player.draw(gc);
 		drawGameStatus(gc);
-		System.out.println(GameLogic.getInstance().getCurrentScore());
+		//System.out.println(GameLogic.getInstance().getCurrentScore());
 		if (enemyManager.levelCleared() && player.isPlayerInClearZone()) {
 			GameLogic.getInstance().changeLevel();
+		}
+		if (player.isDeath()) {
+			GameState.state = GameState.END;
 		}
     }
     
@@ -55,6 +63,18 @@ public class Playing {
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
 		pausePane.setVisible(true);
+    }
+    
+    public void end(GraphicsContext gc) {
+    	levelManager.Draw(gc);
+		player.render(gc);
+		enemyManager.drawEnemies(gc);
+		objectManager.draw(gc);
+		gc.setFill(Color.rgb(0, 0, 0, 0.5));
+		gc.fillRect(0, 0, 1280, 720);
+		//BattleMusic.stop();
+		//RenderableHolder.BattleMusic.stop();
+		gameEndPane.setVisible(true);
     }
     
     public Player getPlayer() {
@@ -91,19 +111,19 @@ public class Playing {
 	
 	public void drawHpBar(GraphicsContext gc,double hp) {
 		gc.drawImage(RenderableHolder.hpBar,0,0,400,64);
-		gc.setFill(Color.LIMEGREEN);
+		gc.setFill(Color.web("#3af237"));
 		gc.fillRect(66.5, 26.5, 287*hp/100, 9);
 	}
 	
 	public void drawScore(GraphicsContext gc) {
 		gc.setFont(Font.loadFont(RenderableHolder.myFont, 20));
-		gc.setFill(Color.SANDYBROWN);
+		gc.setFill(Color.web("#502800"));
 		gc.fillText("Score : " + GameLogic.getInstance().getCurrentScore(), 1050, 40);
 	}
 	
 	public void drawLevel(GraphicsContext gc) {
 		gc.setFont(Font.loadFont(RenderableHolder.myFont, 20));
-		gc.setFill(Color.SANDYBROWN);
+		gc.setFill(Color.web("#502800"));
 		gc.fillText("Level : " + GameLogic.getInstance().getCurrentLevel(), 570, 40);
 	}
 }

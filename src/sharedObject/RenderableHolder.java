@@ -135,6 +135,9 @@ public class RenderableHolder {
 	public static Image SoundOn;
 	public static Image SoundOff;
 	public static Image icon;
+	public static Image Gameover;
+	public static Image Yes;
+	public static Image No;
 	
 	static {
 		loadResource();
@@ -285,7 +288,9 @@ public class RenderableHolder {
 		SoundOn = new Image(ClassLoader.getSystemResource(img + "SoundOn.png").toString());
 		SoundOff = new Image(ClassLoader.getSystemResource(img + "SoundOff.png").toString());
 		icon = new Image(ClassLoader.getSystemResource(img + "Mushroom.png").toString());
-		
+		Gameover= new Image(ClassLoader.getSystemResource(img + "GameOver.png").toString());
+		Yes = new Image(ClassLoader.getSystemResource(img + "YES.png").toString());
+		No = new Image(ClassLoader.getSystemResource(img + "No.png").toString());
 		//Font
 		//InputStream fontStream = CustomFontTest.class.getResourceAsStream("font/8-BIT WONDER.ttf");
 		myFont = ClassLoader.getSystemResource("font/font.ttf").toString();

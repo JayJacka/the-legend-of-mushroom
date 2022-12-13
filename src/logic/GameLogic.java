@@ -23,6 +23,7 @@ public class GameLogic {
 	private boolean isGameWin;
 	private Gameplay gameplay;
 	private Scene scene;
+	private AnimationTimer gameLoop;
 	
 	public static GameLogic getInstance() {
 		if (instance == null) {
@@ -45,11 +46,12 @@ public class GameLogic {
 		menu = new Menu(scene);
 		this.player = playing.getPlayer();
 		gameLoop(gc);
+		GameState.state = GameState.PLAYING;
 		//System.out.println(currentLevel);
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
-		AnimationTimer gameLoop = new AnimationTimer() {
+		gameLoop = new AnimationTimer() {
 			
 			@Override
 			public void handle(long arg0) {
@@ -57,12 +59,16 @@ public class GameLogic {
 				clearScreen(gc);
 				
 				switch (GameState.state) {
-				case MENU:
+				case PAUSE:
 					playing.drawLastFrame(gc);
 					break;
 				case PLAYING:
 					playing.update(gc);
 					break;
+				case END:
+					playing.end(gc);
+				//case MENU:
+					
 				default:
 					break;
 				}
@@ -75,7 +81,7 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
-		System.out.println(currentLevel);
+		//System.out.println(currentLevel);
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {
@@ -108,4 +114,14 @@ public class GameLogic {
     public int[][] getCurrentLevelData() {
         return playing.getLevelData();
     }
+
+	public boolean isGameEnd() {
+		return this.player.isDeath();
+	}
+
+	public AnimationTimer getGameLoop() {
+		return gameLoop;
+	}
+
+	
 }
