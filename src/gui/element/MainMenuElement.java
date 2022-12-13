@@ -497,9 +497,5 @@ public class MainMenuElement extends StackPane {
 		};
 	}
 	
-	public boolean isMainMusicWasPlaying() {
-		if (!soundOffButton.isVisible())
-			return true;
-		return false;
-	}
+	
 }

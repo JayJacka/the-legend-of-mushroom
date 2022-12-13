@@ -35,6 +35,7 @@ public class Player extends Entity{
 	private int health;
 	public float xSpeed;
 	public float knockbackSpeed = 0f;
+	
 	public Player(float x, float y, Scene scene) {
 		super(x, y, 32, 44);
 		this.damage = 10;
@@ -225,7 +226,7 @@ public class Player extends Entity{
 				setAttack(true);
 			} 
 			else if (e.getCode() == KeyCode.ESCAPE) {
-				GameState.state = GameState.MENU;
+				GameState.state = GameState.PAUSE;
 			}
 		});
 
@@ -331,6 +332,10 @@ public class Player extends Entity{
 
 	public int getAniIndex() {
 		return aniIndex;
+	}
+	
+	public boolean isDeath() {
+		return getHealth() <= 0;
 	}
 	
 }
