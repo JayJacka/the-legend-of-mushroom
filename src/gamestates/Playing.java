@@ -46,7 +46,7 @@ public class Playing {
 		objectManager.update(gc);
 		player.draw(gc);
 		drawGameStatus(gc);
-		//System.out.println(GameLogic.getInstance().getCurrentScore());
+		System.out.println(GameLogic.getInstance().getCurrentScore());
 		if (enemyManager.levelCleared() && player.isPlayerInClearZone()) {
 			GameLogic.getInstance().changeLevel();
 		}

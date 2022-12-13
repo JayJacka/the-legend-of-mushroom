@@ -16,46 +16,79 @@ public class RenderableHolder {
 	private Comparator<IRenderable> comparator;
 
 	// Mushroom Image
-	public static Image mushRoomIdle0;
-	public static Image mushRoomIdle1;
-	public static Image mushRoomIdle2;
-	public static Image mushRoomIdle3;
-	public static Image mushRoomIdle4;
-	public static Image mushRoomIdle5;
-	public static Image mushRoomIdle6;
-	public static Image mushRoomIdle7;
-	public static Image mushRoomIdle8;
-	public static Image mushRoomIdle9;
+	public static Image mushRoomIdleLeft0;
+	public static Image mushRoomIdleLeft1;
+	public static Image mushRoomIdleLeft2;
+	public static Image mushRoomIdleLeft3;
+	public static Image mushRoomIdleLeft4;
+	public static Image mushRoomIdleLeft5;
+	public static Image mushRoomIdleLeft6;
+	public static Image mushRoomIdleLeft7;
 	
-	public static Image mushRoomAttack0;
-	public static Image mushRoomAttack1;
-	public static Image mushRoomAttack2;
-	public static Image mushRoomAttack3;
-	public static Image mushRoomAttack4;
-	public static Image mushRoomAttack5;
-	public static Image mushRoomAttack6;
-	public static Image mushRoomAttack7;
+	public static Image mushRoomIdleRight0;
+	public static Image mushRoomIdleRight1;
+	public static Image mushRoomIdleRight2;
+	public static Image mushRoomIdleRight3;
+	public static Image mushRoomIdleRight4;
+	public static Image mushRoomIdleRight5;
+	public static Image mushRoomIdleRight6;
+	public static Image mushRoomIdleRight7;
 	
-	public static Image mushRoomWalk0;
-	public static Image mushRoomWalk1;
-	public static Image mushRoomWalk2;
-	public static Image mushRoomWalk3;
-	public static Image mushRoomWalk4;
-	public static Image mushRoomWalk5;
-	public static Image mushRoomWalk6;
-	public static Image mushRoomWalk7;
-	public static Image mushRoomWalk8;
-	public static Image mushRoomWalk9;
+	public static Image mushRoomAttackLeft0;
+	public static Image mushRoomAttackLeft1;
+	public static Image mushRoomAttackLeft2;
+	public static Image mushRoomAttackLeft3;
+	public static Image mushRoomAttackLeft4;
+	public static Image mushRoomAttackLeft5;
+	public static Image mushRoomAttackLeft6;
+	public static Image mushRoomAttackLeft7;
 	
-	public static Image mushRoomJump0;
-	public static Image mushRoomJump1;
-	public static Image mushRoomJump2;
-	public static Image mushRoomJump3;
-	public static Image mushRoomJump4;
-	public static Image mushRoomJump5;
-	public static Image mushRoomJump6;
-	public static Image mushRoomJump7;
-	public static Image mushRoomJump8;
+	public static Image mushRoomAttackRight0;
+	public static Image mushRoomAttackRight1;
+	public static Image mushRoomAttackRight2;
+	public static Image mushRoomAttackRight3;
+	public static Image mushRoomAttackRight4;
+	public static Image mushRoomAttackRight5;
+	public static Image mushRoomAttackRight6;
+	public static Image mushRoomAttackRight7;
+	
+	public static Image mushRoomWalkLeft0;
+	public static Image mushRoomWalkLeft1;
+	public static Image mushRoomWalkLeft2;
+	public static Image mushRoomWalkLeft3;
+	public static Image mushRoomWalkLeft4;
+	public static Image mushRoomWalkLeft5;
+	public static Image mushRoomWalkLeft6;
+	public static Image mushRoomWalkLeft7;
+	
+	public static Image mushRoomWalkRight0;
+	public static Image mushRoomWalkRight1;
+	public static Image mushRoomWalkRight2;
+	public static Image mushRoomWalkRight3;
+	public static Image mushRoomWalkRight4;
+	public static Image mushRoomWalkRight5;
+	public static Image mushRoomWalkRight6;
+	public static Image mushRoomWalkRight7;
+	
+	public static Image mushRoomJumpLeft0;
+	public static Image mushRoomJumpLeft1;
+	public static Image mushRoomJumpLeft2;
+	public static Image mushRoomJumpLeft3;
+	public static Image mushRoomJumpLeft4;
+	public static Image mushRoomJumpLeft5;
+	public static Image mushRoomJumpLeft6;
+	public static Image mushRoomJumpLeft7;
+	public static Image mushRoomJumpLeft8;
+	
+	public static Image mushRoomJumpRight0;
+	public static Image mushRoomJumpRight1;
+	public static Image mushRoomJumpRight2;
+	public static Image mushRoomJumpRight3;
+	public static Image mushRoomJumpRight4;
+	public static Image mushRoomJumpRight5;
+	public static Image mushRoomJumpRight6;
+	public static Image mushRoomJumpRight7;
+	public static Image mushRoomJumpRight8;
 	
 	
 	//Tomato Image
@@ -162,44 +195,80 @@ public class RenderableHolder {
 		// Mushroom Image
 		
 		//Idle
-		mushRoomIdle0 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle0.png").toString());
-		mushRoomIdle1 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle1.png").toString());
-		mushRoomIdle2 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle2.png").toString());
-		mushRoomIdle3 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle3.png").toString());
-		mushRoomIdle4 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle4.png").toString());
-		mushRoomIdle5 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle5.png").toString());
-		mushRoomIdle6 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle6.png").toString());
-		mushRoomIdle7 = new Image(ClassLoader.getSystemResource(img + "MushroomIdle7.png").toString());
+		mushRoomIdleLeft0 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft0.png").toString());
+		mushRoomIdleLeft1 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft1.png").toString());
+		mushRoomIdleLeft2 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft2.png").toString());
+		mushRoomIdleLeft3 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft3.png").toString());
+		mushRoomIdleLeft4 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft4.png").toString());
+		mushRoomIdleLeft5 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft5.png").toString());
+		mushRoomIdleLeft6 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft6.png").toString());
+		mushRoomIdleLeft7 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleLeft7.png").toString());
+		
+		mushRoomIdleRight0 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight0.png").toString());
+		mushRoomIdleRight1 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight1.png").toString());
+		mushRoomIdleRight2 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight2.png").toString());
+		mushRoomIdleRight3 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight3.png").toString());
+		mushRoomIdleRight4 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight4.png").toString());
+		mushRoomIdleRight5 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight5.png").toString());
+		mushRoomIdleRight6 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight6.png").toString());
+		mushRoomIdleRight7 = new Image(ClassLoader.getSystemResource(img + "MushroomIdleRight7.png").toString());
 		
 		//Attack
-		mushRoomAttack0 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack0.png").toString());
-		mushRoomAttack1 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack1.png").toString());
-		mushRoomAttack2 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack2.png").toString());
-		mushRoomAttack3 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack3.png").toString());
-		mushRoomAttack4 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack4.png").toString());
-		mushRoomAttack5 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack5.png").toString());
-		mushRoomAttack6 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack6.png").toString());
-		mushRoomAttack7 = new Image(ClassLoader.getSystemResource(img + "MushroomAttack7.png").toString());
+		mushRoomAttackLeft0 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft0.png").toString());
+		mushRoomAttackLeft1 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft1.png").toString());
+		mushRoomAttackLeft2 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft2.png").toString());
+		mushRoomAttackLeft3 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft3.png").toString());
+		mushRoomAttackLeft4 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft4.png").toString());
+		mushRoomAttackLeft5 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft5.png").toString());
+		mushRoomAttackLeft6 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft6.png").toString());
+		mushRoomAttackLeft7 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackLeft7.png").toString());
+		
+		mushRoomAttackRight0 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight0.png").toString());
+		mushRoomAttackRight1 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight1.png").toString());
+		mushRoomAttackRight2 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight2.png").toString());
+		mushRoomAttackRight3 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight3.png").toString());
+		mushRoomAttackRight4 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight4.png").toString());
+		mushRoomAttackRight5 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight5.png").toString());
+		mushRoomAttackRight6 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight6.png").toString());
+		mushRoomAttackRight7 = new Image(ClassLoader.getSystemResource(img + "MushroomAttackRight7.png").toString());
 		
 		//Jump
-		mushRoomJump0 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
-		mushRoomJump1 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
-		mushRoomJump2 = new Image(ClassLoader.getSystemResource(img + "MushroomJump2.png").toString());
-		mushRoomJump3 = new Image(ClassLoader.getSystemResource(img + "MushroomJump3.png").toString());
-		mushRoomJump4 = new Image(ClassLoader.getSystemResource(img + "MushroomJump4.png").toString());
-		mushRoomJump5 = new Image(ClassLoader.getSystemResource(img + "MushroomJump5.png").toString());
-		mushRoomJump6 = new Image(ClassLoader.getSystemResource(img + "MushroomJump6.png").toString());
-		mushRoomJump7 = new Image(ClassLoader.getSystemResource(img + "MushroomJump7.png").toString());
+		mushRoomJumpLeft0 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft2.png").toString());
+		mushRoomJumpLeft1 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft2.png").toString());
+		mushRoomJumpLeft2 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft2.png").toString());
+		mushRoomJumpLeft3 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft3.png").toString());
+		mushRoomJumpLeft4 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft4.png").toString());
+		mushRoomJumpLeft5 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft5.png").toString());
+		mushRoomJumpLeft6 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft6.png").toString());
+		mushRoomJumpLeft7 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpLeft7.png").toString());
+		
+		mushRoomJumpRight0 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight2.png").toString());
+		mushRoomJumpRight1 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight2.png").toString());
+		mushRoomJumpRight2 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight2.png").toString());
+		mushRoomJumpRight3 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight3.png").toString());
+		mushRoomJumpRight4 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight4.png").toString());
+		mushRoomJumpRight5 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight5.png").toString());
+		mushRoomJumpRight6 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight6.png").toString());
+		mushRoomJumpRight7 = new Image(ClassLoader.getSystemResource(img + "MushroomJumpRight7.png").toString());
 		
 		//Walk
-		mushRoomWalk0 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk0.png").toString());
-		mushRoomWalk1 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk1.png").toString());
-		mushRoomWalk2 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk2.png").toString());
-		mushRoomWalk3 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk3.png").toString());
-		mushRoomWalk4 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk4.png").toString());
-		mushRoomWalk5 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk5.png").toString());
-		mushRoomWalk6 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk6.png").toString());
-		mushRoomWalk7 = new Image(ClassLoader.getSystemResource(img + "MushroomWalk2.png").toString());
+		mushRoomWalkLeft0 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft0.png").toString());
+		mushRoomWalkLeft1 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft1.png").toString());
+		mushRoomWalkLeft2 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft2.png").toString());
+		mushRoomWalkLeft3 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft3.png").toString());
+		mushRoomWalkLeft4 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft4.png").toString());
+		mushRoomWalkLeft5 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft5.png").toString());
+		mushRoomWalkLeft6 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft6.png").toString());
+		mushRoomWalkLeft7 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkLeft2.png").toString());
+		
+		mushRoomWalkRight0 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight0.png").toString());
+		mushRoomWalkRight1 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight1.png").toString());
+		mushRoomWalkRight2 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight2.png").toString());
+		mushRoomWalkRight3 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight3.png").toString());
+		mushRoomWalkRight4 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight4.png").toString());
+		mushRoomWalkRight5 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight5.png").toString());
+		mushRoomWalkRight6 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight6.png").toString());
+		mushRoomWalkRight7 = new Image(ClassLoader.getSystemResource(img + "MushroomWalkRight2.png").toString());
 		
 		
 		//Tomato Image

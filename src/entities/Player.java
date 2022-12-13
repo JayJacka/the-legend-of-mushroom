@@ -1,6 +1,7 @@
 package entities;
 
 import static utils.Constants.PlayerConstants.*;
+import static utils.Constants.Directions.*;
 import static utils.HelperMethods.*;
 import utils.Animations;
 
@@ -12,14 +13,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import sharedObject.RenderableHolder;
 
 public class Player extends Entity{
 	private int x,y;
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
-	private int playerAction = IDLE;
+	private int playerAction = IDLE_RIGHT;
+	private int direction = RIGHT;
 	private float playerSpeed = 5f;
 	private int[][] levelData;
 	private boolean isMoving = false, attacking = false;
@@ -62,7 +63,6 @@ public class Player extends Entity{
 				inAir = true;
 			}
 		}
-		//System.out.println(this.health);
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
@@ -75,10 +75,14 @@ public class Player extends Entity{
 	}
 	private void loadAnimations() {
 		animations = new ArrayList<ArrayList<Image>>();
-		animations.add(Animations.getMushroomIdle());
-		animations.add(Animations.getMushroomAttack());
-		animations.add(Animations.getMushroomJump());
-		animations.add(Animations.getMushroomWalk());
+		animations.add(Animations.getMushroomIdleLeft());
+		animations.add(Animations.getMushroomIdleRight());
+		animations.add(Animations.getMushroomAttackLeft());
+		animations.add(Animations.getMushroomAttackRight());
+		animations.add(Animations.getMushroomJumpLeft());
+		animations.add(Animations.getMushroomJumpRight());
+		animations.add(Animations.getMushroomWalkLeft());
+		animations.add(Animations.getMushroomWalkRight());
 	}
 	
 	public void loadLevelData(int[][] levelData) {
@@ -97,10 +101,12 @@ public class Player extends Entity{
 		xSpeed += knockbackSpeed;
 		
 		if(left) {
+			direction = LEFT;
 			xSpeed -= playerSpeed;
 		}
 		
 		if(right) {
+			direction = RIGHT;
 			xSpeed += playerSpeed;
 		}
 		
@@ -128,7 +134,6 @@ public class Player extends Entity{
 		} else {
 			updateXPos(xSpeed);
 		}
-//		isMoving = true;
 	}
 
 	private void jump() {
@@ -160,19 +165,32 @@ public class Player extends Entity{
 	private void setAnimation() {
 		int oldAni = playerAction;
 	
-		if(isMoving) {
-			playerAction = WALK;
-		}
-		else {
-			playerAction = IDLE;
+		if(isMoving && direction == LEFT) {
+			playerAction = WALK_LEFT;
+		} else if (isMoving && direction == RIGHT) {
+			playerAction = WALK_RIGHT;
+		} else {
+			if (direction == LEFT) {
+				playerAction = IDLE_LEFT;
+			} else {
+				playerAction = IDLE_RIGHT;
+			}
 		}
 		
 		if(attacking) {
-			playerAction = ATTACK;
+			if (direction == LEFT) {
+				playerAction = ATTACK_LEFT;				
+			} else {
+				playerAction = ATTACK_RIGHT;
+			}
 		}
 		
 		if(jump) {
-			playerAction = JUMP;
+			if (direction == LEFT) {
+				playerAction = JUMP_LEFT;
+			} else {
+				playerAction = JUMP_RIGHT;
+			}
 		}
 		if (oldAni != playerAction) {
 			aniIndex = 0;
@@ -199,7 +217,7 @@ public class Player extends Entity{
 					RenderableHolder.mushRoomJump.play();
 				}
 			}
-			if(aniIndex == 6 && playerAction == WALK) {
+			if(aniIndex == 6 && (playerAction == WALK_LEFT || playerAction == WALK_RIGHT)) {
 				if (!RenderableHolder.mushRoomJump.isPlaying()) {
 					RenderableHolder.mushRoomWalk.play();
 				}
@@ -290,7 +308,7 @@ public class Player extends Entity{
 	}
 	
 	public boolean getPlayerAttack() {
-		return playerAction == ATTACK;
+		return (playerAction == ATTACK_LEFT || playerAction == ATTACK_RIGHT);
 	}
 	
 	public int getDamage() {

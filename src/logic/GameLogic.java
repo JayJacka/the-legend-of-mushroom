@@ -51,7 +51,7 @@ public class GameLogic {
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
-		gameLoop = new AnimationTimer() {
+		this.gameLoop = new AnimationTimer() {
 			
 			@Override
 			public void handle(long arg0) {
@@ -81,7 +81,7 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
-		//System.out.println(currentLevel);
+//		System.out.println(currentLevel);
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {

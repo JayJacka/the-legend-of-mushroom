@@ -3,17 +3,24 @@ package utils;
 public class Constants {
 	
 	public static class PlayerConstants{
-		public static final int IDLE = 0;
-		public static final int ATTACK = 1;
-		public static final int JUMP = 2;
-		public static final int WALK = 3;
-		public static final int DEATH = 4;
+		public static final int IDLE_LEFT = 0;
+		public static final int IDLE_RIGHT = 1;
+		public static final int ATTACK_LEFT = 2;
+		public static final int ATTACK_RIGHT = 3;
+		public static final int JUMP_LEFT = 4;
+		public static final int JUMP_RIGHT = 5;
+		public static final int WALK_LEFT = 6;
+		public static final int WALK_RIGHT = 7;
+		public static final int DEATH = 8;
 		
 		public static int GetSpriteAmount(int playerAction) {
 			switch(playerAction){
-			case ATTACK: return 8;
-			case JUMP: return 8;
-			case WALK: return 8;
+			case ATTACK_LEFT: return 8;
+			case JUMP_LEFT: return 8;
+			case WALK_LEFT: return 8;
+			case ATTACK_RIGHT: return 8;
+			case JUMP_RIGHT: return 8;
+			case WALK_RIGHT: return 8;
 			default : return 8;
 			}
 		}
