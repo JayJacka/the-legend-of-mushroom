@@ -1,6 +1,8 @@
 package utils;
 
 import javafx.scene.shape.Rectangle;
+import utils.Constants.EnemyConstant;
+import utils.Constants.UniversalConstants;
 
 public class HelperMethods {
 	
@@ -18,19 +20,19 @@ public class HelperMethods {
 	}
 	
 	private static boolean IsSolid(float x, float y, int[][] levelData) {
-		if (x < 0 || x >= 1280) {
+		if (x < 0 || x >= UniversalConstants.X_DIMENSION) {
 			return true;
 		}
-		if (y < 0 || y >= 720) {
+		if (y < 0 || y >= UniversalConstants.Y_DIMENSION) {
 			return true;
 		}
 		
-		float xIndex = x/32;
-		float yIndex = y/32;
+		float xIndex = x/UniversalConstants.TILE_SIZE;
+		float yIndex = y/UniversalConstants.TILE_SIZE;
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
-		if (value > 0 && value != 199 && value != 234 && value != 123) {
+		if (value > 0 && value != 199 && value != EnemyConstant.TOMATO_R_VALUE && value != EnemyConstant.PINEAPPLE_R_VALUE) {
 			return true;
 		}
 		return false;
@@ -41,8 +43,8 @@ public class HelperMethods {
 	}
 	
 	private static boolean ClearLevelZone(float x, float y, int[][] levelData) {
-		float xIndex = x/32;
-		float yIndex = y/32;
+		float xIndex = x/UniversalConstants.TILE_SIZE;
+		float yIndex = y/UniversalConstants.TILE_SIZE;
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
@@ -54,32 +56,32 @@ public class HelperMethods {
 	
 	public static float GetEntityXPosNextToWall(Rectangle hitbox, float xSpeed) {
 		
-		int currentTile = (int) (hitbox.getX()/32);
+		int currentTile = (int) (hitbox.getX()/UniversalConstants.TILE_SIZE);
 		
 		if (xSpeed > 0) {
 			//right
-			float tileXPos = currentTile * 32;
-			float xOffset = (float) ((float)(32) - hitbox.getWidth());
+			float tileXPos = currentTile * UniversalConstants.TILE_SIZE;
+			float xOffset = (float) ((float)(UniversalConstants.TILE_SIZE) - hitbox.getWidth());
 			return tileXPos + xOffset - 1;
 			
 		} else {
 			//left
-			return currentTile * 32;
+			return currentTile * UniversalConstants.TILE_SIZE;
 		}
 		
 	}
 	
 	public static float GetEntityPosRoofFloor(Rectangle hitbox, float airSpeed) {
-		int currentTile = (int) (hitbox.getY()/32);
+		int currentTile = (int) (hitbox.getY()/UniversalConstants.TILE_SIZE);
 		if (airSpeed > 0) {
 			//fallilng
-			float tileYPos = currentTile * 32;
-			float yOffset = (float) ((float) (32) - hitbox.getHeight());
+			float tileYPos = currentTile * UniversalConstants.TILE_SIZE;
+			float yOffset = (float) ((float) (UniversalConstants.TILE_SIZE) - hitbox.getHeight());
 			return tileYPos + yOffset;
 			
 		} else {
 			//jumping
-			return currentTile * 32;
+			return currentTile * UniversalConstants.TILE_SIZE;
 		}
 	}
 	

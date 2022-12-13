@@ -2,6 +2,12 @@ package utils;
 
 public class Constants {
 	
+	public static class UniversalConstants{
+		public static final int TILE_SIZE = 32;
+		public static final int X_DIMENSION = 1280;
+		public static final int Y_DIMENSION = 720;
+	}
+	
 	public static class PlayerConstants{
 		public static final int IDLE_LEFT = 0;
 		public static final int IDLE_RIGHT = 1;
@@ -51,6 +57,12 @@ public class Constants {
 	public static class EnemyConstant{
 		public static final int TOMATO = 0;
 		public static final int PINEAPPLE = 1;
+		
+		public static final int X_OFFSET = 13;
+		public static final int Y_OFFSET = 21;
+		
+		public static final int TOMATO_R_VALUE = 234;
+		public static final int PINEAPPLE_R_VALUE = 123;
 		
 		public static final int IDLE = 0;
 		public static final int ATTACK = 1;

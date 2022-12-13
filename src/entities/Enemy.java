@@ -4,6 +4,7 @@ import static utils.Constants.EnemyConstant.GetSpriteAmount;
 
 import entities.base.Entity;
 import utils.Constants.EnemyConstant;
+import utils.Constants.UniversalConstants;
 
 public abstract class Enemy extends Entity{
     protected int aniIndex, State, Type;
@@ -65,9 +66,9 @@ public abstract class Enemy extends Entity{
     }
     
     protected boolean canSeePlayer(Player player) {
-        int playerTileY = (int) (player.getHitbox().getY()/32);
-//      System.out.println(playerTileY + " " +(int) (this.getHitbox().getY()/32));
-        if (playerTileY <= (int) (this.getHitbox().getY()/32 + 1) && playerTileY >= (int) (this.getHitbox().getY()/32 - 1) ) {
+        int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
+//      System.out.println(playerTileY + " " +(int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE));
+        if (playerTileY <= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE + 1) && playerTileY >= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE - 1) ) {
             if (isPlayerInRange(player)) {
                 return true;
             }
@@ -82,8 +83,8 @@ public abstract class Enemy extends Entity{
     }
     
     protected boolean canAttackPlayer(Player player) {
-        int playerTileY = (int) (player.getHitbox().getY()/32);
-        if (playerTileY == (int) (this.getHitbox().getY()/32)) {
+        int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
+        if (playerTileY == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
             if (isPlayerInAttackRange(player, this.attackRange)) {
                 return true;
             }

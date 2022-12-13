@@ -4,6 +4,7 @@ import static utils.Constants.PlayerConstants.*;
 import static utils.Constants.Directions.*;
 import static utils.HelperMethods.*;
 import utils.Animations;
+import utils.Constants.UniversalConstants;
 
 import java.util.ArrayList;
 import entities.base.Entity;
@@ -117,7 +118,7 @@ public class Player extends Entity{
 		}
 		
 		if (inAir) {
-			if (CanMoveHere((int) hitbox.getX(),(int) (hitbox.getY() + airSpeed), 32, 44, levelData)) {
+			if (CanMoveHere((int) hitbox.getX(),(int) (hitbox.getY() + airSpeed), UniversalConstants.TILE_SIZE, 44, levelData)) {
 				hitbox.setY((hitbox.getY() + airSpeed));
 				this.y += (airSpeed);
 				airSpeed += gravity;
@@ -154,7 +155,7 @@ public class Player extends Entity{
 
 	private void updateXPos(float xSpeed) {
 		// TODO Auto-generated method stub
-		if (CanMoveHere((int) (hitbox.getX()+xSpeed), (int) hitbox.getY(), 32, 44, levelData)) {
+		if (CanMoveHere((int) (hitbox.getX()+xSpeed), (int) hitbox.getY(), UniversalConstants.TILE_SIZE, 44, levelData)) {
 			hitbox.setX((hitbox.getX()+xSpeed));
 			this.x += xSpeed;
 		} else {
