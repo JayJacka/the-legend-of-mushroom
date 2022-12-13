@@ -35,7 +35,7 @@ public class Player extends Entity{
 	private static float jumpSpeed = JUMP_SPEED;
 	private static float fallSpeedAfterCollision = FALL_SPEED_AFTER_COLLISION;
 	private static int damage = DAMAGE;
-	private static int health = HEALTH;
+	private int health = HEALTH;
 	public float xSpeed;
 	public float knockbackSpeed = KNOCKBACK_SPEED;
 	private boolean inAir = false;
@@ -343,10 +343,10 @@ public class Player extends Entity{
 	}
 	
 	public int getHealth() {
-		return Player.health;
+		return this.health;
 	}
 	public void setHealth(int health) {
-		Player.health = health;
+		this.health = health;
 	}
 
 	public int getAniIndex() {
