@@ -45,6 +45,9 @@ public class GameLogic {
 		playing = new Playing(scene);
 		menu = new Menu(scene);
 		this.player = playing.getPlayer();
+		if (gameLoop != null) {
+			gameLoop.stop();
+		}
 		gameLoop(gc);
 		GameState.state = GameState.PLAYING;
 		//System.out.println(currentLevel);
