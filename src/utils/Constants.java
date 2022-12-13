@@ -54,15 +54,26 @@ public class Constants {
 		public static final int DOWN = 3;
 	}
 	
-	public static class EnemyConstant{
+	public static class EnemyConstants{
 		public static final int TOMATO = 0;
 		public static final int PINEAPPLE = 1;
 		
 		public static final int X_OFFSET = 13;
 		public static final int Y_OFFSET = 21;
 		
+		public static final int TOMATO_X_OFFSET = 13;
+		public static final int TOMATO_Y_OFFSET = 11;
+		
+		public static final int PINEAPPLE_X_OFFSET = 18;
+		public static final int PINEAPPLE_Y_OFFSET = 10;
+		
+		public static final int TOMATO_HITBOX_WIDTH = 38;
+		public static final int TOMATO_HITBOX_HEIGHT = 48;
+		
 		public static final int TOMATO_R_VALUE = 234;
 		public static final int PINEAPPLE_R_VALUE = 123;
+		
+		public static final int TOMATO_HEALTH = 100;
 		
 		public static final int IDLE = 0;
 		public static final int ATTACK = 1;

@@ -1,15 +1,15 @@
 package entities;
-import static utils.Constants.EnemyConstant.*;
+import static utils.Constants.EnemyConstants.*;
 
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameLogic;
 import objects.PineappleAmmo;
-import utils.Constants.EnemyConstant;
+import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 public class Pineapple extends Enemy{
     
-    private int offSetx = 18;
-    private int offSety = 10;
+    private int offSetx = EnemyConstants.PINEAPPLE_X_OFFSET;
+    private int offSety = EnemyConstants.PINEAPPLE_Y_OFFSET;
     private boolean shot = false;
     private boolean reset1 = false;
     private boolean reset2 = false;
@@ -48,11 +48,11 @@ public class Pineapple extends Enemy{
     @Override
     public void update(Player player) {
 //      System.out.println(canSeePlayer(player));
-        this.State = EnemyConstant.IDLE;
+        this.State = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
                 this.health -= player.getDamage();
-                this.State = EnemyConstant.HIT;
+                this.State = EnemyConstants.HIT;
             }
         }
         if (canAttackPlayer(player)) {

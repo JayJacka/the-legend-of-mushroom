@@ -1,7 +1,7 @@
 package utils;
 
 import javafx.scene.shape.Rectangle;
-import utils.Constants.EnemyConstant;
+import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 
 public class HelperMethods {
@@ -32,7 +32,7 @@ public class HelperMethods {
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
-		if (value > 0 && value != 199 && value != EnemyConstant.TOMATO_R_VALUE && value != EnemyConstant.PINEAPPLE_R_VALUE) {
+		if (value > 0 && value != 199 && value != EnemyConstants.TOMATO_R_VALUE && value != EnemyConstants.PINEAPPLE_R_VALUE) {
 			return true;
 		}
 		return false;

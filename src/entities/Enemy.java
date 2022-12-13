@@ -1,9 +1,9 @@
 package entities;
 
-import static utils.Constants.EnemyConstant.GetSpriteAmount;
+import static utils.Constants.EnemyConstants.GetSpriteAmount;
 
 import entities.base.Entity;
-import utils.Constants.EnemyConstant;
+import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 
 public abstract class Enemy extends Entity{
@@ -33,11 +33,11 @@ public abstract class Enemy extends Entity{
     
     public void update(Player player) {
 //      System.out.println(canSeePlayer(player));
-        this.State = EnemyConstant.IDLE;
+        this.State = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
                 this.health -= player.getDamage();
-                this.State = EnemyConstant.HIT;
+                this.State = EnemyConstants.HIT;
             }
         }
         if (canAttackPlayer(player)) {
