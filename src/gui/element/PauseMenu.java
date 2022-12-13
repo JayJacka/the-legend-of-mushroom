@@ -7,11 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import logic.GameLogic;
 import sharedObject.RenderableHolder;
 
 public class PauseMenu extends StackPane{

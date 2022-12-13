@@ -14,9 +14,7 @@ public class ObjectManager {
 	
 	public void update(GraphicsContext gc) {
 		ArrayList<PineappleAmmo> toBeRemoved = new ArrayList<PineappleAmmo>();
-		String test ="";
 		for (PineappleAmmo a : objects) {
-			test += " " + a.isActivated();
 			if(a.getX() < 0 || a.getX() > 1280 || !a.isActivated()) {
 				toBeRemoved.add(a);
 			}

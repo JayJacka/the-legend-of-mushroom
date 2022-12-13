@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
-import javafx.scene.text.Font;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();

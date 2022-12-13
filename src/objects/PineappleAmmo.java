@@ -3,11 +3,9 @@ package objects;
 import entities.Player;
 import entities.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import logic.GameLogic;
 import sharedObject.RenderableHolder;
 import utils.Constants.UniversalConstants;
-import utils.HelperMethods.*;
 
 public class PineappleAmmo extends Entity {
 	private float x;
@@ -15,8 +13,6 @@ public class PineappleAmmo extends Entity {
 	private boolean activated;
 	private Player player;
 	private int direction;
-	private int offsetX;
-	private int offsetY;
 
 	public PineappleAmmo(float x, float y, boolean activate, Player player, int direction) {
 		super(x, y+25, 16, 16);
