@@ -28,11 +28,11 @@ public class Pineapple extends Enemy{
 
     @Override
     public void update(Player player) {
-        this.State = EnemyConstants.IDLE;
+        this.state = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
                 this.health -= player.getDamage();
-                this.State = EnemyConstants.HIT;
+                this.state = EnemyConstants.HIT;
             }
         }
         if (canAttackPlayer(player)) {
@@ -83,7 +83,7 @@ public class Pineapple extends Enemy{
             }
             aniTick = 0;
             aniIndex++;
-            if(aniIndex >= GetSpriteAmount(Type, State)) {
+            if(aniIndex >= GetSpriteAmount(type, state)) {
                 aniIndex = 0;
             }
         }

@@ -6,16 +6,16 @@ import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 
 public abstract class Enemy extends Entity implements AnimationUpdatable{
-    protected int aniIndex, State, Type;
+    protected int aniIndex, state, type;
     protected int aniTick, aniSpeed = 10;
     protected int playerAttackRange = 64;
     protected int attackRange = 20;
     protected int attackDamage = 5;
     public int health;
 
-    public Enemy(int x, int y, int Type, int hitboxWidth, int hitboxHeight, int health) {
+    public Enemy(int x, int y, int type, int hitboxWidth, int hitboxHeight, int health) {
         super(x, y, hitboxWidth, hitboxHeight);
-        this.Type = Type;
+        this.type = type;
         this.health = health;
     }
 
@@ -24,18 +24,18 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
         if (aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex++;
-            if(aniIndex >= GetSpriteAmount(Type, State)) {
+            if(aniIndex >= GetSpriteAmount(type, state)) {
                 aniIndex = 0;
             }
         }
     }
     
     public void update(Player player) {
-        this.State = EnemyConstants.IDLE;
+        this.state = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
                 this.health -= player.getDamage();
-                this.State = EnemyConstants.HIT;
+                this.state = EnemyConstants.HIT;
             }
         }
         if (canAttackPlayer(player)) {
@@ -56,11 +56,11 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     }
     
     public int getState() {
-        return State;
+        return state;
     }
     
     public void setState(int state) {
-        this.State = state;
+        this.state = state;
     }
     
     protected boolean canSeePlayer(Player player) {
@@ -96,10 +96,5 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     public int getHealth() {
         return this.health;
     }
-
-    public void setAniIndex(int aniIndex) {
-        this.aniIndex = aniIndex;
-    }
-    
     
 }
