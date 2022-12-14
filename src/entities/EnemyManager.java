@@ -23,7 +23,7 @@ public class EnemyManager implements IRenderable{
 	}
 	
 	private void initializeEnemy() {
-		Image enemyDataImage = new Image(ClassLoader.getSystemResource("level/map"+ GameLogic.getInstance().getCurrentLevel()%3 + ".png").toString());
+		Image enemyDataImage = new Image(ClassLoader.getSystemResource("level/Map"+ GameLogic.getInstance().getCurrentLevel()%3 + ".png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
