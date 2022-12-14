@@ -9,7 +9,6 @@ import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 import logic.GameLogic;
 import sharedObject.IRenderable;
-import utils.Animations;
 
 public class EnemyManager implements IRenderable{
 	private ArrayList<ArrayList<Image>> tomatoeAni;
@@ -20,7 +19,6 @@ public class EnemyManager implements IRenderable{
 	public EnemyManager(Player player) {
 		this.player = player;
 		enemies = new ArrayList<Enemy>();
-		loadEnemyAnimations();
 		initializeEnemy();
 	}
 	
@@ -68,23 +66,13 @@ public class EnemyManager implements IRenderable{
 	public void drawEnemies(GraphicsContext gc) {
 		for(Enemy e : enemies) {
 			if (e instanceof Tomato) {
+				tomatoeAni = ((Tomato) e).getTomatoeAni();
 				gc.drawImage(tomatoeAni.get(e.getState()).get(e.getAniIndex()),  e.getX(), e.getY());
 			} else if (e instanceof Pineapple) {
+				pineappleAni = ((Pineapple) e).getPineappleAni();
 				gc.drawImage(pineappleAni.get(e.getState()).get(e.getAniIndex()),  e.getX(), e.getY());
 			}
 		}
 	}
 
-	private void loadEnemyAnimations() {
-		tomatoeAni = new ArrayList<ArrayList<Image>>();
-		tomatoeAni.add(Animations.getTomatoIdle());
-		tomatoeAni.add(Animations.getTomatoIdle());
-		tomatoeAni.add(Animations.getTomatoIdle());
-		tomatoeAni.add(Animations.getTomatoHit());
-		pineappleAni = new ArrayList<ArrayList<Image>>();
-		pineappleAni.add(Animations.getPineappleIdle());
-		pineappleAni.add(Animations.getPineappleIdle());
-		pineappleAni.add(Animations.getPineappleIdle());
-		pineappleAni.add(Animations.getPineappleHit());
-	}
 }

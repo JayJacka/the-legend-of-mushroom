@@ -5,7 +5,7 @@ import static utils.Constants.EnemyConstants.GetSpriteAmount;
 import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 
-public abstract class Enemy extends Entity{
+public abstract class Enemy extends Entity implements AnimationUpdatable{
     protected int aniIndex, State, Type;
     protected int aniTick, aniSpeed = 10;
     protected int playerAttackRange = 48;
@@ -19,7 +19,7 @@ public abstract class Enemy extends Entity{
         this.health = health;
     }
 
-    protected void updateAnimationTick() {
+    public void updateAnimationTick() {
         aniTick++;
         if (aniTick >= aniSpeed) {
             aniTick = 0;
