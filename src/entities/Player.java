@@ -13,23 +13,17 @@ import javafx.scene.image.Image;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements IRenderable{
+public class Player extends Entity implements IRenderable, AnimationUpdatable{
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE_RIGHT;
 	private int direction = RIGHT;
 	private float playerSpeed = 5f;
 	private int[][] levelData;
-	private boolean isMoving = false, attacking = false;
-	private boolean left, up, right, down, jump;
-	private static int xDrawOffset = X_DRAW_OFFSET;
-	private static int yDrawOffset = Y_DRAW_OFFSET;
-	private static int hboxWidth = HITBOXWIDTH;
-	private static int hboxHeight = HITBOXHEIGHT;
+	private boolean isMoving = false, isAttacking = false;
+	private boolean left, right, jump;
 	private static float airSpeed = AIRSPEED;
-	private static float gravity = GRAVITY;
 	private static float jumpSpeed = JUMP_SPEED;
-	private static float fallSpeedAfterCollision = FALL_SPEED_AFTER_COLLISION;
 	private static int damage = DAMAGE;
 	private int health = HEALTH;
 	public float xSpeed;
@@ -37,8 +31,8 @@ public class Player extends Entity implements IRenderable{
 	private boolean inAir = false;
 	
 	public Player(int x, int y) {
-		super(x, y, hboxWidth, hboxHeight);
-		initializeHitbox((int) x+xDrawOffset, (int) y+yDrawOffset);
+		super(x, y, HITBOXWIDTH, HITBOXHEIGHT);
+		initializeHitbox((int) x + X_DRAW_OFFSET, (int) y + Y_DRAW_OFFSET);
 		loadAnimations();
 	}
 	
@@ -46,6 +40,7 @@ public class Player extends Entity implements IRenderable{
 		update();
 		render(gc);
 	}
+	
 	public void update() {
 		if (knockbackSpeed != 0)  {
 			if (knockbackSpeed < 0) {
@@ -62,7 +57,7 @@ public class Player extends Entity implements IRenderable{
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
-		super.updateHitbox((int) this.x + xDrawOffset,(int) this.y + yDrawOffset);
+		super.updateHitbox((int) this.x + X_DRAW_OFFSET,(int) this.y + X_DRAW_OFFSET);
 	}
 	
 	public void render(GraphicsContext gc) {
@@ -115,14 +110,14 @@ public class Player extends Entity implements IRenderable{
 			if (CanMoveHere((int) hitbox.getX(),(int) (hitbox.getY() + airSpeed), UniversalConstants.TILE_SIZE, 44, levelData)) {
 				hitbox.setY((hitbox.getY() + airSpeed));
 				this.y += (airSpeed);
-				airSpeed += gravity;
+				airSpeed += GRAVITY;
 				updateXPos(xSpeed);
 			} else {
 				hitbox.setY((GetEntityPosRoofFloor(hitbox, airSpeed)));
 				if (airSpeed > 0) {
 					resetInAir();
 				} else {
-					airSpeed = fallSpeedAfterCollision;
+					airSpeed = FALL_SPEED_AFTER_COLLISION;
 				}
 				updateXPos(xSpeed);
 			}
@@ -172,7 +167,7 @@ public class Player extends Entity implements IRenderable{
 			}
 		}
 		
-		if(attacking) {
+		if(isAttacking) {
 			if (direction == LEFT) {
 				playerAction = ATTACK_LEFT;				
 			} else {
@@ -200,9 +195,9 @@ public class Player extends Entity implements IRenderable{
 			aniIndex++;
 			if(aniIndex >= GetSpriteAmount(playerAction)) {
 				aniIndex = 0;
-				attacking = false;
+				isAttacking = false;
 			}
-			if(aniIndex == 6 && attacking) {
+			if(aniIndex == 6 && isAttacking) {
 				if (!RenderableHolder.mushRoomJump.isPlaying()) {
 					RenderableHolder.mushRoomAttack.play();
 				}
@@ -227,7 +222,7 @@ public class Player extends Entity implements IRenderable{
 	}
 
 	public void setAttack(boolean attacking) {
-		this.attacking = attacking;
+		this.isAttacking = attacking;
 	}
 	public boolean isLeft() {
 		return left;
@@ -237,28 +232,12 @@ public class Player extends Entity implements IRenderable{
 		this.left = left;
 	}
 
-	public boolean isUp() {
-		return up;
-	}
-
-	public void setUp(boolean up) {
-		this.up = up;
-	}
-
 	public boolean isRight() {
 		return right;
 	}
 
 	public void setRight(boolean right) {
 		this.right = right;
-	}
-
-	public boolean isDown() {
-		return down;
-	}
-
-	public void setDown(boolean down) {
-		this.down = down;
 	}
 	
 	public boolean getPlayerAttack() {

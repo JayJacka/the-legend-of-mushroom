@@ -52,9 +52,6 @@ public class Playing {
 			else if (e.getCode() == KeyCode.UP) {
 				player.setJump(true);
 			}
-			else if (e.getCode() == KeyCode.DOWN) {
-				player.setDown(true);
-			}
 			else if (e.getCode() == KeyCode.Z) {
 				player.setAttack(true);
 			} 
@@ -72,9 +69,6 @@ public class Playing {
 			}
 			else if (e.getCode() == KeyCode.UP) {
 				player.setJump(false);
-			}
-			else if (e.getCode() == KeyCode.DOWN) {
-				player.setDown(false);
 			}
 			else if (e.getCode() == KeyCode.Z) {
 				player.setAttack(false);
