@@ -17,7 +17,7 @@ import javafx.scene.input.KeyEvent;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements IRenderable{
+public class Player extends Entity implements IRenderable,AnimationUpdatable{
 	private int x,y;
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
@@ -73,7 +73,7 @@ public class Player extends Entity implements IRenderable{
 	public void render(GraphicsContext gc) {
 		gc.drawImage(animations.get(playerAction).get(aniIndex), x, y);
 	}
-	private void loadAnimations() {
+	public void loadAnimations() {
 		animations = new ArrayList<ArrayList<Image>>();
 		animations.add(Animations.getMushroomIdleLeft());
 		animations.add(Animations.getMushroomIdleRight());
@@ -198,7 +198,7 @@ public class Player extends Entity implements IRenderable{
 		}	
 	}
 
-	private void updateAnimationTick() {
+	public void updateAnimationTick() {
 		aniTick++;
 		if (aniTick >= aniSpeed) {
 			aniTick = 0;

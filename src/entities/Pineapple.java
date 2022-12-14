@@ -1,8 +1,12 @@
 package entities;
 import static utils.Constants.EnemyConstants.*;
 
+import java.util.ArrayList;
+
+import javafx.scene.image.Image;
 import logic.GameLogic;
 import objects.PineappleAmmo;
+import utils.Animations;
 import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 public class Pineapple extends Enemy{
@@ -13,12 +17,13 @@ public class Pineapple extends Enemy{
     private boolean reset1 = false;
     private boolean reset2 = false;
     private boolean reset3 = false;
-    
+    private ArrayList<ArrayList<Image>> pineappleAni;
     private int rangeAttackRange = 192;
     
     public Pineapple(float x, float y, int Type) {
         super(x, y, PINEAPPLE, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HEALTH);
         initializeHitbox(x + offSetx, y + offSety);
+        loadAnimations();
     }
 
     @Override
@@ -53,7 +58,7 @@ public class Pineapple extends Enemy{
         updateAnimationTick();
     }
     @Override
-    protected void updateAnimationTick() {
+	public void updateAnimationTick() {
         aniTick++;
         if (aniTick >= aniSpeed) {
             if (aniIndex == 2) {
@@ -83,4 +88,20 @@ public class Pineapple extends Enemy{
             }
         }
     }
+
+	@Override
+	public void loadAnimations() {
+		// TODO Auto-generated method stub
+		pineappleAni = new ArrayList<ArrayList<Image>>();
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleIdle());
+		pineappleAni.add(Animations.getPineappleHit());
+	}
+
+	public ArrayList<ArrayList<Image>> getPineappleAni() {
+		return pineappleAni;
+	}
+	
+	
 }

@@ -8,6 +8,8 @@ import gui.element.GameEndMenu;
 import gui.element.PauseMenu;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import levels.LevelManager;
@@ -26,17 +28,59 @@ public class Playing {
     
     public Playing(Scene scene) {
         levelManager = new LevelManager();
-        player = new Player(0,0, scene);
+        player = new Player(0,0);
         enemyManager = new EnemyManager(player);
         objectManager = new ObjectManager();
         player.loadLevelData(levelManager.getLevelData());
         RenderableHolder.battleMusicTimer.start();
+        addKeyListener(scene);
         pausePane = new PauseMenu();
 		pausePane.setVisible(false);
 		gameEndPane = new GameEndMenu();
 		gameEndPane.setVisible(false);
 		GameLogic.getInstance().getGameplay().getChildren().addAll(pausePane,gameEndPane);
     }
+    
+    public void addKeyListener(Scene sc) {
+		sc.setOnKeyPressed((KeyEvent e) -> {
+			if (e.getCode() == KeyCode.LEFT) {
+				player.setLeft(true);
+			}
+			else if (e.getCode() == KeyCode.RIGHT) {
+				player.setRight(true);
+			}
+			else if (e.getCode() == KeyCode.UP) {
+				player.setJump(true);
+			}
+			else if (e.getCode() == KeyCode.DOWN) {
+				player.setDown(true);
+			}
+			else if (e.getCode() == KeyCode.Z) {
+				player.setAttack(true);
+			} 
+			else if (e.getCode() == KeyCode.ESCAPE) {
+				GameState.state = GameState.PAUSE;
+			}
+		});
+
+		sc.setOnKeyReleased((KeyEvent e) -> {
+			if (e.getCode() == KeyCode.LEFT) {
+				player.setLeft(false);
+			}
+			else if (e.getCode() == KeyCode.RIGHT) {
+				player.setRight(false);
+			}
+			else if (e.getCode() == KeyCode.UP) {
+				player.setJump(false);
+			}
+			else if (e.getCode() == KeyCode.DOWN) {
+				player.setDown(false);
+			}
+			else if (e.getCode() == KeyCode.Z) {
+				player.setAttack(false);
+			}
+		});
+	}
     
     public void update(GraphicsContext gc) {
     	levelManager.draw(gc);
