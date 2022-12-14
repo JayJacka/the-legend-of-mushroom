@@ -109,60 +109,60 @@ public class Animations {
 	
 	public static ArrayList<Image> getTomatoIdle(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.TomatoIdle0);
-		x.add(RenderableHolder.TomatoIdle1);
-		x.add(RenderableHolder.TomatoIdle2);
-		x.add(RenderableHolder.TomatoIdle3);
-		x.add(RenderableHolder.TomatoIdle4);
-		x.add(RenderableHolder.TomatoIdle5);
+		x.add(RenderableHolder.tomatoIdle0);
+		x.add(RenderableHolder.tomatoIdle1);
+		x.add(RenderableHolder.tomatoIdle2);
+		x.add(RenderableHolder.tomatoIdle3);
+		x.add(RenderableHolder.tomatoIdle4);
+		x.add(RenderableHolder.tomatoIdle5);
 		return x;
 	}
 	
 	public static ArrayList<Image> getTomatoWalk(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.TomatoIdle0);
-		x.add(RenderableHolder.TomatoIdle1);
-		x.add(RenderableHolder.TomatoIdle2);
-		x.add(RenderableHolder.TomatoIdle3);
-		x.add(RenderableHolder.TomatoIdle4);
-		x.add(RenderableHolder.TomatoIdle5);
+		x.add(RenderableHolder.tomatoIdle0);
+		x.add(RenderableHolder.tomatoIdle1);
+		x.add(RenderableHolder.tomatoIdle2);
+		x.add(RenderableHolder.tomatoIdle3);
+		x.add(RenderableHolder.tomatoIdle4);
+		x.add(RenderableHolder.tomatoIdle5);
 		return x;
 	}
 	
 	public static ArrayList<Image> getTomatoHit(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.TomatoHit0);
-		x.add(RenderableHolder.TomatoHit1);
-		x.add(RenderableHolder.TomatoHit2);
-		x.add(RenderableHolder.TomatoHit3);
-		x.add(RenderableHolder.TomatoHit4);
-		x.add(RenderableHolder.TomatoHit5);
+		x.add(RenderableHolder.tomatoHit0);
+		x.add(RenderableHolder.tomatoHit1);
+		x.add(RenderableHolder.tomatoHit2);
+		x.add(RenderableHolder.tomatoHit3);
+		x.add(RenderableHolder.tomatoHit4);
+		x.add(RenderableHolder.tomatoHit5);
 		return x;
 	}
 	
 	public static ArrayList<Image> getPineappleIdle(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.PineappleIdle0);
-		x.add(RenderableHolder.PineappleIdle1);
-		x.add(RenderableHolder.PineappleIdle2);
+		x.add(RenderableHolder.pineappleIdle0);
+		x.add(RenderableHolder.pineappleIdle1);
+		x.add(RenderableHolder.pineappleIdle2);
 		return x;
 	}
 	
 	public static ArrayList<Image> getPineappleAttack(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.PineappleAttack0);
-		x.add(RenderableHolder.PineappleAttack1);
-		x.add(RenderableHolder.PineappleAttack2);
-		x.add(RenderableHolder.PineappleAttack3);
+		x.add(RenderableHolder.pineappleAttack0);
+		x.add(RenderableHolder.pineappleAttack1);
+		x.add(RenderableHolder.pineappleAttack2);
+		x.add(RenderableHolder.pineappleAttack3);
 		return x;
 	}
 	
 	public static ArrayList<Image> getPineappleHit(){
 		ArrayList<Image> x = new ArrayList<Image>();
-		x.add(RenderableHolder.PineappleHit0);
-		x.add(RenderableHolder.PineappleHit1);
-		x.add(RenderableHolder.PineappleHit2);
-		x.add(RenderableHolder.PineappleHit3);
+		x.add(RenderableHolder.pineappleHit0);
+		x.add(RenderableHolder.pineappleHit1);
+		x.add(RenderableHolder.pineappleHit2);
+		x.add(RenderableHolder.pineappleHit3);
 		return x;
 	}
 }

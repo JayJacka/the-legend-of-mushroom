@@ -18,7 +18,7 @@ public class LevelManager {
 	}
 	
 	public void initializeLevel() {
-		Image dataImage = new Image(ClassLoader.getSystemResource("level/Map" + (GameLogic.getInstance().getCurrentLevel())%3 + ".png").toString());
+		Image dataImage = new Image(ClassLoader.getSystemResource("level/map" + (GameLogic.getInstance().getCurrentLevel())%3 + ".png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i< 40; i++) {
 				Color color = dataImage.getPixelReader().getColor(i, j);
@@ -30,8 +30,8 @@ public class LevelManager {
 		
 	}
 	
-	public void Draw(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.GameBackground,0,0);
+	public void draw(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.gameBackground,0,0);
 		MapManager.drawElement(GameLogic.getInstance().getCurrentLevel()%3,gc);
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {

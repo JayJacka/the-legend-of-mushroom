@@ -28,25 +28,25 @@ public class MapManager {
 	
 	public static void drawElementMap1First(GraphicsContext gc) {
 		gc.drawImage(RenderableHolder.pine,-50,300,200,250);
-		gc.drawImage(RenderableHolder.Bush,0,495,120,80);
+		gc.drawImage(RenderableHolder.bush,0,495,120,80);
 		gc.drawImage(RenderableHolder.tree2,80,336,250,240);
 		gc.drawImage(RenderableHolder.plantHouse,30,400,200,177);
-		gc.drawImage(RenderableHolder.Bush,165,535,69,42);
-		gc.drawImage(RenderableHolder.Bush,190,535,69,42);
+		gc.drawImage(RenderableHolder.bush,165,535,69,42);
+		gc.drawImage(RenderableHolder.bush,190,535,69,42);
 		gc.drawImage(RenderableHolder.rock2,370,470);
-		gc.drawImage(RenderableHolder.Bush,410,470,69,42);
-		gc.drawImage(RenderableHolder.Bush,1200,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,1110,500,120,80);
+		gc.drawImage(RenderableHolder.bush,410,470,69,42);
+		gc.drawImage(RenderableHolder.bush,1200,500,120,80);
+		gc.drawImage(RenderableHolder.bush,1110,500,120,80);
 	}
 
 	public static void drawElementMap1Second(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,1110,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,1010,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,1200,560,120,80);
-		gc.drawImage(RenderableHolder.Bush,1110,560,120,80);
-		gc.drawImage(RenderableHolder.Bush,1010,560,120,80);
+		gc.drawImage(RenderableHolder.bush,1110,500,120,80);
+		gc.drawImage(RenderableHolder.bush,1010,500,120,80);
+		gc.drawImage(RenderableHolder.bush,1200,560,120,80);
+		gc.drawImage(RenderableHolder.bush,1110,560,120,80);
+		gc.drawImage(RenderableHolder.bush,1010,560,120,80);
 		gc.drawImage(RenderableHolder.treeHouse,1150,-30, 238,288);
-		gc.drawImage(RenderableHolder.Bush,1120,215,69,42);
+		gc.drawImage(RenderableHolder.bush,1120,215,69,42);
 		gc.drawImage(RenderableHolder.tree2,0,-40,210,200);
 		gc.drawImage(RenderableHolder.tree2,160,-40,210,200);
 		gc.drawImage(RenderableHolder.tree2,80,-40,210,200);
@@ -54,13 +54,13 @@ public class MapManager {
 	}
 	public static void drawElementMap1Third(GraphicsContext gc) {
 		gc.drawImage(new Image(ClassLoader.getSystemResource("image/tree.png").toString()),-60,-40,210,200);
-		gc.drawImage(RenderableHolder.Bush,0,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,50,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,100,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,150,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,200,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,250,100,100,60);
-		gc.drawImage(RenderableHolder.Bush,300,100,100,60);
+		gc.drawImage(RenderableHolder.bush,0,100,100,60);
+		gc.drawImage(RenderableHolder.bush,50,100,100,60);
+		gc.drawImage(RenderableHolder.bush,100,100,100,60);
+		gc.drawImage(RenderableHolder.bush,150,100,100,60);
+		gc.drawImage(RenderableHolder.bush,200,100,100,60);
+		gc.drawImage(RenderableHolder.bush,250,100,100,60);
+		gc.drawImage(RenderableHolder.bush,300,100,100,60);
 	}
 	
 	public static void drawElementMap2(GraphicsContext gc) {
@@ -81,23 +81,23 @@ public class MapManager {
 		gc.drawImage(RenderableHolder.pine, 920,0,150,230);
 		gc.drawImage(RenderableHolder.rock1, 600,590);
 		gc.drawImage(RenderableHolder.rock2, 640,590);
-		gc.drawImage(RenderableHolder.Bush,520,325,100,60);
-		gc.drawImage(RenderableHolder.Bush,560,325,100,60);
-		gc.drawImage(RenderableHolder.Bush,600,325,100,60);
-		gc.drawImage(RenderableHolder.Bush,640,325,100,60);
-		gc.drawImage(RenderableHolder.Bush,680,325,100,60);
-		gc.drawImage(RenderableHolder.Bush,720,325,100,60);
+		gc.drawImage(RenderableHolder.bush,520,325,100,60);
+		gc.drawImage(RenderableHolder.bush,560,325,100,60);
+		gc.drawImage(RenderableHolder.bush,600,325,100,60);
+		gc.drawImage(RenderableHolder.bush,640,325,100,60);
+		gc.drawImage(RenderableHolder.bush,680,325,100,60);
+		gc.drawImage(RenderableHolder.bush,720,325,100,60);
 	}
 
 	private static void drawElementMap2Second(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,-20,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,55,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,130,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,-20,560,120,80);
-		gc.drawImage(RenderableHolder.Bush,55,560,120,80);
-		gc.drawImage(RenderableHolder.Bush,130,560,120,80);
-		gc.drawImage(RenderableHolder.Bush,190,500,120,80);
-		gc.drawImage(RenderableHolder.Bush,190,560,120,80);
+		gc.drawImage(RenderableHolder.bush,-20,500,120,80);
+		gc.drawImage(RenderableHolder.bush,55,500,120,80);
+		gc.drawImage(RenderableHolder.bush,130,500,120,80);
+		gc.drawImage(RenderableHolder.bush,-20,560,120,80);
+		gc.drawImage(RenderableHolder.bush,55,560,120,80);
+		gc.drawImage(RenderableHolder.bush,130,560,120,80);
+		gc.drawImage(RenderableHolder.bush,190,500,120,80);
+		gc.drawImage(RenderableHolder.bush,190,560,120,80);
 		gc.drawImage(RenderableHolder.plant,300,130,30,30);
 		gc.drawImage(RenderableHolder.bigCrate,350,97,64,64);
 		gc.drawImage(RenderableHolder.bigCrate,400,113,48,48);
@@ -126,22 +126,22 @@ public class MapManager {
 	}
 	
 	public static void drawElementMap3First(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,640,452);
-		gc.drawImage(RenderableHolder.Bush,660,452);
-		gc.drawImage(RenderableHolder.Bush,680,452);
-		gc.drawImage(RenderableHolder.Bush,700,452);
-		gc.drawImage(RenderableHolder.Bush,720,452);
-		gc.drawImage(RenderableHolder.Bush,740,452);
-		gc.drawImage(RenderableHolder.Bush,760,452);
-		gc.drawImage(RenderableHolder.Bush,780,452);
-		gc.drawImage(RenderableHolder.Bush,800,452);
+		gc.drawImage(RenderableHolder.bush,640,452);
+		gc.drawImage(RenderableHolder.bush,660,452);
+		gc.drawImage(RenderableHolder.bush,680,452);
+		gc.drawImage(RenderableHolder.bush,700,452);
+		gc.drawImage(RenderableHolder.bush,720,452);
+		gc.drawImage(RenderableHolder.bush,740,452);
+		gc.drawImage(RenderableHolder.bush,760,452);
+		gc.drawImage(RenderableHolder.bush,780,452);
+		gc.drawImage(RenderableHolder.bush,800,452);
 		gc.drawImage(RenderableHolder.fence,700,440,48,48);
 		gc.drawImage(RenderableHolder.fence,733,440,48,48);
 		gc.drawImage(RenderableHolder.fence,766,440,48,48);
 		gc.drawImage(RenderableHolder.tree1,1000,60,210,200);
 	}
 	public static void drawElementMap3Second(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,200,355,100,60);
+		gc.drawImage(RenderableHolder.bush,200,355,100,60);
 		gc.drawImage(RenderableHolder.rock1,200,365);
 		gc.drawImage(RenderableHolder.bigCrate,1100,370,48,48);
 		gc.drawImage(RenderableHolder.fence,700,440,48,48);
@@ -155,10 +155,10 @@ public class MapManager {
 	}
 	
 	public static void drawElementMap3Third(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,0,132);
-		gc.drawImage(RenderableHolder.Bush,40,132);
-		gc.drawImage(RenderableHolder.Bush,200,200,100,60);
-		gc.drawImage(RenderableHolder.Bush,240,200,100,60);
+		gc.drawImage(RenderableHolder.bush,0,132);
+		gc.drawImage(RenderableHolder.bush,40,132);
+		gc.drawImage(RenderableHolder.bush,200,200,100,60);
+		gc.drawImage(RenderableHolder.bush,240,200,100,60);
 		gc.drawImage(RenderableHolder.pine,200,30,150,230);
 		gc.drawImage(RenderableHolder.pine,650,95,150,230);
 		gc.drawImage(RenderableHolder.rock2,660,280);
@@ -168,33 +168,33 @@ public class MapManager {
 	}
 	
 	public static void drawElementMap3Fourth(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,640,644);
-		gc.drawImage(RenderableHolder.Bush,660,644);
-		gc.drawImage(RenderableHolder.Bush,680,644);
-		gc.drawImage(RenderableHolder.Bush,700,644);
-		gc.drawImage(RenderableHolder.Bush,720,644);
-		gc.drawImage(RenderableHolder.Bush,740,644);
-		gc.drawImage(RenderableHolder.Bush,760,644);
-		gc.drawImage(RenderableHolder.Bush,780,644);
-		gc.drawImage(RenderableHolder.Bush,800,644);
-		gc.drawImage(RenderableHolder.Bush,840,644);
-		gc.drawImage(RenderableHolder.Bush,860,644);
-		gc.drawImage(RenderableHolder.Bush,880,644);
-		gc.drawImage(RenderableHolder.Bush,900,644);
-		gc.drawImage(RenderableHolder.Bush,920,644);
-		gc.drawImage(RenderableHolder.Bush,940,644);
-		gc.drawImage(RenderableHolder.Bush,960,644);
-		gc.drawImage(RenderableHolder.Bush,980,644);
-		gc.drawImage(RenderableHolder.Bush,1000,644);
+		gc.drawImage(RenderableHolder.bush,640,644);
+		gc.drawImage(RenderableHolder.bush,660,644);
+		gc.drawImage(RenderableHolder.bush,680,644);
+		gc.drawImage(RenderableHolder.bush,700,644);
+		gc.drawImage(RenderableHolder.bush,720,644);
+		gc.drawImage(RenderableHolder.bush,740,644);
+		gc.drawImage(RenderableHolder.bush,760,644);
+		gc.drawImage(RenderableHolder.bush,780,644);
+		gc.drawImage(RenderableHolder.bush,800,644);
+		gc.drawImage(RenderableHolder.bush,840,644);
+		gc.drawImage(RenderableHolder.bush,860,644);
+		gc.drawImage(RenderableHolder.bush,880,644);
+		gc.drawImage(RenderableHolder.bush,900,644);
+		gc.drawImage(RenderableHolder.bush,920,644);
+		gc.drawImage(RenderableHolder.bush,940,644);
+		gc.drawImage(RenderableHolder.bush,960,644);
+		gc.drawImage(RenderableHolder.bush,980,644);
+		gc.drawImage(RenderableHolder.bush,1000,644);
 		
 	}
 	
 	public static void drawElementMap3Fifth(GraphicsContext gc) {
-		gc.drawImage(RenderableHolder.Bush,1020,644);
-		gc.drawImage(RenderableHolder.Bush,1040,644);
-		gc.drawImage(RenderableHolder.Bush,1060,644);
-		gc.drawImage(RenderableHolder.Bush,1080,644);
-		gc.drawImage(RenderableHolder.Bush,1100,644);
+		gc.drawImage(RenderableHolder.bush,1020,644);
+		gc.drawImage(RenderableHolder.bush,1040,644);
+		gc.drawImage(RenderableHolder.bush,1060,644);
+		gc.drawImage(RenderableHolder.bush,1080,644);
+		gc.drawImage(RenderableHolder.bush,1100,644);
 		gc.drawImage(RenderableHolder.rock2,280,529);
 		
 	}

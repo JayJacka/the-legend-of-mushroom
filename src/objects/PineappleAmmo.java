@@ -22,32 +22,12 @@ public class PineappleAmmo extends Entity {
 		this.player = player;
 		this.direction = direction;
 		initializeHitbox(x, y);
-		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(RenderableHolder.PineappleAmmo, this.x, this.y);
+		gc.drawImage(RenderableHolder.pineappleAmmo, this.x, this.y);
 		this.drawHitbox(gc);
-	}
-
-	@Override
-	public boolean isRemoved() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 	public void update(GraphicsContext gc) {

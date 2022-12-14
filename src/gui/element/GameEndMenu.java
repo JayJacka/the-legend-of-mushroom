@@ -2,7 +2,6 @@ package gui.element;
 
 import gui.page.Gameplay;
 import gui.page.MainMenuPage;
-import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
@@ -19,7 +18,6 @@ public class GameEndMenu extends StackPane{
 	private ImageView GameOver;
 	private ImageView NoButton;
 	private ImageView YesButton;
-	private AnimationTimer BattleMusic;
 	private Text score;
 	
 	public GameEndMenu() {
@@ -41,83 +39,61 @@ public class GameEndMenu extends StackPane{
 	}
 	
 	public void initializeGameOver() {
-		GameOver = new ImageView(RenderableHolder.Gameover);
+		GameOver = new ImageView(RenderableHolder.gameover);
 		GameOver.setFitWidth(460);
 		GameOver.setFitHeight(480);
 	}
 	
 	public void initializeYesButton() {
-		YesButton = new ImageView(RenderableHolder.Yes);
+		YesButton = new ImageView(RenderableHolder.yes);
 		YesButton.setCursor(Cursor.HAND);
 		YesButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				//NoButton.setTranslateX(-10);
-				//NoButton.setTranslateY(10);
 				YesButton.setFitHeight(55);
 				YesButton.setFitWidth(130);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
 		YesButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				YesButton.setFitHeight(45);
 				YesButton.setFitWidth(120);
 			}
 		});
-		
 		YesButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				Gameplay gameplay = new Gameplay(GameLogic.getInstance().getGameplay().getPrimaryStage());
-
 			}
 		});
 	}
 	
 	public void initializeNoButton() {
-		NoButton = new ImageView(RenderableHolder.No);
+		NoButton = new ImageView(RenderableHolder.no);
 		NoButton.setCursor(Cursor.HAND);
 		NoButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
-				//NoButton.setTranslateX(-10);
-				//NoButton.setTranslateY(10);
+
 				NoButton.setFitHeight(55);
 				NoButton.setFitWidth(130);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
 		NoButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				NoButton.setFitHeight(45);
 				NoButton.setFitWidth(120);
 			}
 		});
 		
 		NoButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				setVisible(false);
-				
 				MainMenuPage mainMenuPage = new MainMenuPage(GameLogic.getInstance().getGameplay().getPrimaryStage());
+				RenderableHolder.battleMusic.stop();
+				RenderableHolder.battleMusicTimer.stop();
 			}
 		});
 	}

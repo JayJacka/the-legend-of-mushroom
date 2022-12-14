@@ -22,7 +22,6 @@ public class Playing {
     private LevelManager levelManager;
     private EnemyManager enemyManager;
     private ObjectManager objectManager;
-	private AnimationTimer BattleMusic;
 	private PauseMenu pausePane;
 	private GameEndMenu gameEndPane;
     
@@ -32,7 +31,7 @@ public class Playing {
         enemyManager = new EnemyManager(player);
         objectManager = new ObjectManager();
         player.loadLevelData(levelManager.getLevelData());
-        //playBattleMusic();
+        RenderableHolder.battleMusicTimer.start();
         pausePane = new PauseMenu();
 		pausePane.setVisible(false);
 		gameEndPane = new GameEndMenu();
@@ -41,7 +40,7 @@ public class Playing {
     }
     
     public void update(GraphicsContext gc) {
-    	levelManager.Draw(gc);
+    	levelManager.draw(gc);
 		enemyManager.draw(gc);
 		objectManager.update(gc);
 		player.draw(gc);
@@ -55,7 +54,7 @@ public class Playing {
     }
     
     public void drawLastFrame(GraphicsContext gc) {
-    	levelManager.Draw(gc);
+    	levelManager.draw(gc);
 		player.render(gc);
 		enemyManager.drawEnemies(gc);
 		objectManager.draw(gc);
@@ -65,14 +64,12 @@ public class Playing {
     }
     
     public void end(GraphicsContext gc) {
-    	levelManager.Draw(gc);
+    	levelManager.draw(gc);
 		player.render(gc);
 		enemyManager.drawEnemies(gc);
 		objectManager.draw(gc);
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
-		//BattleMusic.stop();
-		//RenderableHolder.BattleMusic.stop();
 		gameEndPane.setVisible(true);
     }
     
@@ -87,20 +84,6 @@ public class Playing {
     public int[][] getLevelData() {
         return levelManager.getLevelData();
     }
-
-	public void playBattleMusic() {
-		BattleMusic = new AnimationTimer() {
-			
-			@Override
-			public void handle(long arg0) {
-				// TODO Auto-generated method stub
-				if (!RenderableHolder.BattleMusic.isPlaying()) {
-					RenderableHolder.BattleMusic.play();
-				}
-			}
-		};
-		BattleMusic.start();
-	}
 	
 	public void drawGameStatus(GraphicsContext gc) {
 		drawHpBar(gc, player.getHealth());

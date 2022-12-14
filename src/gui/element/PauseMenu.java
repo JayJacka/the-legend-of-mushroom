@@ -1,7 +1,6 @@
 package gui.element;
 
 import gamestates.GameState;
-import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
@@ -16,14 +15,11 @@ public class PauseMenu extends StackPane{
 	private ImageView quitButton;
 	private ImageView soundOffButton;
 	private ImageView soundOnButton;
-	private AnimationTimer BattleMusic;
 	
 	public PauseMenu() {
 		setMaxHeight(300);
 		setMaxWidth(230);
 		VBox button = new VBox();
-		initializeBackgroundMusic();
-		BattleMusic.start();
 		initializeResumeButton();
 		initializeQuitButton();
 		initializeSoundOnButton();
@@ -31,11 +27,11 @@ public class PauseMenu extends StackPane{
 		StackPane sounds = new StackPane();
 		sounds.getChildren().addAll(soundOnButton,soundOffButton);
 		button.getChildren().addAll(resumeButton,quitButton,sounds);
-		getChildren().add(button);		
+		getChildren().add(button);
 	}
 	
 	public void initializeResumeButton() {
-		resumeButton = new ImageView(RenderableHolder.Resume);
+		resumeButton = new ImageView(RenderableHolder.resume);
 		resumeButton.setCursor(Cursor.HAND);
 		resumeButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 			
@@ -45,7 +41,7 @@ public class PauseMenu extends StackPane{
 				resumeButton.setTranslateX(-5);
 				resumeButton.setFitHeight(130);
 				resumeButton.setFitWidth(240);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
@@ -68,11 +64,11 @@ public class PauseMenu extends StackPane{
 				GameState.state = GameState.PLAYING;
 				setVisible(false);
 			}
-		});;
+		});
 	}
 	
 	public void initializeQuitButton() {
-		quitButton = new ImageView(RenderableHolder.Quit);
+		quitButton = new ImageView(RenderableHolder.quit);
 		quitButton.setCursor(Cursor.HAND);
 		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
 			
@@ -82,7 +78,7 @@ public class PauseMenu extends StackPane{
 				quitButton.setTranslateX(-5);
 				quitButton.setFitHeight(130);
 				quitButton.setFitWidth(240);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
@@ -108,17 +104,19 @@ public class PauseMenu extends StackPane{
 	}
 	
 	public void initializeSoundOnButton() {
-		soundOnButton = new ImageView(RenderableHolder.SoundOn);
+		soundOnButton = new ImageView(RenderableHolder.soundOn);
 		soundOnButton.setCursor(Cursor.HAND);
 		soundOnButton.setFitHeight(64);
 		soundOnButton.setFitWidth(64);
+		soundOnButton.setVisible(true);
 		soundOnButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				RenderableHolder.BattleMusic.stop();
-				BattleMusic.stop();
+				RenderableHolder.battleMusic.stop();
+				RenderableHolder.battleMusicTimer.stop();
+				//BattleMusic.stop();
 				soundOnButton.setVisible(false);
 				soundOffButton.setVisible(true);
 			}
@@ -131,7 +129,7 @@ public class PauseMenu extends StackPane{
 				// TODO Auto-generated method stub
 				soundOnButton.setFitHeight(70);
 				soundOnButton.setFitWidth(70);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
@@ -146,7 +144,7 @@ public class PauseMenu extends StackPane{
 		});
 	}
 	public void initializeSoundOffButton() {
-		soundOffButton = new ImageView(RenderableHolder.SoundOff);
+		soundOffButton = new ImageView(RenderableHolder.soundOff);
 		soundOffButton.setCursor(Cursor.HAND);
 		soundOffButton.setFitHeight(64);
 		soundOffButton.setFitWidth(64);
@@ -155,7 +153,7 @@ public class PauseMenu extends StackPane{
 			@Override
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				BattleMusic.start();
+				RenderableHolder.battleMusicTimer.start();
 				soundOnButton.setVisible(true);
 				soundOffButton.setVisible(false);
 			}
@@ -168,7 +166,7 @@ public class PauseMenu extends StackPane{
 				// TODO Auto-generated method stub
 				soundOffButton.setFitHeight(70);
 				soundOffButton.setFitWidth(70);
-				RenderableHolder.MouseEnter.play();
+				RenderableHolder.mouseEnter.play();
 			}
 		});
 		
@@ -181,17 +179,6 @@ public class PauseMenu extends StackPane{
 				soundOffButton.setFitWidth(64);
 			}
 		});
-	}
-	public void initializeBackgroundMusic() {
-		BattleMusic = new AnimationTimer() {
-			
-			@Override
-			public void handle(long arg0) {
-				// TODO Auto-generated method stub
-				if(!RenderableHolder.BattleMusic.isPlaying()) 
-					RenderableHolder.BattleMusic.play();
-			}
-		};
 	}
 	
 }

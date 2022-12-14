@@ -17,27 +17,9 @@ public class Tomato extends Enemy{
 	}
 
 	@Override
-	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public boolean isRemoved() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 }

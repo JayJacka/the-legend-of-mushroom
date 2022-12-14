@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
@@ -90,39 +92,39 @@ public class RenderableHolder {
 	
 	
 	//Tomato Image
-	public static Image TomatoIdle0;
-	public static Image TomatoIdle1;
-	public static Image TomatoIdle2;
-	public static Image TomatoIdle3;
-	public static Image TomatoIdle4;
-	public static Image TomatoIdle5;
+	public static Image tomatoIdle0;
+	public static Image tomatoIdle1;
+	public static Image tomatoIdle2;
+	public static Image tomatoIdle3;
+	public static Image tomatoIdle4;
+	public static Image tomatoIdle5;
 	
-	public static Image TomatoHit0;
-	public static Image TomatoHit1;
-	public static Image TomatoHit2;
-	public static Image TomatoHit3;
-	public static Image TomatoHit4;
-	public static Image TomatoHit5;
+	public static Image tomatoHit0;
+	public static Image tomatoHit1;
+	public static Image tomatoHit2;
+	public static Image tomatoHit3;
+	public static Image tomatoHit4;
+	public static Image tomatoHit5;
 	
 	//Pineapple Image
-	public static Image PineappleIdle0;
-	public static Image PineappleIdle1;
-	public static Image PineappleIdle2;
+	public static Image pineappleIdle0;
+	public static Image pineappleIdle1;
+	public static Image pineappleIdle2;
+
+	public static Image pineappleAttack0;
+	public static Image pineappleAttack1;
+	public static Image pineappleAttack2;
+	public static Image pineappleAttack3;
 	
-	public static Image PineappleAttack0;
-	public static Image PineappleAttack1;
-	public static Image PineappleAttack2;
-	public static Image PineappleAttack3;
-	
-	public static Image PineappleHit0;
-	public static Image PineappleHit1;
-	public static Image PineappleHit2;
-	public static Image PineappleHit3;
-	public static Image PineappleAmmo;
+	public static Image pineappleHit0;
+	public static Image pineappleHit1;
+	public static Image pineappleHit2;
+	public static Image pineappleHit3;
+	public static Image pineappleAmmo;
 
 	//Environment Image
-	public static Image GameBackground;
-	public static Image Bush;
+	public static Image gameBackground;
+	public static Image bush;
 	public static Image palm;
 	public static Image pine;
 	public static Image plantHouse;
@@ -137,51 +139,53 @@ public class RenderableHolder {
 	public static Image bigCrate;
 	public static Image fence;
 	public static Image hpBar;
-	public static Image WoodenBoard;
-	public static Image Quit;
-	public static Image Resume;
+	public static Image woodenBoard;
+	public static Image quit;
+	public static Image resume;
 	
 	//Sounds
-	public static AudioClip BattleMusic;
-	public static AudioClip MainMusic;
+	public static AudioClip battleMusic;
+	public static AudioClip mainMusic;
 	public static AudioClip mushRoomAttack;
 	public static AudioClip mushRoomDeath;
 	public static AudioClip mushRoomJump;
-	public static AudioClip Start;
-	public static AudioClip MouseEnter;
+	public static AudioClip start;
+	public static AudioClip mouseEnter;
 	public static AudioClip mushRoomWalk;
+	public static AnimationTimer battleMusicTimer;
+	public static AnimationTimer mainMusicTimer;
 	
 	//GUI
 	public static String myFont;
-	public static Image MainBackground;
-	public static Image NameLogo;
-	public static Image MushroomIdleGIF;
-	public static Image StartButton;
-	public static Image MushroomWalkGIF;
-	public static Image HelpButton;
-	public static Image QuitButton;
-	public static Image HelpPane;
+	public static Image mainBackground;
+	public static Image nameLogo;
+	public static Image mushroomIdleGIF;
+	public static Image startButton;
+	public static Image mushroomWalkGIF;
+	public static Image helpButton;
+	public static Image quitButton;
+	public static Image helpPane;
 	public static Image xButton;
-	public static Image MushroomAttackGIF;
-	public static Image SoundOn;
-	public static Image SoundOff;
+	public static Image mushroomAttackGIF;
+	public static Image soundOn;
+	public static Image soundOff;
 	public static Image icon;
-	public static Image Gameover;
-	public static Image Yes;
-	public static Image No;
+	public static Image gameover;
+	public static Image yes;
+	public static Image no;
 	
 	static {
 		loadResource();
 	}
 
-	public RenderableHolder() {
+	/*public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
 		comparator = (IRenderable o1, IRenderable o2) -> {
 			if (o1.getZ() > o2.getZ())
 				return 1;
 			return -1;
 		};
-	}
+	}*/
 
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -272,47 +276,47 @@ public class RenderableHolder {
 		//Tomato Image
 		
 		//Idle,Attack,Walk
-		TomatoIdle0 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle0.png").toString());
-		TomatoIdle1 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle1.png").toString());
-		TomatoIdle2 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle2.png").toString());
-		TomatoIdle3 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle3.png").toString());
-		TomatoIdle4 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle4.png").toString());
-		TomatoIdle5 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle5.png").toString());
+		tomatoIdle0 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle0.png").toString());
+		tomatoIdle1 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle1.png").toString());
+		tomatoIdle2 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle2.png").toString());
+		tomatoIdle3 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle3.png").toString());
+		tomatoIdle4 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle4.png").toString());
+		tomatoIdle5 = new Image(ClassLoader.getSystemResource(img + "TomatoIdle5.png").toString());
 		
 		//Hit
-		TomatoHit0 = new Image(ClassLoader.getSystemResource(img + "TomatoHit0.png").toString());
-		TomatoHit1 = new Image(ClassLoader.getSystemResource(img + "TomatoHit1.png").toString());
-		TomatoHit2 = new Image(ClassLoader.getSystemResource(img + "TomatoHit2.png").toString());
-		TomatoHit3 = new Image(ClassLoader.getSystemResource(img + "TomatoHit3.png").toString());
-		TomatoHit4 = new Image(ClassLoader.getSystemResource(img + "TomatoHit4.png").toString());
-		TomatoHit5 = new Image(ClassLoader.getSystemResource(img + "TomatoHit5.png").toString());
+		tomatoHit0 = new Image(ClassLoader.getSystemResource(img + "TomatoHit0.png").toString());
+		tomatoHit1 = new Image(ClassLoader.getSystemResource(img + "TomatoHit1.png").toString());
+		tomatoHit2 = new Image(ClassLoader.getSystemResource(img + "TomatoHit2.png").toString());
+		tomatoHit3 = new Image(ClassLoader.getSystemResource(img + "TomatoHit3.png").toString());
+		tomatoHit4 = new Image(ClassLoader.getSystemResource(img + "TomatoHit4.png").toString());
+		tomatoHit5 = new Image(ClassLoader.getSystemResource(img + "TomatoHit5.png").toString());
 		
 		
 		//Pineapple Image
 		
 		//Idle & Walk
-		PineappleIdle0 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle0.png").toString());
-		PineappleIdle1 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle1.png").toString());
-		PineappleIdle2 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle2.png").toString());
+		pineappleIdle0 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle0.png").toString());
+		pineappleIdle1 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle1.png").toString());
+		pineappleIdle2 = new Image(ClassLoader.getSystemResource(img + "PineappleIdle2.png").toString());
 		
 		//Attack
-		PineappleAttack0 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack0.png").toString());
-		PineappleAttack1 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack1.png").toString());
-		PineappleAttack2 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack2.png").toString());
-		PineappleAttack3 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack3.png").toString());
+		pineappleAttack0 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack0.png").toString());
+		pineappleAttack1 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack1.png").toString());
+		pineappleAttack2 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack2.png").toString());
+		pineappleAttack3 = new Image(ClassLoader.getSystemResource(img + "PineappleAttack3.png").toString());
 		
 		//Hit
-		PineappleHit0 = new Image(ClassLoader.getSystemResource(img + "PineappleHit0.png").toString());
-		PineappleHit1 = new Image(ClassLoader.getSystemResource(img + "PineappleHit1.png").toString());
-		PineappleHit2 = new Image(ClassLoader.getSystemResource(img + "PineappleHit2.png").toString());
-		PineappleHit3 = new Image(ClassLoader.getSystemResource(img + "PineappleHit3.png").toString());
+		pineappleHit0 = new Image(ClassLoader.getSystemResource(img + "PineappleHit0.png").toString());
+		pineappleHit1 = new Image(ClassLoader.getSystemResource(img + "PineappleHit1.png").toString());
+		pineappleHit2 = new Image(ClassLoader.getSystemResource(img + "PineappleHit2.png").toString());
+		pineappleHit3 = new Image(ClassLoader.getSystemResource(img + "PineappleHit3.png").toString());
 		
 		//Ball
-		PineappleAmmo = new Image(ClassLoader.getSystemResource(img + "PineappleAmmo.png").toString());
+		pineappleAmmo = new Image(ClassLoader.getSystemResource(img + "PineappleAmmo.png").toString());
 		
 		//Environment
-		GameBackground = new Image(ClassLoader.getSystemResource(img + "back-export.png").toString());
-		Bush = new Image(ClassLoader.getSystemResource(img + "Bush.png").toString());
+		gameBackground = new Image(ClassLoader.getSystemResource(img + "back-export.png").toString());
+		bush = new Image(ClassLoader.getSystemResource(img + "Bush.png").toString());
 		palm = new Image(ClassLoader.getSystemResource(img + "palm.png").toString());
 		plantHouse = new Image(ClassLoader.getSystemResource(img + "plant-house.png").toString());
 		strawHouse = new Image(ClassLoader.getSystemResource(img + "straw-house.png").toString());
@@ -329,35 +333,53 @@ public class RenderableHolder {
 		hpBar = new Image(ClassLoader.getSystemResource(img + "HealthBar.png").toString());
 		
 		//Sounds
-		MainMusic = new AudioClip(ClassLoader.getSystemResource(sd+"MainMusic.mp3").toString());
+		mainMusic = new AudioClip(ClassLoader.getSystemResource(sd+"MainMusic.mp3").toString());
 		mushRoomJump = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerJump.mp3").toString());
 		mushRoomAttack = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerAttack.mp3").toString());
 		mushRoomDeath = new AudioClip(ClassLoader.getSystemResource(sd+"PlayerDeath.mp3").toString());
-		Start = new AudioClip(ClassLoader.getSystemResource(sd+"StartGame.mp3").toString());
-		MouseEnter = new AudioClip(ClassLoader.getSystemResource(sd+"MouseEnter.mp3").toString());
+		start = new AudioClip(ClassLoader.getSystemResource(sd+"StartGame.mp3").toString());
+		mouseEnter = new AudioClip(ClassLoader.getSystemResource(sd+"MouseEnter.mp3").toString());
 		mushRoomWalk =  new AudioClip(ClassLoader.getSystemResource(sd+"PlayerWalk.mp3").toString());
-		BattleMusic = new AudioClip(ClassLoader.getSystemResource(sd+"BattleMusic.mp3").toString());
+		battleMusic = new AudioClip(ClassLoader.getSystemResource(sd+"BattleMusic.mp3").toString());
+		battleMusicTimer = new AnimationTimer() {
+			
+			@Override
+			public void handle(long arg0) {
+				// TODO Auto-generated method stub
+				if(!RenderableHolder.battleMusic.isPlaying()) 
+					RenderableHolder.battleMusic.play();
+			}
+		};
+		mainMusicTimer = new AnimationTimer() {
+	
+			@Override
+			public void handle(long arg0) {
+				// TODO Auto-generated method stub
+				if(!RenderableHolder.mainMusic.isPlaying()) 
+					RenderableHolder.mainMusic.play();
+			}
+		};
 		
 		//GUI
-		WoodenBoard = new Image(ClassLoader.getSystemResource(img + "WoodenBoard.png").toString());
-		Quit = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
-		Resume = new Image(ClassLoader.getSystemResource(img + "ResumeButton.png").toString());
-		MainBackground = new Image(ClassLoader.getSystemResource(img + "BackGround.png").toString());
-		NameLogo = new Image(ClassLoader.getSystemResource(img + "NameLogo.png").toString());
-		MushroomIdleGIF = new Image(ClassLoader.getSystemResource(img + "MushroomIdle.gif").toString());
-		StartButton = new Image(ClassLoader.getSystemResource(img + "StartButton.png").toString());
-		MushroomWalkGIF = new Image(ClassLoader.getSystemResource(img + "MushroomWalking.gif").toString());
-		HelpButton = new Image(ClassLoader.getSystemResource(img + "HelpButton.png").toString());
-		QuitButton = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
-		HelpPane = new Image(ClassLoader.getSystemResource(img + "HelpPane.png").toString());
+		woodenBoard = new Image(ClassLoader.getSystemResource(img + "WoodenBoard.png").toString());
+		quit = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
+		resume = new Image(ClassLoader.getSystemResource(img + "ResumeButton.png").toString());
+		mainBackground = new Image(ClassLoader.getSystemResource(img + "BackGround.png").toString());
+		nameLogo = new Image(ClassLoader.getSystemResource(img + "NameLogo.png").toString());
+		mushroomIdleGIF = new Image(ClassLoader.getSystemResource(img + "MushroomIdle.gif").toString());
+		startButton = new Image(ClassLoader.getSystemResource(img + "StartButton.png").toString());
+		mushroomWalkGIF = new Image(ClassLoader.getSystemResource(img + "MushroomWalking.gif").toString());
+		helpButton = new Image(ClassLoader.getSystemResource(img + "HelpButton.png").toString());
+		quitButton = new Image(ClassLoader.getSystemResource(img + "QuitButton.png").toString());
+		helpPane = new Image(ClassLoader.getSystemResource(img + "HelpPane.png").toString());
 		xButton = new Image(ClassLoader.getSystemResource(img + "xButton.png").toString());
-		MushroomAttackGIF = new Image(ClassLoader.getSystemResource(img + "MushroomAttack.gif").toString());
-		SoundOn = new Image(ClassLoader.getSystemResource(img + "SoundOn.png").toString());
-		SoundOff = new Image(ClassLoader.getSystemResource(img + "SoundOff.png").toString());
+		mushroomAttackGIF = new Image(ClassLoader.getSystemResource(img + "MushroomAttack.gif").toString());
+		soundOn = new Image(ClassLoader.getSystemResource(img + "SoundOn.png").toString());
+		soundOff = new Image(ClassLoader.getSystemResource(img + "SoundOff.png").toString());
 		icon = new Image(ClassLoader.getSystemResource(img + "Mushroom.png").toString());
-		Gameover= new Image(ClassLoader.getSystemResource(img + "GameOver.png").toString());
-		Yes = new Image(ClassLoader.getSystemResource(img + "YES.png").toString());
-		No = new Image(ClassLoader.getSystemResource(img + "No.png").toString());
+		gameover= new Image(ClassLoader.getSystemResource(img + "GameOver.png").toString());
+		yes = new Image(ClassLoader.getSystemResource(img + "YES.png").toString());
+		no = new Image(ClassLoader.getSystemResource(img + "No.png").toString());
 		//Font
 		//InputStream fontStream = CustomFontTest.class.getResourceAsStream("font/8-BIT WONDER.ttf");
 		myFont = ClassLoader.getSystemResource("font/font.ttf").toString();
@@ -368,12 +390,12 @@ public class RenderableHolder {
 		Collections.sort(entities, comparator);
 	}
 
-	public void update() {
+	/*public void update() {
 		for (int i = entities.size() - 1; i >= 0; i--) {
 			if (entities.get(i).isRemoved())
 				entities.remove(i);
 		}
-	}
+	}*/
 
 	public List<IRenderable> getEntities() {
 		return entities;
