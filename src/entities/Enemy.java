@@ -3,14 +3,15 @@ package entities;
 import static utils.Constants.EnemyConstants.GetSpriteAmount;
 
 import utils.Constants.EnemyConstants;
+import utils.Constants.PlayerConstants;
 import utils.Constants.UniversalConstants;
 
 public abstract class Enemy extends Entity implements AnimationUpdatable{
     protected int aniIndex, state, type;
     protected int aniTick, aniSpeed = 10;
-    protected int playerAttackRange = 64;
-    protected int attackRange = 20;
-    protected int attackDamage = 5;
+    protected int playerAttackRange = PlayerConstants.PLAYER_ATTACK_RANGE;
+    protected int attackRange = EnemyConstants.ATTACK_RANGE;
+    protected int attackDamage = EnemyConstants.ATTACK_DAMAGE;
     public int health;
 
     public Enemy(int x, int y, int type, int hitboxWidth, int hitboxHeight, int health) {

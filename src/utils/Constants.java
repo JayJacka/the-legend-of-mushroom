@@ -19,6 +19,8 @@ public class Constants {
 		public static final int WALK_RIGHT = 7;
 		public static final int DEATH = 8;
 		
+		public static final int PLAYER_ATTACK_RANGE = 64;
+		
 		public static final int X_DRAW_OFFSET = 16;
 		public static final int Y_DRAW_OFFSET = 10;
 		
@@ -55,6 +57,9 @@ public class Constants {
 	public static class EnemyConstants{
 		public static final int TOMATO = 0;
 		public static final int PINEAPPLE = 1;
+		
+		public static final int ATTACK_RANGE = 20;
+		public static final int ATTACK_DAMAGE = 5;
 		
 		public static final int X_OFFSET = 13;
 		public static final int Y_OFFSET = 21;
