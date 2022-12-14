@@ -41,10 +41,9 @@ public class Player extends Entity implements IRenderable{
 	public float knockbackSpeed = KNOCKBACK_SPEED;
 	private boolean inAir = false;
 	
-	public Player(float x, float y, Scene scene) {
+	public Player(float x, float y) {
 		super(x, y, hboxWidth, hboxHeight);
 		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
-		addKeyListener(scene);
 		loadAnimations();
 	}
 	
@@ -226,49 +225,8 @@ public class Player extends Entity implements IRenderable{
 		}
 		
 	}
-	
-	public void addKeyListener(Scene sc) {
-		sc.setOnKeyPressed((KeyEvent e) -> {
-			if (e.getCode() == KeyCode.LEFT) {
-				setLeft(true);
-			}
-			else if (e.getCode() == KeyCode.RIGHT) {
-				setRight(true);
-			}
-			else if (e.getCode() == KeyCode.UP) {
-				setJump(true);
-			}
-			else if (e.getCode() == KeyCode.DOWN) {
-				setDown(true);
-			}
-			else if (e.getCode() == KeyCode.Z) {
-				setAttack(true);
-			} 
-			else if (e.getCode() == KeyCode.ESCAPE) {
-				GameState.state = GameState.PAUSE;
-			}
-		});
 
-		sc.setOnKeyReleased((KeyEvent e) -> {
-			if (e.getCode() == KeyCode.LEFT) {
-				setLeft(false);
-			}
-			else if (e.getCode() == KeyCode.RIGHT) {
-				setRight(false);
-			}
-			else if (e.getCode() == KeyCode.UP) {
-				setJump(false);
-			}
-			else if (e.getCode() == KeyCode.DOWN) {
-				setDown(false);
-			}
-			else if (e.getCode() == KeyCode.Z) {
-				setAttack(false);
-			}
-		});
-	}
-
-	private void setJump(boolean b) {
+	public void setJump(boolean b) {
 		// TODO Auto-generated method stub
 		this.jump = b;
 	}
