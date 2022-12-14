@@ -17,8 +17,7 @@ import javafx.scene.input.KeyEvent;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements IRenderable,AnimationUpdatable{
-	private int x,y;
+public class Player extends Entity implements IRenderable{
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
 	private int playerAction = IDLE_RIGHT;
