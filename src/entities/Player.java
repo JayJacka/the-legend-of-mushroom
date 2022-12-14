@@ -1,10 +1,32 @@
 package entities;
 
-import static utils.Constants.PlayerConstants.*;
-import static utils.Constants.Directions.*;
-import static utils.HelperMethods.*;
-import utils.Animations;
-import utils.Constants.UniversalConstants;
+import static utils.Constants.Directions.LEFT;
+import static utils.Constants.Directions.RIGHT;
+import static utils.Constants.PlayerConstants.AIRSPEED;
+import static utils.Constants.PlayerConstants.ATTACK_LEFT;
+import static utils.Constants.PlayerConstants.ATTACK_RIGHT;
+import static utils.Constants.PlayerConstants.DAMAGE;
+import static utils.Constants.PlayerConstants.FALL_SPEED_AFTER_COLLISION;
+import static utils.Constants.PlayerConstants.GRAVITY;
+import static utils.Constants.PlayerConstants.GetSpriteAmount;
+import static utils.Constants.PlayerConstants.HEALTH;
+import static utils.Constants.PlayerConstants.HITBOXHEIGHT;
+import static utils.Constants.PlayerConstants.HITBOXWIDTH;
+import static utils.Constants.PlayerConstants.IDLE_LEFT;
+import static utils.Constants.PlayerConstants.IDLE_RIGHT;
+import static utils.Constants.PlayerConstants.JUMP_LEFT;
+import static utils.Constants.PlayerConstants.JUMP_RIGHT;
+import static utils.Constants.PlayerConstants.JUMP_SPEED;
+import static utils.Constants.PlayerConstants.KNOCKBACK_SPEED;
+import static utils.Constants.PlayerConstants.WALK_LEFT;
+import static utils.Constants.PlayerConstants.WALK_RIGHT;
+import static utils.Constants.PlayerConstants.X_DRAW_OFFSET;
+import static utils.Constants.PlayerConstants.Y_DRAW_OFFSET;
+import static utils.HelperMethods.CanMoveHere;
+import static utils.HelperMethods.GetEntityPosRoofFloor;
+import static utils.HelperMethods.GetEntityXPosNextToWall;
+import static utils.HelperMethods.InClearZone;
+import static utils.HelperMethods.isEntityOnFloor;
 
 import java.util.ArrayList;
 
@@ -12,6 +34,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
+import utils.Animations;
+import utils.Constants.UniversalConstants;
 
 public class Player extends Entity implements IRenderable, AnimationUpdatable{
 	private ArrayList<ArrayList<Image>> animations;

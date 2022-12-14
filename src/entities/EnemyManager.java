@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import utils.Constants.EnemyConstants;
-import utils.Constants.UniversalConstants;
 import logic.GameLogic;
 import sharedObject.IRenderable;
+import utils.Constants.EnemyConstants;
+import utils.Constants.UniversalConstants;
 
 public class EnemyManager implements IRenderable{
 	private ArrayList<ArrayList<Image>> tomatoeAni;

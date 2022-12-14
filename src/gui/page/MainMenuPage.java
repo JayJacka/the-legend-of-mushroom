@@ -1,9 +1,9 @@
 package gui.page;
 
+import gui.element.MainMenuElement;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import gui.element.*;
 
 public class MainMenuPage extends StackPane {
 	

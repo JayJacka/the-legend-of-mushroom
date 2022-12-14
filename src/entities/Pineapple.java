@@ -1,5 +1,8 @@
 package entities;
-import static utils.Constants.EnemyConstants.*;
+import static utils.Constants.EnemyConstants.GetSpriteAmount;
+import static utils.Constants.EnemyConstants.PINEAPPLE;
+import static utils.Constants.EnemyConstants.PINEAPPLE_HEALTH;
+import static utils.Constants.EnemyConstants.PINEAPPLE_HITBOX_WIDTH;
 
 import java.util.ArrayList;
 

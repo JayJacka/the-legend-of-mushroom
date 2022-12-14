@@ -1,5 +1,5 @@
 package entities;
-import static utils.Constants.EnemyConstants.*;
+import static utils.Constants.EnemyConstants.TOMATO;
 
 import java.util.ArrayList;
 

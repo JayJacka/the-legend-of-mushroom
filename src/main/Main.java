@@ -1,12 +1,9 @@
 package main;
 
+import gui.page.MainMenuPage;
 import javafx.application.Application;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import sharedObject.RenderableHolder;
-import gui.element.*;
-import gui.page.*;
 
 public class Main extends Application {
 
