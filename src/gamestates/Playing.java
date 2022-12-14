@@ -143,13 +143,13 @@ public class Playing {
 	
 	public void drawScore(GraphicsContext gc) {
 		gc.setFont(Font.loadFont(RenderableHolder.myFont, 20));
-		gc.setFill(Color.web("#502800"));
-		gc.fillText("Score : " + GameLogic.getInstance().getCurrentScore(), 1050, 40);
+		gc.setFill(Color.web("#FEAC34"));
+		gc.fillText("Score : " + GameLogic.getInstance().getCurrentScore(), 1040, 40);
 	}
 	
 	public void drawLevel(GraphicsContext gc) {
 		gc.setFont(Font.loadFont(RenderableHolder.myFont, 20));
-		gc.setFill(Color.web("#502800"));
+		gc.setFill(Color.web("#FEAC34"));
 		gc.fillText("Level : " + GameLogic.getInstance().getCurrentLevel(), 570, 40);
 	}
 }
