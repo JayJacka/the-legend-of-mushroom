@@ -4,12 +4,12 @@ import javafx.scene.shape.Rectangle;
 
 public abstract class Entity{
 	
-	protected float x,y;
+	protected int x,y;
 	public Rectangle hitbox;
 	protected int hitboxWidth;
 	protected int hitboxHeight;
 	
-	public Entity(float x, float y, int hitboxWidth, int hitboxHeight) {
+	public Entity(int x, int y, int hitboxWidth, int hitboxHeight) {
 		this.x = x;
 		this.y = y;
 		this.hitboxHeight = hitboxHeight;

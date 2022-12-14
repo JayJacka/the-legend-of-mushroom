@@ -20,7 +20,7 @@ public class Pineapple extends Enemy{
     private ArrayList<ArrayList<Image>> pineappleAni;
     private int rangeAttackRange = 192;
     
-    public Pineapple(float x, float y, int Type) {
+    public Pineapple(int x, int y, int Type) {
         super(x, y, PINEAPPLE, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HEALTH);
         initializeHitbox(x + offSetx, y + offSety);
         loadAnimations();
@@ -49,9 +49,9 @@ public class Pineapple extends Enemy{
             if (isPlayerInAttackRange(player, rangeAttackRange) && !shot) {
                 shot = true;
                 if (player.getHitbox().getX() - this.getHitbox().getX() <= 0) {
-                    GameLogic.getInstance().getCurrentAmmo().add(new PineappleAmmo((int) (this.getHitbox().getX() + 5), this.getY(), true, player, -1));
+                    GameLogic.getInstance().getCurrentAmmo().add(new PineappleAmmo((int) (this.getHitbox().getX() + 5), (int) this.getY(), true, player, -1));
                 } else {
-                    GameLogic.getInstance().getCurrentAmmo().add(new PineappleAmmo((int) (this.getHitbox().getX() + 5), this.getY(), true, player, 1));
+                    GameLogic.getInstance().getCurrentAmmo().add(new PineappleAmmo((int) (this.getHitbox().getX() + 5), (int) this.getY(), true, player, 1));
                 }
             }
         }

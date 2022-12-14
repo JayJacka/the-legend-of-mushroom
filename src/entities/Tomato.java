@@ -15,7 +15,7 @@ public class Tomato extends Enemy{
 	private static int hBoxHeight = EnemyConstants.TOMATO_HITBOX_HEIGHT;
 	private ArrayList<ArrayList<Image>> tomatoeAni;
 	
-	public Tomato(float x, float y, int Type) {
+	public Tomato(int x, int y, int Type) {
 		super(x, y, TOMATO, hBoxWidth, hBoxHeight, EnemyConstants.TOMATO_HEALTH);
 		initializeHitbox(x + offSetx, y + offSety);
 		loadAnimations();

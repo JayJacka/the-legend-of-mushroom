@@ -15,7 +15,7 @@ public class PineappleAmmo extends Entity implements IRenderable{
 	private Player player;
 	private int direction;
 
-	public PineappleAmmo(float x, float y, boolean activate, Player player, int direction) {
+	public PineappleAmmo(int x, int y, boolean activate, Player player, int direction) {
 		super(x, y+25, 16, 16);
 		this.x = x;
 		this.y = y+25;

@@ -8,12 +8,12 @@ import utils.Constants.UniversalConstants;
 public abstract class Enemy extends Entity implements AnimationUpdatable{
     protected int aniIndex, State, Type;
     protected int aniTick, aniSpeed = 10;
-    protected int playerAttackRange = 48;
+    protected int playerAttackRange = 64;
     protected int attackRange = 20;
     protected int attackDamage = 5;
     public int health;
 
-    public Enemy(float x, float y, int Type, int hitboxWidth, int hitboxHeight, int health) {
+    public Enemy(int x, int y, int Type, int hitboxWidth, int hitboxHeight, int health) {
         super(x, y, hitboxWidth, hitboxHeight);
         this.Type = Type;
         this.health = health;

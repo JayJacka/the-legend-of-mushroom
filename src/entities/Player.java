@@ -36,9 +36,9 @@ public class Player extends Entity implements IRenderable{
 	public float knockbackSpeed = KNOCKBACK_SPEED;
 	private boolean inAir = false;
 	
-	public Player(float x, float y) {
+	public Player(int x, int y) {
 		super(x, y, hboxWidth, hboxHeight);
-		initializeHitbox(x+xDrawOffset, y+yDrawOffset);
+		initializeHitbox((int) x+xDrawOffset, (int) y+yDrawOffset);
 		loadAnimations();
 	}
 	
@@ -62,7 +62,7 @@ public class Player extends Entity implements IRenderable{
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
-		super.updateHitbox(this.x + xDrawOffset, this.y + yDrawOffset);
+		super.updateHitbox((int) this.x + xDrawOffset,(int) this.y + yDrawOffset);
 	}
 	
 	public void render(GraphicsContext gc) {
