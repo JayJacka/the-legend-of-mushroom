@@ -4,9 +4,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import logic.GameLogic;
+import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
-public class LevelManager {
+public class LevelManager implements IRenderable{
 	
 	private Image levelSprite;
 	private int[][] levelData;

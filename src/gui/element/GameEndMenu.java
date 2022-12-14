@@ -103,4 +103,8 @@ public class GameEndMenu extends StackPane{
 		score.setFill(Color.web("#502800"));
 		score.setFont(Font.loadFont(RenderableHolder.myFont, 18));
 	}
+
+	public void setScore(int sc) {
+		score.setText("SCORE : "+sc);
+	}
 }

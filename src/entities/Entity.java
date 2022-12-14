@@ -1,10 +1,8 @@
-package entities.base;
+package entities;
 
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
-import sharedObject.IRenderable;
 
-public abstract class Entity implements IRenderable{
+public abstract class Entity{
 	
 	private float x,y;
 	public Rectangle hitbox;
@@ -16,11 +14,6 @@ public abstract class Entity implements IRenderable{
 		this.y = y;
 		this.hitboxHeight = hitboxHeight;
 		this.hitboxWidth = hitboxWidth;
-	}
-	
-	public void drawHitbox(GraphicsContext gc) {
-		// for debugging hitbox
-//		gc.strokeRect(hitbox.getX(), hitbox.getY(),hitbox.getWidth(), hitbox.getHeight());
 	}
 	
 	public void initializeHitbox(float x, float y) {

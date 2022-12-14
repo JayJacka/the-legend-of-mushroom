@@ -368,6 +368,7 @@ public class MainMenuElement extends StackPane {
 		controlText.setTranslateX(-280);
 		controlText.setTranslateY(-50);
 	}
+	
 	public void initializeSoundOnButton() {
 		soundOnButton = new ImageView(RenderableHolder.soundOn);
 		soundOnButton.setCursor(Cursor.HAND);
@@ -383,10 +384,7 @@ public class MainMenuElement extends StackPane {
 			
 		});
 		soundOnButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOnButton.setFitHeight(70);
 				soundOnButton.setFitWidth(70);
 				RenderableHolder.mouseEnter.play();
@@ -394,10 +392,7 @@ public class MainMenuElement extends StackPane {
 		});
 		
 		soundOnButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOnButton.setFitHeight(64);
 				soundOnButton.setFitWidth(64);
 			}
@@ -410,9 +405,7 @@ public class MainMenuElement extends StackPane {
 		soundOffButton.setFitWidth(64);
 		soundOffButton.setVisible(false);
 		soundOffButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				RenderableHolder.mainMusicTimer.start();
 				soundOnButton.setVisible(true);
 				soundOffButton.setVisible(false);
@@ -420,10 +413,7 @@ public class MainMenuElement extends StackPane {
 			
 		});
 		soundOffButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOffButton.setFitHeight(70);
 				soundOffButton.setFitWidth(70);
 				RenderableHolder.mouseEnter.play();
@@ -431,10 +421,7 @@ public class MainMenuElement extends StackPane {
 		});
 		
 		soundOffButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOffButton.setFitHeight(64);
 				soundOffButton.setFitWidth(64);
 			}

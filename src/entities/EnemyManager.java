@@ -25,7 +25,6 @@ public class EnemyManager implements IRenderable{
 	}
 	
 	private void initializeEnemy() {
-		// TODO Auto-generated method stub
 		Image enemyDataImage = new Image(ClassLoader.getSystemResource("level/map"+ GameLogic.getInstance().getCurrentLevel()%3 + ".png").toString());
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
@@ -73,7 +72,6 @@ public class EnemyManager implements IRenderable{
 			} else if (e instanceof Pineapple) {
 				gc.drawImage(pineappleAni.get(e.getState()).get(e.getAniIndex()),  e.getX(), e.getY());
 			}
-			e.drawHitbox(gc);
 		}
 	}
 

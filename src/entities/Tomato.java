@@ -1,7 +1,6 @@
 package entities;
 import static utils.Constants.EnemyConstants.*;
 
-import javafx.scene.canvas.GraphicsContext;
 import utils.Constants.EnemyConstants;
 public class Tomato extends Enemy{
 	
@@ -14,12 +13,6 @@ public class Tomato extends Enemy{
 	public Tomato(float x, float y, int Type) {
 		super(x, y, TOMATO, hBoxWidth, hBoxHeight, EnemyConstants.TOMATO_HEALTH);
 		initializeHitbox(x + offSetx, y + offSety);
-	}
-
-	@Override
-	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

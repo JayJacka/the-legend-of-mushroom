@@ -1,6 +1,5 @@
 package sharedObject;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -177,15 +176,6 @@ public class RenderableHolder {
 	static {
 		loadResource();
 	}
-
-	/*public RenderableHolder() {
-		entities = new ArrayList<IRenderable>();
-		comparator = (IRenderable o1, IRenderable o2) -> {
-			if (o1.getZ() > o2.getZ())
-				return 1;
-			return -1;
-		};
-	}*/
 
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -380,24 +370,9 @@ public class RenderableHolder {
 		gameover= new Image(ClassLoader.getSystemResource(img + "GameOver.png").toString());
 		yes = new Image(ClassLoader.getSystemResource(img + "YES.png").toString());
 		no = new Image(ClassLoader.getSystemResource(img + "No.png").toString());
+		
 		//Font
-		//InputStream fontStream = CustomFontTest.class.getResourceAsStream("font/8-BIT WONDER.ttf");
 		myFont = ClassLoader.getSystemResource("font/font.ttf").toString();
 	}
-	
-	public void add(IRenderable entity) {
-		entities.add(entity);
-		Collections.sort(entities, comparator);
-	}
 
-	/*public void update() {
-		for (int i = entities.size() - 1; i >= 0; i--) {
-			if (entities.get(i).isRemoved())
-				entities.remove(i);
-		}
-	}*/
-
-	public List<IRenderable> getEntities() {
-		return entities;
-	}
 }

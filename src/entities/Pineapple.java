@@ -1,7 +1,6 @@
 package entities;
 import static utils.Constants.EnemyConstants.*;
 
-import javafx.scene.canvas.GraphicsContext;
 import logic.GameLogic;
 import objects.PineappleAmmo;
 import utils.Constants.EnemyConstants;
@@ -21,14 +20,9 @@ public class Pineapple extends Enemy{
         super(x, y, PINEAPPLE, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HITBOX_WIDTH, PINEAPPLE_HEALTH);
         initializeHitbox(x + offSetx, y + offSety);
     }
-    public void draw(GraphicsContext gc) {
-        // TODO Auto-generated method stub
-        
-    }
 
     @Override
     public void update(Player player) {
-//      System.out.println(canSeePlayer(player));
         this.State = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {

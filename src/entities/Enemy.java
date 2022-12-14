@@ -2,7 +2,6 @@ package entities;
 
 import static utils.Constants.EnemyConstants.GetSpriteAmount;
 
-import entities.base.Entity;
 import utils.Constants.EnemyConstants;
 import utils.Constants.UniversalConstants;
 
@@ -32,7 +31,6 @@ public abstract class Enemy extends Entity{
     }
     
     public void update(Player player) {
-//      System.out.println(canSeePlayer(player));
         this.State = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
             if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
@@ -67,7 +65,6 @@ public abstract class Enemy extends Entity{
     
     protected boolean canSeePlayer(Player player) {
         int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
-//      System.out.println(playerTileY + " " +(int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE));
         if (playerTileY <= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE + 1) && playerTileY >= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE - 1) ) {
             if (isPlayerInRange(player)) {
                 return true;
@@ -78,7 +75,6 @@ public abstract class Enemy extends Entity{
 
     protected boolean isPlayerInRange(Player player) {
         int range = (int) Math.abs(player.getHitbox().getX() - this.getHitbox().getX());
-//      System.out.println(range);
         return range <= playerAttackRange ;
     }
     

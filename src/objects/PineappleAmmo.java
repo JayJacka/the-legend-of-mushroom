@@ -1,13 +1,14 @@
 package objects;
 
+import entities.Entity;
 import entities.Player;
-import entities.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameLogic;
+import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import utils.Constants.UniversalConstants;
 
-public class PineappleAmmo extends Entity {
+public class PineappleAmmo extends Entity implements IRenderable{
 	private float x;
 	private float y;
 	private boolean activated;
@@ -23,11 +24,9 @@ public class PineappleAmmo extends Entity {
 		this.direction = direction;
 		initializeHitbox(x, y);
 	}
-	@Override
+	
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		gc.drawImage(RenderableHolder.pineappleAmmo, this.x, this.y);
-		this.drawHitbox(gc);
 	}
 	
 	public void update(GraphicsContext gc) {

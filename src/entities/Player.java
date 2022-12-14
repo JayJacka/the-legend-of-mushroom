@@ -7,16 +7,17 @@ import utils.Animations;
 import utils.Constants.UniversalConstants;
 
 import java.util.ArrayList;
-import entities.base.Entity;
+
 import gamestates.GameState;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity{
+public class Player extends Entity implements IRenderable{
 	private int x,y;
 	private ArrayList<ArrayList<Image>> animations;
 	private int aniTick, aniIndex = 0, aniSpeed = 3;
@@ -72,7 +73,6 @@ public class Player extends Entity{
 	
 	public void render(GraphicsContext gc) {
 		gc.drawImage(animations.get(playerAction).get(aniIndex), x, y);
-		drawHitbox(gc);
 	}
 	private void loadAnimations() {
 		animations = new ArrayList<ArrayList<Image>>();

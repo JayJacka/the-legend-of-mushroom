@@ -33,7 +33,6 @@ public class GameLogic {
 	}
 
 	public void newGame(GraphicsContext gc, Scene scene, Gameplay gameplay) {
-		// TODO Auto-generated method stub
 		this.gameplay = gameplay;
 		this.score = 0;
 		this.currentLevel = 1;
@@ -45,7 +44,6 @@ public class GameLogic {
 		}
 		gameLoop(gc);
 		GameState.state = GameState.PLAYING;
-		//System.out.println(currentLevel);
 	}
 	
 	public void gameLoop(GraphicsContext gc) {
@@ -53,7 +51,6 @@ public class GameLogic {
 			
 			@Override
 			public void handle(long arg0) {
-				// TODO Auto-generated method stub
 				clearScreen(gc);
 				
 				switch (GameState.state) {
@@ -65,8 +62,6 @@ public class GameLogic {
 					break;
 				case END:
 					playing.end(gc);
-				//case MENU:
-					
 				default:
 					break;
 				}
@@ -82,7 +77,6 @@ public class GameLogic {
 		if (currentLevel % 3 == 1) {
 			playing.getPlayer().setHealth(100);
 		}
-//		System.out.println(currentLevel);
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {

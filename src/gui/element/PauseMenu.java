@@ -34,10 +34,7 @@ public class PauseMenu extends StackPane{
 		resumeButton = new ImageView(RenderableHolder.resume);
 		resumeButton.setCursor(Cursor.HAND);
 		resumeButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				resumeButton.setTranslateX(-5);
 				resumeButton.setFitHeight(130);
 				resumeButton.setFitWidth(240);
@@ -46,10 +43,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		resumeButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				resumeButton.setTranslateX(0);
 				resumeButton.setFitHeight(120);
 				resumeButton.setFitWidth(230);
@@ -57,10 +51,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		resumeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				GameState.state = GameState.PLAYING;
 				setVisible(false);
 			}
@@ -71,10 +62,7 @@ public class PauseMenu extends StackPane{
 		quitButton = new ImageView(RenderableHolder.quit);
 		quitButton.setCursor(Cursor.HAND);
 		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				quitButton.setTranslateX(-5);
 				quitButton.setFitHeight(130);
 				quitButton.setFitWidth(240);
@@ -83,10 +71,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				quitButton.setTranslateX(0);
 				quitButton.setFitHeight(120);
 				quitButton.setFitWidth(230);
@@ -94,10 +79,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		quitButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				Platform.exit();
 			}
 		});;
@@ -110,23 +92,16 @@ public class PauseMenu extends StackPane{
 		soundOnButton.setFitWidth(64);
 		soundOnButton.setVisible(true);
 		soundOnButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
-
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				RenderableHolder.battleMusic.stop();
 				RenderableHolder.battleMusicTimer.stop();
-				//BattleMusic.stop();
 				soundOnButton.setVisible(false);
 				soundOffButton.setVisible(true);
 			}
 			
 		});
 		soundOnButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOnButton.setFitHeight(70);
 				soundOnButton.setFitWidth(70);
 				RenderableHolder.mouseEnter.play();
@@ -134,10 +109,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		soundOnButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOnButton.setFitHeight(64);
 				soundOnButton.setFitWidth(64);
 			}
@@ -150,9 +122,7 @@ public class PauseMenu extends StackPane{
 		soundOffButton.setFitWidth(64);
 		soundOffButton.setVisible(false);
 		soundOffButton.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				RenderableHolder.battleMusicTimer.start();
 				soundOnButton.setVisible(true);
 				soundOffButton.setVisible(false);
@@ -160,10 +130,7 @@ public class PauseMenu extends StackPane{
 			
 		});
 		soundOffButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOffButton.setFitHeight(70);
 				soundOffButton.setFitWidth(70);
 				RenderableHolder.mouseEnter.play();
@@ -171,10 +138,7 @@ public class PauseMenu extends StackPane{
 		});
 		
 		soundOffButton.setOnMouseExited(new EventHandler<MouseEvent>() {
-			
-			@Override
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				soundOffButton.setFitHeight(64);
 				soundOffButton.setFitWidth(64);
 			}

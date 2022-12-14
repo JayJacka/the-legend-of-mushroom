@@ -6,7 +6,6 @@ import entities.EnemyManager;
 import entities.Player;
 import gui.element.GameEndMenu;
 import gui.element.PauseMenu;
-import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -50,6 +49,7 @@ public class Playing {
 		}
 		if (player.isDeath()) {
 			GameState.state = GameState.END;
+			gameEndPane.setScore(GameLogic.getInstance().getCurrentScore());
 		}
     }
     
