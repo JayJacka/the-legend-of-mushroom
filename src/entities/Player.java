@@ -50,14 +50,14 @@ public class Player extends Entity implements IRenderable, AnimationUpdatable{
 			}
 		}
 		if(!inAir) {
-			if (!isEntityOnFloor(hitbox, levelData)) {
+			if(!isEntityOnFloor(hitbox, levelData)) {
 				inAir = true;
 			}
 		}
 		updatePos();
 		updateAnimationTick();
 		setAnimation();
-		super.updateHitbox((int) this.x + X_DRAW_OFFSET,(int) this.y + X_DRAW_OFFSET);
+		super.updateHitbox((int) this.x + X_DRAW_OFFSET,(int) this.y + Y_DRAW_OFFSET);
 	}
 	
 	public void render(GraphicsContext gc) {
@@ -75,7 +75,7 @@ public class Player extends Entity implements IRenderable, AnimationUpdatable{
 		animations.add(Animations.getMushroomWalkRight());
 	}
 	
-	public void loadLevelData(int[][] levelData) {
+	public void setLevelData(int[][] levelData) {
 		this.levelData = levelData;
 	}
 	
@@ -216,14 +216,11 @@ public class Player extends Entity implements IRenderable, AnimationUpdatable{
 		
 	}
 
-	public void setJump(boolean b) {
+	public void setJump(boolean jump) {
 		// TODO Auto-generated method stub
-		this.jump = b;
+		this.jump = jump;
 	}
-
-	public void setAttack(boolean attacking) {
-		this.isAttacking = attacking;
-	}
+	
 	public boolean isLeft() {
 		return left;
 	}
@@ -240,16 +237,18 @@ public class Player extends Entity implements IRenderable, AnimationUpdatable{
 		this.right = right;
 	}
 	
-	public boolean getPlayerAttack() {
+	/*public boolean getPlayerAttack() {
 		return (playerAction == ATTACK_LEFT || playerAction == ATTACK_RIGHT);
+	}*/
+	public boolean isAttacking() {
+		return isAttacking;
+	}
+	public void setAttacking(boolean isAttacking) {
+		this.isAttacking = isAttacking;
 	}
 	
 	public int getDamage() {
 		return Player.damage;
-	}
-	
-	public void setDamage(int damage) {
-		Player.damage = damage;
 	}
 	
 	public boolean isPlayerInClearZone() {
@@ -270,5 +269,6 @@ public class Player extends Entity implements IRenderable, AnimationUpdatable{
 	public boolean isDeath() {
 		return getHealth() <= 0;
 	}
+
 	
 }

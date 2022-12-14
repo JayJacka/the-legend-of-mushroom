@@ -1,5 +1,6 @@
 package gui.element;
 
+import gamestates.GameState;
 import gui.page.Gameplay;
 import gui.page.MainMenuPage;
 import javafx.event.EventHandler;
@@ -92,6 +93,7 @@ public class GameEndMenu extends StackPane{
 			public void handle(MouseEvent arg0) {
 				setVisible(false);
 				MainMenuPage mainMenuPage = new MainMenuPage(GameLogic.getInstance().getGameplay().getPrimaryStage());
+				GameState.state = GameState.MENU;
 				RenderableHolder.battleMusic.stop();
 				RenderableHolder.battleMusicTimer.stop();
 			}

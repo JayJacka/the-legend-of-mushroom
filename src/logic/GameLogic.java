@@ -27,10 +27,6 @@ public class GameLogic {
 		}
 		return instance;
 	}
-	
-	private GameLogic() {
-		
-	}
 
 	public void newGame(GraphicsContext gc, Scene scene, Gameplay gameplay) {
 		this.gameplay = gameplay;

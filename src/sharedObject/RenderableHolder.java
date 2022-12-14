@@ -11,9 +11,6 @@ import javafx.scene.media.AudioClip;
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 
-	private List<IRenderable> entities;
-	private Comparator<IRenderable> comparator;
-
 	// Mushroom Image
 	public static Image mushRoomIdleLeft0;
 	public static Image mushRoomIdleLeft1;
@@ -175,10 +172,6 @@ public class RenderableHolder {
 	
 	static {
 		loadResource();
-	}
-
-	public static RenderableHolder getInstance() {
-		return instance;
 	}
 
 	public static void loadResource() {

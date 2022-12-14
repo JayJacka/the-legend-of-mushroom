@@ -23,22 +23,22 @@ public class Playing {
     private LevelManager levelManager;
     private EnemyManager enemyManager;
     private ObjectManager objectManager;
-	private PauseMenu pausePane;
-	private GameEndMenu gameEndPane;
+	private PauseMenu pauseMenu;
+	private GameEndMenu gameEndMenu;
     
     public Playing(Scene scene) {
         levelManager = new LevelManager();
         player = new Player(0,0);
         enemyManager = new EnemyManager(player);
         objectManager = new ObjectManager();
-        player.loadLevelData(levelManager.getLevelData());
+        player.setLevelData(levelManager.getLevelData());
         RenderableHolder.battleMusicTimer.start();
         addKeyListener(scene);
-        pausePane = new PauseMenu();
-		pausePane.setVisible(false);
-		gameEndPane = new GameEndMenu();
-		gameEndPane.setVisible(false);
-		GameLogic.getInstance().getGameplay().getChildren().addAll(pausePane,gameEndPane);
+        pauseMenu = new PauseMenu();
+        pauseMenu.setVisible(false);
+        gameEndMenu = new GameEndMenu();
+        gameEndMenu.setVisible(false);
+		GameLogic.getInstance().getGameplay().getChildren().addAll(pauseMenu,gameEndMenu);
     }
     
     public void addKeyListener(Scene sc) {
@@ -53,7 +53,7 @@ public class Playing {
 				player.setJump(true);
 			}
 			else if (e.getCode() == KeyCode.Z) {
-				player.setAttack(true);
+				player.setAttacking(true);
 			} 
 			else if (e.getCode() == KeyCode.ESCAPE) {
 				GameState.state = GameState.PAUSE;
@@ -71,7 +71,7 @@ public class Playing {
 				player.setJump(false);
 			}
 			else if (e.getCode() == KeyCode.Z) {
-				player.setAttack(false);
+				player.setAttacking(false);
 			}
 		});
 	}
@@ -87,7 +87,7 @@ public class Playing {
 		}
 		if (player.isDeath()) {
 			GameState.state = GameState.END;
-			gameEndPane.setScore(GameLogic.getInstance().getCurrentScore());
+			gameEndMenu.setScore(GameLogic.getInstance().getCurrentScore());
 		}
     }
     
@@ -98,7 +98,7 @@ public class Playing {
 		objectManager.draw(gc);
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
-		pausePane.setVisible(true);
+		pauseMenu.setVisible(true);
     }
     
     public void end(GraphicsContext gc) {
@@ -108,7 +108,7 @@ public class Playing {
 		objectManager.draw(gc);
 		gc.setFill(Color.rgb(0, 0, 0, 0.5));
 		gc.fillRect(0, 0, 1280, 720);
-		gameEndPane.setVisible(true);
+		gameEndMenu.setVisible(true);
     }
     
     public Player getPlayer() {

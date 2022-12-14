@@ -33,7 +33,7 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     public void update(Player player) {
         this.state = EnemyConstants.IDLE;
         if (canSeePlayer(player)) {
-            if (player.getPlayerAttack() && player.getAniIndex() >= 6) {
+            if (player.isAttacking() && player.getAniIndex() >= 6) {
                 this.health -= player.getDamage();
                 this.state = EnemyConstants.HIT;
             }
