@@ -49,7 +49,7 @@ public class Pineapple extends Enemy{
             }
         }
         if ((int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE) == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
-            if (isPlayerInAttackRange(player, rangeAttackRange) && !shot) {
+            if (isPlayerInAttackRangeX(player, rangeAttackRange) && !shot) {
                 shot = true;
                 if (player.getHitbox().getX() - this.getHitbox().getX() <= 0) {
                     GameLogic.getInstance().getCurrentAmmo().add(new PineappleAmmo((int) (this.getHitbox().getX() + 5), (int) this.getY(), true, player, -1));

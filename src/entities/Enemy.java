@@ -82,14 +82,14 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     protected boolean canAttackPlayer(Player player) {
         int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
         if (playerTileY == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
-            if (isPlayerInAttackRange(player, this.attackRange)) {
+            if (isPlayerInAttackRangeX(player, this.attackRange)) {
                 return true;
             }
         }
         return false;
     }
     
-    protected boolean isPlayerInAttackRange (Player player, int attackRange) {
+    protected boolean isPlayerInAttackRangeX (Player player, int attackRange) {
         int range = (int) Math.abs(player.getHitbox().getX() - this.getHitbox().getX());
         return range <= attackRange;
     }
