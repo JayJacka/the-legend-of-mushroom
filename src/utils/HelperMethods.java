@@ -8,9 +8,9 @@ public class HelperMethods {
 	
 	public static boolean CanMoveHere(float x, float y, int width, int height, int[][] levelData) {
 		if (!IsSolid(x,y, levelData)) {
-			if (!IsSolid(x+width, y+height, levelData)) {
-				if (!IsSolid(x+width,y,levelData)) {
-					if (!IsSolid(x,y+height, levelData)) {
+			if (!IsSolid(x + width, y + height, levelData)) {
+				if (!IsSolid(x + width,y,levelData)) {
+					if (!IsSolid(x,y + height, levelData)) {
 						return true;
 					}
 				}
@@ -27,8 +27,8 @@ public class HelperMethods {
 			return true;
 		}
 		
-		float xIndex = x/UniversalConstants.TILE_SIZE;
-		float yIndex = y/UniversalConstants.TILE_SIZE;
+		float xIndex = x / UniversalConstants.TILE_SIZE;
+		float yIndex = y / UniversalConstants.TILE_SIZE;
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
@@ -43,8 +43,8 @@ public class HelperMethods {
 	}
 	
 	private static boolean ClearLevelZone(float x, float y, int[][] levelData) {
-		float xIndex = x/UniversalConstants.TILE_SIZE;
-		float yIndex = y/UniversalConstants.TILE_SIZE;
+		float xIndex = x / UniversalConstants.TILE_SIZE;
+		float yIndex = y / UniversalConstants.TILE_SIZE;
 		
 		int value = levelData[(int) yIndex][(int) xIndex];
 		
@@ -56,7 +56,7 @@ public class HelperMethods {
 	
 	public static float GetEntityXPosNextToWall(Rectangle hitbox, float xSpeed) {
 		
-		int currentTile = (int) (hitbox.getX()/UniversalConstants.TILE_SIZE);
+		int currentTile = (int) (hitbox.getX() / UniversalConstants.TILE_SIZE);
 		
 		if (xSpeed > 0) {
 			//right
@@ -72,7 +72,7 @@ public class HelperMethods {
 	}
 	
 	public static float GetEntityPosRoofFloor(Rectangle hitbox, float airSpeed) {
-		int currentTile = (int) (hitbox.getY()/UniversalConstants.TILE_SIZE);
+		int currentTile = (int) (hitbox.getY() / UniversalConstants.TILE_SIZE);
 		if (airSpeed > 0) {
 			//fallilng
 			float tileYPos = currentTile * UniversalConstants.TILE_SIZE;
@@ -86,8 +86,8 @@ public class HelperMethods {
 	}
 	
 	public static boolean isEntityOnFloor(Rectangle hitbox, int[][] levelData) {
-		if(!IsSolid((float) hitbox.getX(), (float) (hitbox.getY()+hitbox.getHeight()+1), levelData)) {
-			if(!IsSolid((float) (hitbox.getX()+hitbox.getWidth()), (float) (hitbox.getY()+hitbox.getHeight()+1), levelData)) {
+		if(!IsSolid((float) hitbox.getX(), (float) (hitbox.getY() + hitbox.getHeight() + 1), levelData)) {
+			if(!IsSolid((float) (hitbox.getX() + hitbox.getWidth()), (float) (hitbox.getY() + hitbox.getHeight() + 1), levelData)) {
 				return false;
 			}
 		}

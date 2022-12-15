@@ -101,12 +101,12 @@ public class GameEndMenu extends StackPane{
 	}
 	
 	public void initializeScore() {
-		score = new Text("SCORE : "+GameLogic.getInstance().getCurrentScore());
+		score = new Text("SCORE : " + GameLogic.getInstance().getCurrentScore());
 		score.setFill(Color.web("#502800"));
 		score.setFont(Font.loadFont(RenderableHolder.myFont, 18));
 	}
 
 	public void setScore(int sc) {
-		score.setText("SCORE : "+sc);
+		score.setText("SCORE : " + sc);
 	}
 }

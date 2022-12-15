@@ -27,11 +27,11 @@ public class EnemyManager implements IRenderable{
 		for (int j = 0; j < 23; j++) {
 			for (int i = 0; i < 40; i++) {
 				Color color= enemyDataImage.getPixelReader().getColor(i, j);
-				if ((int) (color.getRed()*255) == EnemyConstants.TOMATO_R_VALUE) {
-					enemies.add(new Tomato(i*UniversalConstants.TILE_SIZE-EnemyConstants.X_OFFSET, j*UniversalConstants.TILE_SIZE-EnemyConstants.Y_OFFSET, 0));
+				if ((int) (color.getRed() * 255) == EnemyConstants.TOMATO_R_VALUE) {
+					enemies.add(new Tomato(i * UniversalConstants.TILE_SIZE-EnemyConstants.X_OFFSET, j * UniversalConstants.TILE_SIZE-EnemyConstants.Y_OFFSET, 0));
 				}
-				if ((int) (color.getRed()*255) == EnemyConstants.PINEAPPLE_R_VALUE) {
-					enemies.add(new Pineapple(i*UniversalConstants.TILE_SIZE-EnemyConstants.X_OFFSET, j*UniversalConstants.TILE_SIZE-EnemyConstants.Y_OFFSET, 1));
+				if ((int) (color.getRed() * 255) == EnemyConstants.PINEAPPLE_R_VALUE) {
+					enemies.add(new Pineapple(i * UniversalConstants.TILE_SIZE-EnemyConstants.X_OFFSET, j * UniversalConstants.TILE_SIZE-EnemyConstants.Y_OFFSET, 1));
 				}
 			}
 		}

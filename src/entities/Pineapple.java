@@ -48,7 +48,7 @@ public class Pineapple extends Enemy{
                 player.updatePos();
             }
         }
-        if ((int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE) == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
+        if ((int) (player.getHitbox().getY() / UniversalConstants.TILE_SIZE) == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
             if (isPlayerInAttackRangeX(player, rangeAttackRange) && !shot) {
                 shot = true;
                 if (player.getHitbox().getX() - this.getHitbox().getX() <= 0) {

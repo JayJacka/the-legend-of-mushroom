@@ -65,8 +65,8 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     }
     
     protected boolean canSeePlayer(Player player) {
-        int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
-        if (playerTileY <= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE + 1) && playerTileY >= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE - 1) ) {
+        int playerTileY = (int) (player.getHitbox().getY() / UniversalConstants.TILE_SIZE);
+        if (playerTileY <= (int) (this.getHitbox().getY() / UniversalConstants.TILE_SIZE + 1) && playerTileY >= (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE - 1) ) {
             if (isPlayerInRange(player)) {
                 return true;
             }
@@ -80,8 +80,8 @@ public abstract class Enemy extends Entity implements AnimationUpdatable{
     }
     
     protected boolean canAttackPlayer(Player player) {
-        int playerTileY = (int) (player.getHitbox().getY()/UniversalConstants.TILE_SIZE);
-        if (playerTileY == (int) (this.getHitbox().getY()/UniversalConstants.TILE_SIZE)) {
+        int playerTileY = (int) (player.getHitbox().getY() / UniversalConstants.TILE_SIZE);
+        if (playerTileY == (int) (this.getHitbox().getY() / UniversalConstants.TILE_SIZE)) {
             if (isPlayerInAttackRangeX(player, this.attackRange)) {
                 return true;
             }
