@@ -358,15 +358,17 @@ public class MainMenuElement extends StackPane {
 				+ "a Mushroom Warrior. You’re one of the strongest warrior of Mushroomkind. "
 				+ "You’re tasked to help rescue Princess Funga who got captured by the great devil name Fruton. "
 				+ "There are 100 levels to reach the Princess. For level after level, the enemies become stronger and stronger."
-				+ "You must utilize your strength and save the Princess.");
+				+ "You must utilize your strength and save the Princess."
+				+ "\n\n"
+				+ "To proceed to the next level, you have to kill all the enemies in the level you are in and move to the right edge of the map." );
 		storyText.setWrappingWidth(800);
 		storyText.setFont(Font.font(20));
-		storyText.setTranslateY(-135);
+		storyText.setTranslateY(-100);
 		controlText = new Text();
 		controlText.setText("These are the controls for Spoc");
 		controlText.setFont(Font.font(25));
 		controlText.setTranslateX(-280);
-		controlText.setTranslateY(-50);
+		controlText.setTranslateY(10);
 	}
 	
 	public void initializeSoundOnButton() {
