@@ -42,7 +42,7 @@ public class PineappleAmmo extends Entity implements IRenderable{
 					}
 					if (Math.abs(player.getHitbox().getX() - this.getHitbox().getX()) <= 1) {
 						player.setHealth(player.getHealth() - 10);
-						player.knockbackSpeed = 5f;
+						player.knockbackSpeed = -5f;
 						this.activated = false;
 					}	
 					
@@ -54,7 +54,7 @@ public class PineappleAmmo extends Entity implements IRenderable{
 					}	
 					if (Math.abs(player.getHitbox().getX() + player.getHitbox().getWidth() - this.getHitbox().getX()) <= 1) {
 						player.setHealth(player.getHealth() - 10);
-						player.knockbackSpeed = -5f;
+						player.knockbackSpeed = 5f;
 						this.activated = false;
 					}
 				}
