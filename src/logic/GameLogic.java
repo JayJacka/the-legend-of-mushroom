@@ -70,9 +70,6 @@ public class GameLogic {
 	public void changeLevel() {
 		this.currentLevel++;
 		playing = new Playing(this.scene);
-		if (currentLevel % 3 == 1) {
-			playing.getPlayer().setHealth(100);
-		}
 	}
 	
 	protected void clearScreen(GraphicsContext gc) {
